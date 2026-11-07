@@ -1,0 +1,20 @@
+test_duplicate_batch_rolls_back (test_hits.HitTests.test_duplicate_batch_rolls_back) ... ok
+test_explicit_noise_edge (test_hits.HitTests.test_explicit_noise_edge) ... ok
+test_failed_prediction_preserves_hits (test_hits.HitTests.test_failed_prediction_preserves_hits) ... ok
+test_rewrite_integrated (test_hits.HitTests.test_rewrite_integrated) ... ok
+test_rewrite_thresholds (test_hits.HitTests.test_rewrite_thresholds) ... ok
+test_self_repair_no_hits (test_hits.HitTests.test_self_repair_no_hits) ... ok
+test_structural_hits (test_hits.HitTests.test_structural_hits) ... ok
+test_native_four_stages_invalid_action_and_loss (test_native_tools.NativeTrainerTests.test_native_four_stages_invalid_action_and_loss) ... [2026-11-06 17:36:19,847] [WARNING] [real_accelerator.py:213:get_accelerator] Setting accelerator to CPU. If you have GPU or other accelerator, we were unable to detect it.
+/opt/data/private/GraphRL/organized_experiments/3_6/code/train_grpo.py:134: UserWarning: You are using 'environment_factory', which is an experimental feature. This API may change or be removed at any time without prior notice. Silence this warning by setting environment variable TRL_EXPERIMENTAL_SILENCE=1.
+  super().__init__(*args, **kwargs)
+[RANK 0] Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+ok
+test_reference_chunk_does_not_shrink_policy_batch (test_native_tools.NativeTrainerTests.test_reference_chunk_does_not_shrink_policy_batch) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 12.743s
+
+OK
+{'loss': '0', 'grad_norm': '4.431e-05', 'learning_rate': '0.001', 'num_tokens': '1.134e+04', 'completions/mean_length': '619', 'completions/min_length': '618', 'completions/max_length': '620', 'completions/clipped_ratio': '0', 'completions/mean_terminated_length': '619', 'completions/min_terminated_length': '618', 'completions/max_terminated_length': '620', 'tools/call_frequency': '4', 'tools/failure_frequency': '0', 'rewards/graph_reward/mean': '2.8', 'rewards/graph_reward/std': '0.4243', 'reward': '2.8', 'reward_std': '0.4243', 'frac_reward_zero_std': '0', 'kl': '0', 'entropy': '5.571', 'clip_ratio/low_mean': '0', 'clip_ratio/high_mean': '0', 'clip_ratio/region_mean': '0', 'clip_ratio/low_min': '0', 'clip_ratio/high_max': '0', 'step_time': '2.807', 'epoch': '1'}
+{'train_runtime': '2.813', 'train_samples_per_second': '0.711', 'train_steps_per_second': '0.355', 'train_loss': '0', 'epoch': '1'}

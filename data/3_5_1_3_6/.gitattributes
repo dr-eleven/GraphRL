@@ -1,0 +1,2 @@
+# These small compressed datasets are stored as ordinary Git blobs, not LFS pointers.
+*.json.gz -filter -diff -merge -text

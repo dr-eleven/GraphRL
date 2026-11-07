@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.venv/
+organized_experiments/*/runs/
+data/3_5_1_3_6/train_episodes.json
+data/3_5_1_3_6/test_episodes.json

@@ -1,0 +1,321 @@
+{
+  "created_at": "2026-11-07T19:29:11.385587+08:00",
+  "repository": "https://github.com/dr-eleven/GraphRL",
+  "destination": "/",
+  "experiments": [
+    "3_5_1",
+    "3_6"
+  ],
+  "data_rows": {
+    "train": 5495,
+    "test": 600
+  },
+  "files": {
+    ".gitignore": {
+      "bytes": 129,
+      "sha256": "199b0990c88cbdd1c3d763012ced8406e108ecc08d0fa82cbc3af7c9a198d950"
+    },
+    "README.md": {
+      "bytes": 6781,
+      "sha256": "c7b6d2bc5218b9daac980f416ce549cd9a4a15f902d7a60fda32d187047bfb66"
+    },
+    "data/3_5_1_3_6/.gitattributes": {
+      "bytes": 123,
+      "sha256": "e9aa434fc41c20096cd6e8950803026b099a2a9d97364eaed127684dba6e639f"
+    },
+    "data/3_5_1_3_6/manifest.json": {
+      "bytes": 1206,
+      "sha256": "f25d121b5cedccc54e41e9961b8eeedf514addbb14ca8bcb0bad71905f1498f4"
+    },
+    "data/3_5_1_3_6/test_episodes.json.gz": {
+      "bytes": 1235527,
+      "sha256": "60a10a5863d4efe13d0ac00e2320ed45ff317ab9850578a94b3406a059f1177c"
+    },
+    "data/3_5_1_3_6/train_episodes.json.gz": {
+      "bytes": 5149678,
+      "sha256": "74962e3fe50f51340e901c740893ebee94c1fa9ab44ef885b6f375adbf6c0155"
+    },
+    "environment/environment.json": {
+      "bytes": 3173,
+      "sha256": "93fb198dec99ad95bbab9e60e86f5a16f058ff34770a7de79d6015ab398a0347"
+    },
+    "environment/pip-freeze.raw.txt": {
+      "bytes": 1926,
+      "sha256": "501f4bc14f7c7a1e6ca2c252c9049d17df5988a089c810c04764739688204d5e"
+    },
+    "environment/portability_changes.json": {
+      "bytes": 2094,
+      "sha256": "26ae161a9d3ff67e1e764a7ae95b9b7ea7c0764ccccff43896bf8420ffffbef0"
+    },
+    "environment/publication_validation.json": {
+      "bytes": 539,
+      "sha256": "b40c159cf65ff290b4c78cba37f77ee0827aeccd2c90dbab27d34fbbffd48993"
+    },
+    "environment/static_validation.json": {
+      "bytes": 199,
+      "sha256": "e9b712e146deb393188689ceb0c65fd4017313d4567d5028213c9498972423c9"
+    },
+    "organized_experiments/3_5_1/README.md": {
+      "bytes": 3419,
+      "sha256": "82d2c971bcd186b04acdb76f29d58f6f4ff9232180d543dfaa6e603109170548"
+    },
+    "organized_experiments/3_5_1/code/episode.py": {
+      "bytes": 2416,
+      "sha256": "5e4621e6ff89d2b021dfbdd45810a57b1370aac5ff87a776ecf3801a356e71f4"
+    },
+    "organized_experiments/3_5_1/code/evaluate_grpo_600.py": {
+      "bytes": 4584,
+      "sha256": "9c66969ada294f7abf3882f6e8893a3af05ce63b3a709cb3ee9e444afdff2ee4"
+    },
+    "organized_experiments/3_5_1/code/graph_state.py": {
+      "bytes": 1627,
+      "sha256": "229b9d06754479bed6a45150b231da561f753a176b9f8018f0e96cc9eb32d104"
+    },
+    "organized_experiments/3_5_1/code/label_utils.py": {
+      "bytes": 526,
+      "sha256": "42e713ec1af972a62b9d0bc8071cf20be990784242a774ffda7f667c0875b6f4"
+    },
+    "organized_experiments/3_5_1/code/merge_adapter.py": {
+      "bytes": 947,
+      "sha256": "374d9dd176486a99335f3f8f5af4e60fd83296c679423d93d2b9d228ac7486f6"
+    },
+    "organized_experiments/3_5_1/code/prepare_data.py": {
+      "bytes": 3634,
+      "sha256": "377b6790c8732208022c641aef68251d72366cf02a4a9b56ba5c5d605e35b754"
+    },
+    "organized_experiments/3_5_1/code/reward.py": {
+      "bytes": 1707,
+      "sha256": "1fb6a0115af209054d7fb37a481cacf5a3994f41d8ea5db77c33ed63a9e5b478"
+    },
+    "organized_experiments/3_5_1/code/tail_batching.py": {
+      "bytes": 1204,
+      "sha256": "3e002806c2d31dcf2400d960006e172ec9298f9887bb96942dbba1c0c292ceec"
+    },
+    "organized_experiments/3_5_1/code/train_grpo.py": {
+      "bytes": 14232,
+      "sha256": "67cca5d8f3eb9f2206277f39ac08e0666694825776d3f3ec3d1b2c4e8ebf607c"
+    },
+    "organized_experiments/3_5_1/configs/a7b_reference.json": {
+      "bytes": 2872,
+      "sha256": "a4801a21f42973f7fc8d53bb67562416e8e51909acd1cdfcdf8016ba543897c7"
+    },
+    "organized_experiments/3_5_1/configs/zero2.json": {
+      "bytes": 491,
+      "sha256": "f04fc25ede88234f600c2a3ddc074ea8a1b198f17608091351c86d434336857c"
+    },
+    "organized_experiments/3_5_1/configs/zero3_7b.json": {
+      "bytes": 716,
+      "sha256": "72ea85193151b96f6b2b737741c776fd1106643a7e070e91f1885e2d36d43aa4"
+    },
+    "organized_experiments/3_5_1/requirement.txt": {
+      "bytes": 2165,
+      "sha256": "30dcd1629d6558b0d9915b6d2be22a9ba859aa63456447cad78767bb663c5785"
+    },
+    "organized_experiments/3_5_1/requirements-native.txt": {
+      "bytes": 1610,
+      "sha256": "a0e2a45a818ff824c7e4b1f12b999b2d743cd744dcdb5d8e7b6a49c3374cab13"
+    },
+    "organized_experiments/3_5_1/scripts/run_direct_batch4_1epoch.sh": {
+      "bytes": 4661,
+      "sha256": "35545d120e2050370c7b3d17d933d6442fd47a30627e46ae51581feb362f4e22"
+    },
+    "organized_experiments/3_5_1/scripts/run_portable.sh": {
+      "bytes": 544,
+      "sha256": "970921eeaa71c049c1b5227787e69bd345303fc908b61964e7bf9f12a22134df"
+    },
+    "organized_experiments/3_5_1/scripts/setup_native_trl.sh": {
+      "bytes": 1757,
+      "sha256": "1962c489441c6d4622563a589d6f29808b8b91b35e02618dd05f96b947feea6a"
+    },
+    "organized_experiments/3_5_1/source_manifest.json": {
+      "bytes": 1658,
+      "sha256": "29eafe167a9ab2d6fe36859b0f354e4b6f2fe2e8bbff4154ff1ed352337323e7"
+    },
+    "organized_experiments/3_5_1/tests/test_prediction.py": {
+      "bytes": 6968,
+      "sha256": "a411c61befed79049a7d08c56807223f66e7cb246966acb2c38074ab47f3fa11"
+    },
+    "organized_experiments/3_5_1/verification/preflight.json": {
+      "bytes": 883,
+      "sha256": "aec4ea835a363c9033f61e280b38fb72f1088591ddfcdff6bf31eca8fa6a6156"
+    },
+    "organized_experiments/3_5_1/verification/tests.log": {
+      "bytes": 2137,
+      "sha256": "a295e8258c8994b8225dec660745cbfab179c12a7718fdd736a84a5395c53436"
+    },
+    "organized_experiments/3_5_1/verification/upload_preflight.json": {
+      "bytes": 789,
+      "sha256": "2185d44803e4f26f88ed3fac852a1481cf264a3dffbabea8c8eba0b4c2f88795"
+    },
+    "organized_experiments/3_5_1/verification/upload_tests.log": {
+      "bytes": 2138,
+      "sha256": "5ce86d6aecad938ca847224da31b87d7d262fcba7413dde15044253c4ac6cf68"
+    },
+    "organized_experiments/3_6/README.md": {
+      "bytes": 3044,
+      "sha256": "8def3738c27d86dd9c26137c996c73c0499ac5909199e55f13dbe00bc32144b2"
+    },
+    "organized_experiments/3_6/code/episode.py": {
+      "bytes": 19203,
+      "sha256": "d54e05f1b5090adc0ad51eb02a674ca6e882cd08d494073436068db45c55cb7b"
+    },
+    "organized_experiments/3_6/code/evaluate_grpo_600.py": {
+      "bytes": 5093,
+      "sha256": "5597de792d384dcbd578ec45df4edab9fb61a75ed9ba62a0622454c4d01c1887"
+    },
+    "organized_experiments/3_6/code/generation_limits.py": {
+      "bytes": 19525,
+      "sha256": "14b4e2ca62c0bfe1853eb384e9e25ee5b0d553df6444213543e03cf7bc94ac18"
+    },
+    "organized_experiments/3_6/code/graph_state.py": {
+      "bytes": 17397,
+      "sha256": "61ee3d2e2da8f4fa3a2850b1d4eb7d04cf839157c79ffce78d1e2cbdbc130cbd"
+    },
+    "organized_experiments/3_6/code/hit_reward.py": {
+      "bytes": 2880,
+      "sha256": "110e83855e0bdf7f588b3e002b9a97371514a3ca2ba702e7b189d563928f68c7"
+    },
+    "organized_experiments/3_6/code/label_utils.py": {
+      "bytes": 526,
+      "sha256": "42e713ec1af972a62b9d0bc8071cf20be990784242a774ffda7f667c0875b6f4"
+    },
+    "organized_experiments/3_6/code/merge_adapter.py": {
+      "bytes": 947,
+      "sha256": "374d9dd176486a99335f3f8f5af4e60fd83296c679423d93d2b9d228ac7486f6"
+    },
+    "organized_experiments/3_6/code/prepare_data.py": {
+      "bytes": 4123,
+      "sha256": "767fb0b46ec96456113cdda2dc2e4311295341188526dec1dcc45dabbc927e4a"
+    },
+    "organized_experiments/3_6/code/reward.py": {
+      "bytes": 6625,
+      "sha256": "504de48fbe4910d58da22d1d4ec48dc24a5ed99fc1b1d99f0fa7af804d589866"
+    },
+    "organized_experiments/3_6/code/semantic_encoder.py": {
+      "bytes": 1901,
+      "sha256": "935ec7ecc1beb5181fac9fac87d9b070829f620a191878434412c9a4ef0d58ce"
+    },
+    "organized_experiments/3_6/code/tail_batching.py": {
+      "bytes": 1204,
+      "sha256": "3e002806c2d31dcf2400d960006e172ec9298f9887bb96942dbba1c0c292ceec"
+    },
+    "organized_experiments/3_6/code/train_grpo.py": {
+      "bytes": 18391,
+      "sha256": "104f00f4b7ff17265fc4f01b790d328f9bad6671f2c81ddae959baa375fcc58d"
+    },
+    "organized_experiments/3_6/configs/a7b_reference.json": {
+      "bytes": 2872,
+      "sha256": "a4801a21f42973f7fc8d53bb67562416e8e51909acd1cdfcdf8016ba543897c7"
+    },
+    "organized_experiments/3_6/configs/zero2.json": {
+      "bytes": 491,
+      "sha256": "f04fc25ede88234f600c2a3ddc074ea8a1b198f17608091351c86d434336857c"
+    },
+    "organized_experiments/3_6/configs/zero3_7b.json": {
+      "bytes": 716,
+      "sha256": "72ea85193151b96f6b2b737741c776fd1106643a7e070e91f1885e2d36d43aa4"
+    },
+    "organized_experiments/3_6/reference_tests/test_a7b_profile.py": {
+      "bytes": 4214,
+      "sha256": "c61007cf46ffb98c43079f0bca5f21ca45aab31914bbb60d4e17b76e25f7625e"
+    },
+    "organized_experiments/3_6/reference_tests/test_generation_limits.py": {
+      "bytes": 11844,
+      "sha256": "c46cbb5186bc9123d29c397b2f11a69dffa34430a596193c30410532da4f553a"
+    },
+    "organized_experiments/3_6/reference_tests/test_native_tools.py": {
+      "bytes": 21039,
+      "sha256": "df68b859ae5a0b3f64fb102c1eba4daf189287ba5bbeac79a39a2e96edcc3636"
+    },
+    "organized_experiments/3_6/reference_tests/test_stage_rewards.py": {
+      "bytes": 6241,
+      "sha256": "ab17b21d13ab7ffc30fddbd2876c744208e6dc1a2bcf04bcb374dbc18756a2e6"
+    },
+    "organized_experiments/3_6/requirement.txt": {
+      "bytes": 2165,
+      "sha256": "30dcd1629d6558b0d9915b6d2be22a9ba859aa63456447cad78767bb663c5785"
+    },
+    "organized_experiments/3_6/requirements-native.txt": {
+      "bytes": 1610,
+      "sha256": "a0e2a45a818ff824c7e4b1f12b999b2d743cd744dcdb5d8e7b6a49c3374cab13"
+    },
+    "organized_experiments/3_6/scripts/run_direct_batch4_1epoch.sh": {
+      "bytes": 4850,
+      "sha256": "c1c0830a63a791b946c2f31869ccdd61754e315b9aea902c66753c1e1ff8b008"
+    },
+    "organized_experiments/3_6/scripts/run_portable.sh": {
+      "bytes": 544,
+      "sha256": "970921eeaa71c049c1b5227787e69bd345303fc908b61964e7bf9f12a22134df"
+    },
+    "organized_experiments/3_6/scripts/setup_native_trl.sh": {
+      "bytes": 1757,
+      "sha256": "1962c489441c6d4622563a589d6f29808b8b91b35e02618dd05f96b947feea6a"
+    },
+    "organized_experiments/3_6/source_manifest.json": {
+      "bytes": 2062,
+      "sha256": "8d2e19df2d5c0379f5053bbac47a4b3ecc16f6c9a5b3682f5ca1f4f22b1f7115"
+    },
+    "organized_experiments/3_6/tests/test_hits.py": {
+      "bytes": 3160,
+      "sha256": "f37cc80b29bdfb6a8e8069ff25a45f1a59491ff4d5a477bcc25afc224350225b"
+    },
+    "organized_experiments/3_6/tests/test_native_training.py": {
+      "bytes": 163,
+      "sha256": "97ff96dc5f1ced642d1124d2f97c26f66892c3778df982e4ff9998eda5189b5b"
+    },
+    "organized_experiments/3_6/verification/native_four_stage_chain.json": {
+      "bytes": 233623,
+      "sha256": "9171caebd593d312cd1f97d127065e13aad920d955148100577b65c03d389d7b"
+    },
+    "organized_experiments/3_6/verification/semantic_smoke.log": {
+      "bytes": 236,
+      "sha256": "2270dd468c80c730b6e85cec7d4947f54c109f143464a1d1b74dc7f8e5aa2e38"
+    },
+    "organized_experiments/3_6/verification/tests.log": {
+      "bytes": 2585,
+      "sha256": "236af211cd74c99f70e7fb1be13b48d316a113f9bf1f6e7e0fb29d09ae375295"
+    },
+    "organized_experiments/3_6/verification/upload_preflight.json": {
+      "bytes": 875,
+      "sha256": "7be98f9dfeff8a75ef644d93ea827029f3dfb58dd7d241f54fe3f289cbc98438"
+    },
+    "organized_experiments/3_6/verification/upload_tests.log": {
+      "bytes": 2583,
+      "sha256": "ff22817286223d23cbfcb145e033e4df933b562b682b6a3d5bc20ecaaa8eb8b8"
+    },
+    "requirement.txt": {
+      "bytes": 2165,
+      "sha256": "30dcd1629d6558b0d9915b6d2be22a9ba859aa63456447cad78767bb663c5785"
+    },
+    "tools/restore_data.py": {
+      "bytes": 875,
+      "sha256": "af75034b1c222210bbebbec8345763bb9896fe0b397ea64d6d2f7607665dca22"
+    }
+  },
+  "validation": {
+    "3_5_1": {
+      "tests_passed": 6,
+      "test_seconds": 21.569,
+      "train_count": 5495,
+      "test_count": 600,
+      "max_prompt_tokens": {
+        "train": 1745,
+        "test": 2211
+      },
+      "portable_prepare_passed": true
+    },
+    "3_6": {
+      "tests_passed": 9,
+      "test_seconds": 18.371,
+      "train_count": 5495,
+      "test_count": 600,
+      "max_prompt_tokens": {
+        "train": 3757,
+        "test": 3944
+      },
+      "portable_prepare_passed": true
+    },
+    "data": "gzip streams decode to byte-identical original inputs; hashes verified"
+  },
+  "publication_note": "Standalone GraphRL repository; no GraphSSR/GraphLLM history included"
+}

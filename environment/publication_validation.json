@@ -1,0 +1,25 @@
+{
+  "3_5_1": {
+    "tests_passed": 6,
+    "test_seconds": 21.569,
+    "train_count": 5495,
+    "test_count": 600,
+    "max_prompt_tokens": {
+      "train": 1745,
+      "test": 2211
+    },
+    "portable_prepare_passed": true
+  },
+  "3_6": {
+    "tests_passed": 9,
+    "test_seconds": 18.371,
+    "train_count": 5495,
+    "test_count": 600,
+    "max_prompt_tokens": {
+      "train": 3757,
+      "test": 3944
+    },
+    "portable_prepare_passed": true
+  },
+  "data": "gzip streams decode to byte-identical original inputs; hashes verified"
+}

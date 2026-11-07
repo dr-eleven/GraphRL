@@ -1,0 +1,30 @@
+{
+  "experiments": [
+    "3_5_1",
+    "3_6"
+  ],
+  "source_order_preserved": true,
+  "formal_training_started": false,
+  "splits": {
+    "train": {
+      "source_path": "/opt/data/private/GraphRL/GraphRL_train_data_clean20_badgraph80_degree_sorted/train_grpo_episodes_redesign.json",
+      "rows": 5495,
+      "uncompressed_file": "train_episodes.json",
+      "uncompressed_bytes": 53972970,
+      "sha256": "d46d781788e09a7086fc16f86c1deff94d0eb89aaf3a08c19988cf8a8746b778",
+      "compressed_file": "train_episodes.json.gz",
+      "compressed_bytes": 5149678,
+      "compressed_sha256": "74962e3fe50f51340e901c740893ebee94c1fa9ab44ef885b6f375adbf6c0155"
+    },
+    "test": {
+      "source_path": "/opt/data/private/GraphRL/outputs/redesign_binary_rewrite_positive_sequence_20261014_225139/data/redesign/test_episodes.json",
+      "rows": 600,
+      "uncompressed_file": "test_episodes.json",
+      "uncompressed_bytes": 9277715,
+      "sha256": "3c024845c128fc14a02406815a818320f48c3fe6bc5a44f5d9d3299f452f72b6",
+      "compressed_file": "test_episodes.json.gz",
+      "compressed_bytes": 1235527,
+      "compressed_sha256": "60a10a5863d4efe13d0ac00e2320ed45ff317ab9850578a94b3406a059f1177c"
+    }
+  }
+}

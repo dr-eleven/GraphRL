@@ -1,0 +1,85 @@
+{
+  "reference_run": "/opt/data/private/GraphRL/organized_experiments/7_1-MRRA/outputs/A_7B_20261031_165920",
+  "selected_profile": {
+    "model": "Qwen2.5-7B-Instruct",
+    "strategy": "llm",
+    "profile": "zero3_reentrant_batch2_accum2",
+    "per_device_train_batch_size": 2,
+    "gradient_accumulation_steps": 2,
+    "deepspeed_config": "/opt/data/private/GraphRL/organized_experiments/7_1-MRRA/configs/zero3_7b.json",
+    "gradient_checkpointing_kwargs": {
+      "use_reentrant": true
+    },
+    "num_generations": 6,
+    "gpus": [
+      0,
+      1,
+      2
+    ],
+    "effective_candidates_per_update": 12,
+    "planned_updates": 2748,
+    "base": "original 7B weights; fresh LoRA",
+    "probe_weights_reused": false
+  },
+  "training_arguments": {
+    "per_device_train_batch_size": 2,
+    "per_device_eval_batch_size": 2,
+    "gradient_accumulation_steps": 2,
+    "num_train_epochs": 1.0,
+    "learning_rate": 2e-06,
+    "lr_scheduler_type": "cosine",
+    "warmup_steps": 55.0,
+    "optim": "adamw_torch",
+    "weight_decay": 0.01,
+    "max_grad_norm": 1.0,
+    "bf16": true,
+    "fp16": false,
+    "tf32": true,
+    "gradient_checkpointing": true,
+    "gradient_checkpointing_kwargs": {
+      "use_reentrant": true
+    },
+    "use_liger_kernel": true,
+    "disable_dropout": true,
+    "max_prompt_length": 8192,
+    "num_generations": 6,
+    "max_completion_length": 8704,
+    "steps_per_generation": 1,
+    "num_iterations": 1,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 50,
+    "beta": 0.01,
+    "epsilon": 0.2,
+    "scale_rewards": "group",
+    "loss_type": "grpo",
+    "shuffle_dataset": false,
+    "mask_truncated_completions": false,
+    "lora_rank": 32,
+    "lora_alpha": 32,
+    "lora_dropout": 0.05,
+    "disable_flash_attn2": false,
+    "save_steps": 100,
+    "save_total_limit": 3,
+    "seed": 42
+  },
+  "generation": {
+    "prompt_tokens": 8192,
+    "edit_tokens": 8192,
+    "answer_tokens": 512,
+    "llm_tokens": 8704,
+    "context_tokens": 32768
+  },
+  "source_sha256": {
+    "/opt/data/private/GraphRL/organized_experiments/7_1-MRRA/outputs/A_7B_20261031_165920/selected_profile.json": "9ccf55b80a93a3c6f1467d30899244ee54c8e818223cdd34860c8180d5191393",
+    "/opt/data/private/GraphRL/organized_experiments/7_1-MRRA/outputs/A_7B_20261031_165920/llm/grpo/experiment_config.json": "3fa6ecff7538c9b99bc5ee7b0e0302231a516d33f5a10c00b76098f632680d26",
+    "/opt/data/private/GraphRL/organized_experiments/7_1-MRRA/configs/zero3_7b.json": "72ea85193151b96f6b2b737741c776fd1106643a7e070e91f1885e2d36d43aa4"
+  },
+  "native_trl_mapping": {
+    "use_liger_loss": "not exposed by TRL 1.17.1; native fused LM head + loss_type=grpo",
+    "use_liger_kernel": true,
+    "logprob_micro_batch_size": 1,
+    "max_completion_length": "8704 includes all four tool messages in native TRL",
+    "protocol": "four ordered tools; restored_graph; S+B+T"
+  }
+}

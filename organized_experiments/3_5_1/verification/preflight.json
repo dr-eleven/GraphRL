@@ -1,0 +1,35 @@
+{
+  "experiment_id": "3_5_1",
+  "original_train_count": 5495,
+  "train_count": 5495,
+  "test_count": 600,
+  "fraction": 1.0,
+  "partition": "prefix",
+  "selection": [
+    0,
+    5495
+  ],
+  "source_order_preserved": true,
+  "prediction_only": true,
+  "first_source_indices": [
+    5122,
+    5169,
+    564,
+    482,
+    542,
+    4750,
+    4349,
+    4469,
+    5156,
+    5140
+  ],
+  "microbatches_per_rank": 5495,
+  "max_prompt_tokens": {
+    "train": 1745,
+    "test": 2211
+  },
+  "inputs": {
+    "/opt/data/private/GraphRL/GraphRL_train_data_clean20_badgraph80_degree_sorted/train_grpo_episodes_redesign.json": "d46d781788e09a7086fc16f86c1deff94d0eb89aaf3a08c19988cf8a8746b778",
+    "/opt/data/private/GraphRL/outputs/redesign_binary_rewrite_positive_sequence_20261014_225139/data/redesign/test_episodes.json": "3c024845c128fc14a02406815a818320f48c3fe6bc5a44f5d9d3299f452f72b6"
+  }
+}

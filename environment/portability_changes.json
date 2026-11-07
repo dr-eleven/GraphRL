@@ -1,0 +1,38 @@
+[
+  {
+    "path": "organized_experiments/3_5_1/code/train_grpo.py",
+    "before_sha256": "8eb64b8eec49fd20526e68c3234e94f05c6db510d39bf0b539648a13101a29dd",
+    "after_sha256": "67cca5d8f3eb9f2206277f39ac08e0666694825776d3f3ec3d1b2c4e8ebf607c",
+    "reason": "Allow explicit model locations on another machine; original defaults retained"
+  },
+  {
+    "path": "organized_experiments/3_6/code/train_grpo.py",
+    "before_sha256": "35e73a12afa9b78604a94087dc07c08b79296bcb699c6feba05641deeb839a44",
+    "after_sha256": "104f00f4b7ff17265fc4f01b790d328f9bad6671f2c81ddae959baa375fcc58d",
+    "reason": "Allow explicit model locations on another machine; original defaults retained"
+  },
+  {
+    "path": "organized_experiments/3_5_1/tests/test_prediction.py",
+    "before_sha256": "98d57fa396b59b5dc97ede1ea34371359c30164a44ad971b505578b593f83061",
+    "after_sha256": "a411c61befed79049a7d08c56807223f66e7cb246966acb2c38074ab47f3fa11",
+    "reason": "Allow explicit model locations on another machine; original defaults retained"
+  },
+  {
+    "path": "organized_experiments/3_6/reference_tests/test_native_tools.py",
+    "before_sha256": "eecb2bd81ab0b5ecad12f91dd9f346c3f676b3a2b7528b5656c031383c892dee",
+    "after_sha256": "df68b859ae5a0b3f64fb102c1eba4daf189287ba5bbeac79a39a2e96edcc3636",
+    "reason": "Allow explicit model locations on another machine; original defaults retained"
+  },
+  {
+    "path": "organized_experiments/3_6/reference_tests/test_generation_limits.py",
+    "before_sha256": "76a9b2d8bd51ab08f29b9c533751ab10d633c6e92d67322985b37386141e5bf7",
+    "after_sha256": "c46cbb5186bc9123d29c397b2f11a69dffa34430a596193c30410532da4f553a",
+    "reason": "Allow explicit model locations on another machine; original defaults retained"
+  },
+  {
+    "path": "organized_experiments/3_6/code/hit_reward.py",
+    "before_sha256": "d8ca63ffc54d8992a22455a70402a41b1b32ff8f2f49263944421de8e3e4d2ae",
+    "after_sha256": "110e83855e0bdf7f588b3e002b9a97371514a3ca2ba702e7b189d563928f68c7",
+    "reason": "Allow explicit model locations on another machine; original defaults retained"
+  }
+]

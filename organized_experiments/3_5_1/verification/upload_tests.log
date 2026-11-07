@@ -1,0 +1,15 @@
+test_cpu_native_grpo_lora_update (test_prediction.PredictionTests.test_cpu_native_grpo_lora_update) ... [2026-11-07 19:26:14,401] [WARNING] [real_accelerator.py:213:get_accelerator] Setting accelerator to CPU. If you have GPU or other accelerator, we were unable to detect it.
+[RANK 0] Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+ok
+test_invalid_formats (test_prediction.PredictionTests.test_invalid_formats) ... ok
+test_messages_and_no_extra_turns (test_prediction.PredictionTests.test_messages_and_no_extra_turns) ... ok
+test_prompt_public_input (test_prediction.PredictionTests.test_prompt_public_input) ... ok
+test_reward_table (test_prediction.PredictionTests.test_reward_table) ... ok
+test_truncation_overrides_complete_json (test_prediction.PredictionTests.test_truncation_overrides_complete_json) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 21.569s
+
+OK
+{'loss': '-8.941e-08', 'grad_norm': '0.0004173', 'learning_rate': '0.001', 'num_tokens': '1797', 'completions/mean_length': '60.5', 'completions/min_length': '59', 'completions/max_length': '62', 'completions/clipped_ratio': '0', 'completions/mean_terminated_length': '60.5', 'completions/min_terminated_length': '59', 'completions/max_terminated_length': '62', 'rewards/_score_predictions/mean': '1.55', 'rewards/_score_predictions/std': '0.6364', 'reward': '1.55', 'reward_std': '0.6364', 'frac_reward_zero_std': '0', 'format_valid': '1', 'prediction_correct': '0.5', 'prediction_format_valid': '1', 'prediction_in_candidates': '1', 'structure_reward': '1', 'task_reward': '0.55', 'token_limit_exceeded': '0', 'total': '1.55', 'kl': '0', 'entropy': '5.555', 'clip_ratio/low_mean': '0', 'clip_ratio/high_mean': '0', 'clip_ratio/region_mean': '0', 'clip_ratio/low_min': '0', 'clip_ratio/high_max': '0', 'step_time': '0.09418', 'epoch': '1'}
+{'train_runtime': '0.0971', 'train_samples_per_second': '20.6', 'train_steps_per_second': '10.3', 'train_loss': '-8.941e-08', 'epoch': '1'}

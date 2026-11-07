@@ -1,0 +1,21 @@
+{
+  "source": "/opt/data/private/GraphRL/organized_experiments/3_5",
+  "copied_sha256": {
+    "requirements-native.txt": "a0e2a45a818ff824c7e4b1f12b999b2d743cd744dcdb5d8e7b6a49c3374cab13",
+    "configs/a7b_reference.json": "a4801a21f42973f7fc8d53bb67562416e8e51909acd1cdfcdf8016ba543897c7",
+    "configs/zero3_7b.json": "72ea85193151b96f6b2b737741c776fd1106643a7e070e91f1885e2d36d43aa4",
+    "configs/zero2.json": "f04fc25ede88234f600c2a3ddc074ea8a1b198f17608091351c86d434336857c",
+    "scripts/run_direct_batch4_1epoch.sh": "cf28b11b7adfcd615cff8625b9bf1479767bed5eaf906c38734bb97914f4628b",
+    "scripts/setup_native_trl.sh": "1962c489441c6d4622563a589d6f29808b8b91b35e02618dd05f96b947feea6a",
+    "code/tail_batching.py": "3e002806c2d31dcf2400d960006e172ec9298f9887bb96942dbba1c0c292ceec",
+    "code/merge_adapter.py": "374d9dd176486a99335f3f8f5af4e60fd83296c679423d93d2b9d228ac7486f6",
+    "code/episode.py": "3dfed01c7152131f9748c347df10e3579e83c38a183a18f59131374c9ea7d9a5",
+    "code/train_grpo.py": "7b38021d36b6409fed0990e244e12c736115db1673d74a3b1aad4b26f22596f8",
+    "code/prepare_data.py": "4a4e67aa80de1ecbc4f9b479510223df139033cf5a0cdf2221be0d112fbda0c9",
+    "code/reward.py": "0ac5a0faf6e41e8d917f987caf051f46ecf6bad203a7003710fae646bee387d1",
+    "code/generation_limits.py": "14b4e2ca62c0bfe1853eb384e9e25ee5b0d553df6444213543e03cf7bc94ac18",
+    "code/graph_state.py": "9cc63178d9ec1a6d46f052b817d0093e00d6d6dd5a7671c3c9290ace106f25ad",
+    "code/label_utils.py": "42e713ec1af972a62b9d0bc8071cf20be990784242a774ffda7f667c0875b6f4",
+    "code/evaluate_grpo_600.py": "5597de792d384dcbd578ec45df4edab9fb61a75ed9ba62a0622454c4d01c1887"
+  }
+}
