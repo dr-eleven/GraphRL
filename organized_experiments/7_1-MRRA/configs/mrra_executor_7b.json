@@ -1,0 +1,11 @@
+{
+  "extends": "mrra_executor.json",
+  "model": {
+    "path": "/opt/data/private/Graph-R1-main/locals/Qwen/Qwen2.5-7B-Instruct"
+  },
+  "training": {
+    "per_device_train_batch_size": 4,
+    "per_device_eval_batch_size": 4,
+    "gradient_accumulation_steps": 1
+  }
+}

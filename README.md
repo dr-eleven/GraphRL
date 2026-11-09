@@ -6,6 +6,9 @@
 |---|---|---|
 | 3_5_1 | noisy 图直接输出 analysis+prediction；奖励 S+T | [实验说明](organized_experiments/3_5_1/README.md) |
 | 3_6 | 四阶段工具执行；奖励 S+B+T+H | [实验说明](organized_experiments/3_6/README.md) |
+| 7_1-MRRA B | Modify/Rewrite 执行反馈与联合 GRPO；奖励 B+T+F | [实验说明](organized_experiments/7_1-MRRA/README.md) |
+
+7_1-MRRA B 使用独立的历史 TRL 环境与配置，见其目录中的 `requirements.txt`；下文环境和数据启动说明针对原 3_5_1/3_6。
 
 ## 文件
 

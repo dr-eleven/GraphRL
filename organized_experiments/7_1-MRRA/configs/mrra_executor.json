@@ -1,0 +1,12 @@
+{
+  "extends": "base.json",
+  "strategy": "executor",
+  "protocol": "executor_three_stage_tags_v1",
+  "generation": {
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "top_k": -1,
+    "modify_tokens": 4096,
+    "rewrite_tokens": 4096
+  }
+}

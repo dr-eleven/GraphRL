@@ -1,0 +1,6 @@
+{
+  "extends": "mrra_executor.json",
+  "data": {
+    "partition": "suffix"
+  }
+}

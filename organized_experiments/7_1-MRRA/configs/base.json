@@ -1,0 +1,66 @@
+{
+  "strategy": "executor",
+  "ablation": "full",
+  "model": {
+    "path": "/opt/data/private/Graph-R1-main/locals/Qwen/Qwen2.5-3B-Instruct",
+    "dtype": "bfloat16",
+    "attention": "flash_attention_2"
+  },
+  "lora": {
+    "rank": 32,
+    "alpha": 32,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "data": {
+    "train": "../../GraphRL_train_data_clean20_badgraph80_degree_sorted/train_grpo_episodes_redesign.json",
+    "test": "../../GraphRL_test_data/test_grpo_episodes.json",
+    "partition": "all",
+    "fraction": 0.5
+  },
+  "generation": {
+    "prompt_tokens": 8192,
+    "feedback_prompt_tokens": 24576,
+    "context_tokens": 32768,
+    "llm_tokens": 8704,
+    "edit_tokens": 8192,
+    "answer_tokens": 512,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 50
+  },
+  "training": {
+    "num_train_epochs": 1,
+    "num_generations": 6,
+    "per_device_train_batch_size": 8,
+    "per_device_eval_batch_size": 8,
+    "gradient_accumulation_steps": 4,
+    "steps_per_generation": 1,
+    "num_iterations": 1,
+    "learning_rate": 2e-06,
+    "warmup_steps": 55,
+    "weight_decay": 0.01,
+    "beta": 0.01,
+    "epsilon": 0.2,
+    "seed": 42,
+    "gradient_checkpointing": true,
+    "logprob_micro_batch_size": 1,
+    "save_steps": 100,
+    "save_total_limit": 3,
+    "loss_type": "grpo",
+    "use_liger_loss": true,
+    "record_reference_metrics": true
+  },
+  "evaluation": {
+    "semantic_model": "/opt/data/private/Graph-R1-main/locals/bge-m3",
+    "semantic_device": "cpu",
+    "use_semantic": false
+  }
+}
