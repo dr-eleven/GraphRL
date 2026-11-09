@@ -4,3 +4,10 @@ __pycache__/
 organized_experiments/*/runs/
 data/3_5_1_3_6/train_episodes.json
 data/3_5_1_3_6/test_episodes.json
+
+# Restored one-class data; compressed source parts remain tracked.
+data/train_data_15785_oneclass/train_rl.*
+data/train_data_15785_oneclass/budget*/
+data/train_data_15785_oneclass/sample_results/
+data/train_data_15785_oneclass/provenance.jsonl
+data/train_data_15785_oneclass/progress.json

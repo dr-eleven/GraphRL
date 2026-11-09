@@ -1,0 +1,18 @@
+{
+  "status": "stopped_by_user",
+  "complete_5": 15364,
+  "tasks": {
+    "nc": 7710,
+    "lp": 5164,
+    "lc": 2490
+  },
+  "source_counts": {
+    "/opt/data/private/GraphRL/experiments/badgraph_farthest_class_gpt6_luna_remaining_15185": 14756,
+    "/opt/data/private/GraphRL/experiments/badgraph_farthest_class_500": 500,
+    "/opt/data/private/GraphRL/experiments/badgraph_farthest_class_gpt6_luna": 95,
+    "/opt/data/private/GraphRL/experiments/badgraph_oneclass_hezubus_resume": 13
+  },
+  "excluded_from_15785": 421,
+  "finalized_at": "2026-11-09T10:14:03.235917+08:00",
+  "validation": "unique sample_id; clean and budget1..5 have identical ID sets; five successful rounds with five text changes and five added edges; metadata rows match"
+}

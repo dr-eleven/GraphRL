@@ -118,3 +118,8 @@ CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 \
 ```
 
 测试使用 CPU 小模型验证原生 TRL 更新，不加载完整 7B 模型。3_6 的语义奖励若遇到非完全一致的真实文本恢复，需要本地 BGE-m3；相关单元测试以可控相似度覆盖规则边界。
+
+
+## 完整5轮同类攻击数据
+
+新增15,364条NC/LC/LP完整攻击数据及对应clean数据、budget1–5结果和攻击记录，见 [数据下载与恢复说明](data/train_data_15785_oneclass/DOWNLOAD.md)。数据通过压缩分卷随仓库提供，运行该目录的 `restore_data.py` 可校验并恢复全部文件。
