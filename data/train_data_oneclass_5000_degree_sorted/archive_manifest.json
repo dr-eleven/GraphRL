@@ -1,0 +1,19 @@
+{
+  "format": "tar.zst",
+  "archive_bytes": 56419402,
+  "archive_sha256": "55805d8b0a97ecd269dd95a61a2579d9c35f3280b496b791de97ace984b51109",
+  "parts": [
+    {
+      "name": "train_data_oneclass_5000_degree_sorted.tar.zst.part000",
+      "bytes": 50331648,
+      "sha256": "21be3b5d5fbefabae28f3c375a388ed81a221d542b0dfcb826a5ab7730c67ca7"
+    },
+    {
+      "name": "train_data_oneclass_5000_degree_sorted.tar.zst.part001",
+      "bytes": 6087754,
+      "sha256": "1be78207ecaa604e383e4c03ffa0efdea066178551da179618eb201f95ff4fa7"
+    }
+  ],
+  "rows": 5000,
+  "restored_directory": "data/train_data_oneclass_5000_degree_sorted"
+}

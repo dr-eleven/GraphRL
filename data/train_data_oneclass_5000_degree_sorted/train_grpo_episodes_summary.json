@@ -1,0 +1,25 @@
+{
+  "episodes": 5000,
+  "groups": {
+    "clean": 1000,
+    "badgraph_budget_1": 800,
+    "badgraph_budget_2": 800,
+    "badgraph_budget_3": 800,
+    "badgraph_budget_4": 800,
+    "badgraph_budget_5": 800
+  },
+  "task_counts": {
+    "NC": 3500,
+    "LC": 1500
+  },
+  "seed": 42,
+  "sorting": {
+    "graph": "episode noisy_graph after LC query-edge removal",
+    "nc": "target degree",
+    "lc": "mean degree of the two query endpoints",
+    "degree": "undirected unique neighbors; ignore self-loops and relation types",
+    "ties": "stable seeded mixed input order",
+    "min": 0.0,
+    "max": 15.0
+  }
+}

@@ -123,3 +123,8 @@ CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 \
 ## 完整5轮同类攻击数据
 
 新增15,364条NC/LC/LP完整攻击数据及对应clean数据、budget1–5结果和攻击记录，见 [数据下载与恢复说明](data/train_data_15785_oneclass/DOWNLOAD.md)。数据通过压缩分卷随仓库提供，运行该目录的 `restore_data.py` 可校验并恢复全部文件。
+
+
+## 5,000条同类攻击混合训练数据
+
+[数据下载与恢复说明](data/train_data_oneclass_5000_degree_sorted/DOWNLOAD.md)：3,500条NC、1,500条LC；20% clean、80%攻击，budget1–5各800条；按目标度升序排列。包含对应clean参考、episode、分组和排序记录，以及可复现的构造脚本。

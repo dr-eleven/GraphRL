@@ -1,0 +1,6 @@
+{
+  "restoration": "passed",
+  "portable_builder_reproduction": "passed",
+  "payload_files_compared": 13,
+  "comparison": "SHA256 byte-for-byte identical to original for restored and reproduced artifacts"
+}

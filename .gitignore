@@ -11,3 +11,13 @@ data/train_data_15785_oneclass/budget*/
 data/train_data_15785_oneclass/sample_results/
 data/train_data_15785_oneclass/provenance.jsonl
 data/train_data_15785_oneclass/progress.json
+
+# Restored 5k dataset; archive parts and audit documents are tracked.
+data/train_data_oneclass_5000_degree_sorted/train.parquet
+data/train_data_oneclass_5000_degree_sorted/train.jsonl
+data/train_data_oneclass_5000_degree_sorted/clean.parquet
+data/train_data_oneclass_5000_degree_sorted/train_grpo_episodes.json
+data/train_data_oneclass_5000_degree_sorted/groups/
+data/train_data_oneclass_5000_degree_sorted/attack_metadata.jsonl
+data/train_data_oneclass_5000_degree_sorted/group_indices.json
+data/train_data_oneclass_5000_degree_sorted/target_degree_order.csv

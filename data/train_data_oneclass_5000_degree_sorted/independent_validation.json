@@ -1,0 +1,11 @@
+{
+  "rows": 5000,
+  "unique_ids": true,
+  "exact_task_budget_counts": true,
+  "selected_source_payloads_unchanged": true,
+  "all_graph_edge_endpoints_exist": true,
+  "all_targets_exist": true,
+  "all_gold_labels_in_candidates": true,
+  "target_degrees_recomputed": true,
+  "degree_nondecreasing": true
+}
