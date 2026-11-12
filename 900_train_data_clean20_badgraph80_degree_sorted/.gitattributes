@@ -1,0 +1,3 @@
+*.json -filter -merge text eol=lf
+*.parquet -filter -diff -merge -text
+*.md -filter -merge text eol=lf

@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+runs/
+verification/900_quarter/
+pending_status.json
+pending_pipeline.log
+latest_run.json
+.pipeline.lock

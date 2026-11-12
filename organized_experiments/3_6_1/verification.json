@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-12",
+  "python_compile_all": "passed",
+  "server_cpu_contracts": {
+    "four_tool_only_loop_and_feedback_mask": "passed",
+    "four_stage_S_B_H_independent_of_ground_truth_answer": "passed",
+    "answer_only_prompt_and_reward": "passed",
+    "same_adapter_reload_preserves_parameters_and_trainable_set": "passed",
+    "stratified_quarter_sampling_seed42": "passed",
+    "stage1_training_entrypoint_import": "passed",
+    "stage2_training_entrypoint_import": "passed",
+    "real_900_parquet_json_alignment": "passed",
+    "real_900_to_225_quarter_sampling": "passed",
+    "automatic_test_analysis_data_gates_simulation": "passed",
+    "mismatched_dataset_and_report_hash_rejected": "passed"
+  },
+  "production_gpu_training": "not_started_pending_3_6_tests_analysis_and_new_dataset",
+  "new_dataset_default_path": "/home/temptest/GraphRL/900_train_data_clean20_badgraph80_degree_sorted",
+  "old_dataset_fallback": false
+}
