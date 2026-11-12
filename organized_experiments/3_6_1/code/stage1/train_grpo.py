@@ -39,7 +39,7 @@ class ModelArguments:
 
 @dataclass
 class GraphRLDataArguments:
-    data_path: str = str(Path(__file__).resolve().parents[2] / 'data/train_quarter.json')
+    data_path: str = str(Path(__file__).resolve().parents[2] / 'data/train_900.json')
     max_prompt_length: int = 8192
     action_max_new_tokens: int = 512
     max_tool_turns: int = 4

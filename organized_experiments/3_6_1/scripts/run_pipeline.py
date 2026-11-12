@@ -56,23 +56,24 @@ def prerequisite(source):
 
 
 def run(source):
-    from prepare_quarter_data import prepare
+    from prepare_full_data import prepare
     ready,reason=prerequisite(source)
     if not ready:raise RuntimeError(reason)
     stamp=datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
-    run=ROOT/'runs'/('two_epochs_quarter_'+stamp);run.mkdir(parents=True)
+    run=ROOT/'runs'/('two_epochs_full900_'+stamp);run.mkdir(parents=True)
     def status(state,**extra):
-        obj=dict(state=state,time=datetime.datetime.now(datetime.timezone.utc).isoformat(),run=str(run),**extra)
+        obj=dict(state=state,time=datetime.datetime.now(datetime.timezone.utc).isoformat(),run=str(run),training_sources=900,training_fraction=1.0,**extra)
         (run/'status.json').write_text(json.dumps(obj,indent=2)+'\n')
         (ROOT/'latest_run.json').write_text(json.dumps(obj,indent=2)+'\n')
     lock=(GRAPH_ROOT/'setup_logs/gpu1_experiment.lock').open('a')
     fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     gpu_used=int(subprocess.check_output(['nvidia-smi','--id=1','--query-gpu=memory.used','--format=csv,noheader,nounits'],text=True))
     if gpu_used>1024:raise RuntimeError('GPU1 still occupied: '+str(gpu_used))
-    manifest=prepare(source,run/'data',42)
+    manifest=prepare(source,run/'data')
     expected=json.loads((ROOT/'configs/data_source.json').read_text())
-    assert manifest['selected_count']==expected['quarter_training_count']
-    assert manifest['selected_sha256']==expected['quarter_training_sha256']
+    assert manifest['selected_count']==expected['training_count']==900
+    assert manifest['selected_sha256']==expected['training_sha256']
+    assert manifest['source_indices']==[s['source_index'] for s in json.loads((run/'data/train_900.json').read_text())]
     shutil.copytree(ROOT/'configs',run/'configs')
     for stage in ['stage1','stage2']:
         shutil.copytree(ROOT/'code'/stage,run/stage/'code',ignore=shutil.ignore_patterns('__pycache__'))
@@ -100,14 +101,16 @@ def run(source):
         if stage=='stage1':cmd+=['--max_total_sequence_length','5120']
         else:cmd+=['--adapter_init',str(run/'stage1/grpo/final_adapter')]
         return cmd
-    quarter=run/'data/train_quarter.json'
+    full_data=run/'data/train_900.json'
     try:
-        execute('epoch1_train',train_command('stage1',base,quarter),'stage1')
+        execute('epoch1_train',train_command('stage1',base,full_data),'stage1')
         (run/'stage1/grpo/final_adapter/stage1_completed.json').write_text(json.dumps(dict(epoch=1,run=str(run),train_manifest_sha256=hashlib.sha256((run/'data/manifest.json').read_bytes()).hexdigest()),indent=2))
         merge=GRAPH_ROOT/'organized_experiments/3_6/code/merge_adapter.py'
         execute('epoch1_merge',[PYTHON,str(merge),'--adapter',str(run/'stage1/grpo/final_adapter'),'--output',str(run/'stage1_merged')])
         (run/'stage1_merged/stage1_handoff.json').write_text(json.dumps(dict(epoch=1,train_manifest=manifest,adapter=str(run/'stage1/grpo/final_adapter')),indent=2))
-        execute('freeze_epoch1_graphs',[PYTHON,str(run/'stage1/code/export_graphs.py'),'--model',str(run/'stage1_merged'),'--data',str(quarter),'--output',str(run/'handoff')])
+        execute('freeze_epoch1_graphs',[PYTHON,str(run/'stage1/code/export_graphs.py'),'--model',str(run/'stage1_merged'),'--data',str(full_data),'--output',str(run/'handoff')])
+        handoff=json.loads((run/'handoff/prediction_episodes.json').read_text())
+        assert len(handoff)==900 and [s['source_index'] for s in handoff]==manifest['source_indices']
         execute('epoch2_train',train_command('stage2',base,run/'handoff/prediction_episodes.json'),'stage2')
         execute('epoch2_merge',[PYTHON,str(merge),'--adapter',str(run/'stage2/grpo/final_adapter'),'--output',str(run/'final_merged')])
         test=GRAPH_ROOT/'data/3_5_1_3_6/test_episodes.json'
@@ -132,7 +135,7 @@ if __name__=='__main__':
         if ok:
             used=int(subprocess.check_output(['nvidia-smi','--id=1','--query-gpu=memory.used','--format=csv,noheader,nounits'],text=True))
             if used>1024:ok,state=False,'waiting_gpu1_release'
-        (ROOT/'pending_status.json').write_text(json.dumps(dict(state=state,source=str(a.source),time=datetime.datetime.now(datetime.timezone.utc).isoformat()),indent=2))
+        (ROOT/'pending_status.json').write_text(json.dumps(dict(state=state,source=str(a.source),training_sources=900,training_fraction=1.0,sampling=False,time=datetime.datetime.now(datetime.timezone.utc).isoformat()),indent=2))
         if ok:
             try:run(a.source);break
             except BlockingIOError:

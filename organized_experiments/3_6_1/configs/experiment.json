@@ -2,8 +2,9 @@
   "experiment": "3_6_1",
   "source_directory": "900_train_data_clean20_badgraph80_degree_sorted",
   "source_file": "train_grpo_episodes_redesign.json",
-  "sampling_seed": 42,
-  "sampling_fraction_per_stratum": 0.25,
+  "sampling": false,
+  "training_fraction": 1.0,
+  "training_sources": 900,
   "strata": ["clean", "budget1", "budget2", "budget3", "budget4", "budget5"],
   "epochs": [{"epoch": 1, "mode": "restoration_only", "reward": "S4+B+H", "prediction": false}, {"epoch": 2, "mode": "prediction_only", "reward": "S_prediction+T", "tools": false}],
   "base_model": "Qwen2.5-7B-Instruct",
@@ -12,7 +13,7 @@
   "handoff": "epoch1 merged model generates one greedy final graph per selected source; epoch2 reloads and continues the same epoch1 adapter on the same original base, without adding another adapter",
   "epoch2_optimizer": "new optimizer and scheduler; weights carry over",
   "stage1_structure_stage_weight": 0.2,
-  "epochs_each_visit_selected_data_once": true,
+  "epochs_each_visit_all_900_sources_once": true,
   "start_requires": ["3_6 policy tests completed", "3_6 analysis completed", "new 900 dataset available and validated"],
   "automatic_fallback_to_old_dataset": false
 }

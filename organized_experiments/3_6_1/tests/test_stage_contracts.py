@@ -89,15 +89,16 @@ def test_stage2():
 
 def test_sampling():
     sys.path.insert(0,str(ROOT/'scripts'))
-    from prepare_quarter_data import prepare
+    from prepare_full_data import prepare
     with tempfile.TemporaryDirectory() as td:
         root=Path(td);data=[]
         for budget in range(6):
             for i in range(8):data.append(dict(deepcopy(sample),source_index=8*budget+i,attack_budget=budget))
         source=root/'train.json';source.write_text(json.dumps(data))
-        a=prepare(source,root/'a',42);b=prepare(source,root/'b',42)
-        assert a['source_indices']==b['source_indices'] and len(a['source_indices'])==12
-        assert all(v['selected']==2 for v in a['counts'].values())
+        a=prepare(source,root/'a');b=prepare(source,root/'b')
+        assert a['source_indices']==b['source_indices'] and len(a['source_indices'])==48
+        assert all(v['selected']==8 for v in a['counts'].values())
+        assert (root/'a/train_900.json').read_bytes()==source.read_bytes()
         assert a['source_indices']==sorted(a['source_indices'])
 
 

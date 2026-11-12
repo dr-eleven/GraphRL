@@ -8,7 +8,7 @@ import tempfile
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
-from prepare_quarter_data import prepare
+from prepare_full_data import prepare
 import run_pipeline as pipeline
 
 
@@ -27,8 +27,12 @@ def main(source):
     assert [r['source_index'] for r in parquet]==[r['source_index'] for r in episodes]
     assert [r['budget'] for r in parquet]==[r['attack_budget'] for r in episodes]
     with tempfile.TemporaryDirectory() as td:
-        root=Path(td);manifest=prepare(source,root/'quarter',42)
-        assert manifest['selected_count']==225 and manifest['selected_sha256']==expected['quarter_training_sha256']
+        root=Path(td);manifest=prepare(source,root/'full')
+        assert manifest['selected_count']==900 and manifest['selected_sha256']==expected['training_sha256']
+        assert (root/'full/train_900.json').read_bytes()==source.read_bytes()
+        assert manifest['source_indices']==[s['source_index'] for s in episodes]
+        assert manifest['fraction']==1 and not manifest['sampling']
+        assert all(v['original']==v['selected'] for v in manifest['counts'].values())
         previous=root/'previous';evaluation=root/'evaluation';previous.mkdir();evaluation.mkdir()
         pipeline.PREVIOUS=previous
         (previous/'final_evaluation_pointer.json').write_text(json.dumps(dict(path=str(evaluation))))
@@ -45,7 +49,7 @@ def main(source):
         assert pipeline.prerequisite(wrong)==(False,'waiting_verified_900_sha256')
         report.write_text('modified')
         assert pipeline.prerequisite(source)==(False,'waiting_verified_3_6_report')
-    print(json.dumps(dict(real_data=900,quarter_data=225,parquet_json_aligned=True,gates='PASS',training_launched=False)))
+    print(json.dumps(dict(real_data=900,training_data=900,byte_exact=True,order_preserved=True,parquet_json_aligned=True,gates='PASS',training_launched=False)))
 
 
 if __name__=='__main__':

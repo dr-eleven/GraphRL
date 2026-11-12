@@ -5,8 +5,7 @@
   "training_sha256": "d95c14ae183e4a6b491622a9187339b6fbfba0d45f01f3f6e75c4058ceb7560b",
   "training_count": 900,
   "budget_counts": {"0": 180, "1": 144, "2": 144, "3": 144, "4": 144, "5": 144},
-  "quarter_training_count": 225,
-  "quarter_training_sha256": "97a61ef7010d2c4b249f0cbc423388836b99fd82a28a69a6c1321815d75e9a4f",
-  "quarter_budget_counts": {"0": 45, "1": 36, "2": 36, "3": 36, "4": 36, "5": 36},
+  "training_fraction": 1.0,
+  "sampling": false,
   "model_weights_included": false
 }

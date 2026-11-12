@@ -1,20 +1,20 @@
 # 3_6_1：先图操作、后预测的两个epoch
 
-基于3_6实现，两阶段严格分离，每阶段遍历同一份抽样源数据一次。启动条件：3_6 checkpoint-2200 的 clean/noisy策略测试完成、3_6分析完成、新900数据集到位并通过校验。基座测试跳过。
+基于3_6实现，两阶段严格分离，每阶段遍历同一份完整900条源数据一次，不再进行1/4抽样。启动条件：3_6 checkpoint-2200 的 clean/noisy策略测试完成、3_6分析完成、新900数据集到位并通过校验。基座测试跳过。
 
 ## 数据
 
 默认输入为 `GraphRL/900_train_data_clean20_badgraph80_degree_sorted/train_grpo_episodes_redesign.json`。目录下只有 `train_episodes.json` 时也支持；若有歧义则拒绝。可用 `--source /实际路径` 显式指定。绝不退回旧5495条数据。
 
-已对接4090生成的900条版本：训练JSON的SHA256为`d95c14ae183e4a6b491622a9187339b6fbfba0d45f01f3f6e75c4058ceb7560b`。接口从`configs/data_source.json`校验900条总数和clean180/budget1–5各144的分层数量；抽样后固定225条，即clean45、各budget36。GitHub仓库为`dr-eleven/GraphRL`，数据在仓库根目录同名文件夹。数据迁移仍保留原始JSON字节、parquet及来源manifest。
+已对接4090生成的900条版本：训练JSON的SHA256为`d95c14ae183e4a6b491622a9187339b6fbfba0d45f01f3f6e75c4058ceb7560b`。接口从`configs/data_source.json`校验900条总数和clean180/budget1–5各144的分层数量，并将全部900条用于训练。GitHub仓库为`dr-eleven/GraphRL`，数据在仓库根目录同名文件夹。数据迁移仍保留原始JSON字节、parquet及来源manifest。
 
-以原始 `attack_budget=0..5` 对应clean、budget1–5分层，seed42分别随机保留floor(N/4)条，然后保持原degree顺序。个别预算>0但图实际clean的样本仍留在原预算层。保存源/子集哈希、各层数量、完整source_index清单。不能将数据集名称中的900当作已核验总数。
+`scripts/prepare_full_data.py`逐字节复制完整源JSON为运行目录中的`data/train_900.json`，不抽样、不重新排序，保存全部source_index、各层数量与一致的源/训练文件哈希。NC800条、LC100条；个别预算>0但图实际clean的样本仍留在原预算层。旧`prepare_quarter_data.py`只保留作历史工具，当前启动器不导入或调用它。
 
 ## 两个epoch
 
 | 项目 | epoch1 | epoch2 |
 | --- | --- | --- |
-| 输入 | 抽样后的原始输入图 | epoch1最终策略实际生成的固定终图 |
+| 输入 | 完整900条原始输入图 | 这900条样本的epoch1最终策略实际生成的固定终图 |
 | 模型行为 | del_node、del_edge、add_edge、rewrite各一次 | 一次analysis+prediction |
 | 终止 | 第四次外部工具反馈后，不再生成第五轮 | 输出预测JSON后 |
 | 奖励 | S四阶段各0.2+B四阶段各0.25+原始H | 预测格式S=1/0，T=1/0.1/0 |
@@ -22,7 +22,7 @@
 | 检查 | 工具格式、动作合法性、四阶段结构 | 预测JSON、标签、EOS；无图执行检查 |
 | clean监督 | 隐藏评分端 | 答案评分端；不进入prompt |
 
-epoch1从原始Qwen2.5-7B-Instruct初始化，不从3_6 checkpoint续训。epoch1结束merge自身LoRA，为每个入选源用最终策略greedy生成一条终图，无clean替换、无用奖励选最优候选；格式失败时保留实际部分编辑后的图并记录原因。这样每个源都有一个stage2输入。epoch2在相同原始基座上加载epoch1的同一个LoRA adapter并继续训练，不新增第二套adapter，rank/alpha仍为32；每个源再遍历一次。两阶段权重连续，新建优化器和调度器，优化器状态不连续。
+epoch1从原始Qwen2.5-7B-Instruct初始化，不从3_6 checkpoint续训。epoch1结束merge自身LoRA，为全部900个源用最终策略greedy各生成一条终图，无clean替换、无用奖励选最优候选；格式失败时保留实际部分编辑后的图并记录原因。这样900个源均有stage2输入。epoch2在相同原始基座上加载epoch1的同一个LoRA adapter并继续训练，不新增第二套adapter，rank/alpha仍为32；每个源再遍历一次。两阶段权重连续，新建优化器和调度器，优化器状态不连续。
 
 epoch2最终adapter已经包含连续训练的两阶段更新，必须与其配置记录的原始基座merge一次，不能再叠加到epoch1合并模型上重复计算更新。测试时先用冻结的epoch1策略处理clean/noisy测试图，再用epoch2合并模型预测；不让epoch2重新执行图工具。
 
@@ -30,7 +30,7 @@ epoch2最终adapter已经包含连续训练的两阶段更新，必须与其配�
 
 默认沿用当前3_6：GPU1、ZeRO-2无CPU卸载、batch12/累积1/G6、BF16、LoRA r32/alpha32/dropout0.05、lr2e-6、warmup55、cosine、beta0.01。每阶段num_train_epochs=1，总计两遍。原始最大prompt8192，单轮512，epoch1总completion8704。
 
-epoch1保留3_6的完整序列<5120整组排除规则及整批无梯度时不移动Adam/调度器的实现；记录attempted、kept、discarded及实际更新数。epoch2只有图和512输出，去掉所有tool反馈；正式运行需验证最长输入显存，不能以OOM后静默截断替代。warmup55相对四分之一数据可能较长，这里按原设置保留并在结果中记录。
+epoch1保留3_6的完整序列<5120整组排除规则及整批无梯度时不移动Adam/调度器的实现；900条源全部纳入数据遍历，超长候选是否参与梯度另外记录attempted、kept、discarded及实际更新数。epoch2只有图和512输出，去掉所有tool反馈；正式运行需验证最长输入显存，不能以OOM后静默截断替代。warmup55按原设置保留。
 
 ## 目录与执行
 
@@ -54,4 +54,4 @@ python tests/test_stage_contracts.py stage2
 python tests/test_stage_contracts.py sampling
 ```
 
-覆盖四工具后停止、反馈mask、S4+B+H计分且与答案无关、第二阶段不含工具prompt、预测计分和分层随机抽样。未以这些CPU检查冒充真实GPU训练通过；数据到位后启动前还需要检查实际数据和训练运行。
+覆盖四工具后停止、反馈mask、S4+B+H计分且与答案无关、第二阶段不含工具prompt、预测计分、完整数据保留和顺序不变。`tests/test_900_data_interface.py --source /实际/900目录`进一步检查真实900条覆盖、字节哈希及自动启动门禁。未以这些CPU检查冒充真实GPU训练通过。
