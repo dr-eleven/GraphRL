@@ -43,8 +43,8 @@
   ],
   "invalid_layouts_rejected": 4,
   "evaluation_calls_per_training": {
-    "oneclass": 8,
-    "notoneclass": 8
+    "oneclass": 2,
+    "notoneclass": 2
   },
   "missing_second_test_rejected_before_evaluation": true
 }

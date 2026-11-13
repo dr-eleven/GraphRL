@@ -30,7 +30,7 @@ oneclass攻击候选来自按目标文本语义选择的同一个最远类别；
 
 数据已经按degree升序排列，训练不打乱。NC取目标节点的无向去重邻居数；LC/LP先屏蔽查询边，再取两端degree均值；忽略自环及关系类型，同degree按source_index升序。两套攻击图degree可能不同，因此最终行号不保证相同，按源ID/budget配对，不要按行号合并，也不要为了行号一致重新排序。
 
-每套测试恰好600条：NC450（cora/products/wikics各150），LC150（fb15k237）；budget1–5各120条，每档NC90+LC30，混合文件中的每条源样本只出现一次。两套测试的源ID、顺序、budget分配及clean图对应，攻击图不同。clean评测通过同一episode的clean_graph获得。`badgraph/budget1–5`各600条是完整攻击轨迹对应版本，不是正式测试的3000条输入。
+每套测试恰好600条：NC450（cora/products/wikics各150），LC150（fb15k237）；budget1–5各120条，每档NC90+LC30，混合文件中的每条源样本只出现一次。两套测试的源ID、顺序、budget分配及clean图对应，攻击图不同。clean_graph保留为参考字段，正式测试使用noisy_graph。`badgraph/budget1–5`各600条是完整攻击轨迹对应版本，不是正式测试的3000条输入。
 
 **测试集没有LP。** 训练支持LP、测试只覆盖NC/LC；不能在报告中声称验证了LP准确率。`preflight.json`会显示`missing_test_tasks=["LP"]`。默认`REQUIRE_TEST_TASK_COVERAGE=0`，若设1则预检主动拒绝这套测试集。需要LP测试时另行提供独立数据，并记录新实验定义，不要从训练集抽样冒充LP测试。
 
@@ -159,33 +159,24 @@ bash "$EXP/scripts/run_portable.sh" test
 
 ## 测试矩阵与比较
 
-**每个训练模型自动评测oneclass、notoneclass两套完整600条测试集**；每套均执行下表四种条件，使用相同当前prompt和生成预算，不沿用3_5旧工具prompt。
+**只评测训练合并后的模型，condition固定为noisy_policy。每个训练run在oneclass、notoneclass攻击测试集上各测一次，每次600条；每个run共2次，两组训练合计4次。**
 
-| condition | 模型 | 输入图 |
+| 训练集 / 模型 | oneclass攻击测试集 | notoneclass攻击测试集 |
 | --- | --- | --- |
-| noisy_policy | 本组训练合并模型 | 当前测试集的攻击混合图 |
-| clean_policy | 本组训练合并模型 | 当前测试集的同600条clean图 |
-| noisy_baseline | 原始基座 | 当前测试集的攻击混合图 |
-| clean_baseline | 原始基座 | 当前测试集的同600条clean图 |
+| oneclass训练合并模型 | noisy_policy，600条 | noisy_policy，600条 |
+| notoneclass训练合并模型 | noisy_policy，600条 | noisy_policy，600条 |
 
-完整执行矩阵如下，不需要另跑手工交叉评测命令：
+输出分别为`RUN_DIR/test/oneclass/noisy_policy/`和`RUN_DIR/test/notoneclass/noisy_policy/`，日志为`test_oneclass_noisy_policy.log`和`test_notoneclass_noisy_policy.log`。两套测试输入在prepare时保存为`RUN_DIR/data/test_oneclass_episodes.json`和`test_notoneclass_episodes.json`；test阶段缺少任意一套均报错。旧`test_episodes.json`保留为oneclass兼容副本，正式test阶段只读两个带名称的文件。
 
-| 训练集 | oneclass测试集 | notoneclass测试集 |
-| --- | --- | --- |
-| oneclass | 四种条件，各600条 | 四种条件，各600条 |
-| notoneclass | 四种条件，各600条 | 四种条件，各600条 |
-
-每个训练RUN有8次评测，两组训练合计16次。输出为`RUN_DIR/test/{oneclass,notoneclass}/{noisy_policy,clean_policy,noisy_baseline,clean_baseline}/`，日志为`test_<测试集>_<condition>.log`。两套测试输入在prepare时保存为`RUN_DIR/data/test_oneclass_episodes.json`和`test_notoneclass_episodes.json`；test阶段缺少任意一套均报错，不能只完成同名测试就宣布完成。旧`test_episodes.json`保留为oneclass兼容副本，正式test阶段只读两个带名称的文件。
-
-训练使用哪套数据都不会改变测试矩阵。比较训练方法时，在同一测试集上比较两个训练模型的noisy_policy；跨测试集比较时，固定训练模型。clean图相同，两套clean_baseline在同模型/prompt/预算下应相符。所有正式评测用完整600条，不能使用`--limit`抽样结果替代，当前两套均无LP测试覆盖。
+训练使用哪套数据都不会改变这个2×2测试矩阵。比较训练方法时，在同一测试集上比较两个训练模型；跨测试集比较时，固定训练模型。使用相同当前prompt和生成预算，每条只预测一次，始终输入对应测试版本的noisy_graph。所有正式评测用完整600条，不能使用`--limit`抽样结果替代；两套均无LP测试覆盖。
 
 数据位置通过`TEST_ONECLASS_EPISODES`与`TEST_NOTONECLASS_EPISODES`分别指定；旧单一`TEST_EPISODES`变量会报错，请先`unset TEST_EPISODES`。如果准备目录来自旧版单测试流程，应新建RUN重新prepare，不能遗漏第二套测试。
 
 ## 输出、核验与故障处理
 
-每个RUN应保留：`code_snapshot/`、`data/preflight.json`及处理后的train/test episodes、`prepare.log`、`train.log`、`grpo/experiment_config.json`、checkpoint/trainer_state、final_adapter、merged_model、两个测试集下每种条件的predictions.jsonl与summary.json、status.txt。记录Git commit、数据manifest哈希、模型revision、GPU型号/数量、实际依赖freeze及启动命令。
+每个RUN应保留：`code_snapshot/`、`data/preflight.json`及处理后的train/test episodes、`prepare.log`、`train.log`、`grpo/experiment_config.json`、checkpoint/trainer_state、final_adapter、merged_model、两个测试集各自的predictions.jsonl与summary.json、status.txt。记录Git commit、数据manifest哈希、模型revision、GPU型号/数量、实际依赖freeze及启动命令。
 
-训练结束检查实际global_step（默认1000）、epoch=1、final_adapter和合并权重存在、候选采样按6组成完整组、两套测试的四种条件各完整600条。读取评测summary报告总体/NC/LC/数据集分组准确率、无效输出与截断数量；LP应标为无测试覆盖，不能填0伪装测得结果。预测无效保留为错误，不能删掉再计算准确率。不要通过加token、改prompt、反复挑checkpoint来选择性优化测试；需要改动另建运行并注明。跨版本比较必须使用同一测试版本与预算。
+训练结束检查实际global_step（默认1000）、epoch=1、final_adapter和合并权重存在、候选采样按6组成完整组、两套攻击测试各完整600条。读取评测summary报告总体/NC/LC/数据集分组准确率、无效输出与截断数量；LP应标为无测试覆盖，不能填0伪装测得结果。预测无效保留为错误，不能删掉再计算准确率。不要通过加token、改prompt、反复挑checkpoint来选择性优化测试；需要改动另建运行并注明。跨版本比较必须使用同一测试版本与预算。
 
 训练中断先检查日志与checkpoint，不要自动从头覆盖目录或宣称已完成；当前launcher没有自动resume开关，如需恢复应使用train_grpo.py已有的--continuation_checkpoint显式指定完整checkpoint（内部传入Trainer的resume_from_checkpoint），复用原启动参数并验证optimizer/scheduler/global_step恢复，保留改动和命令，不能把加载adapter但优化器重置当成无缝恢复。GPU显存不足/环境不兼容/模型下载失败等应给出实际原因与已完成阶段。
 

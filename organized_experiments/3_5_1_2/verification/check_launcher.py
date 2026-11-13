@@ -23,14 +23,15 @@ with tempfile.TemporaryDirectory() as td:
   (t/'calls').write_text('')
   e=dict(env,CUDA_VISIBLE_DEVICES='0,1,2',RUN_DIR=str(run),TRAIN_EPISODES='/train/'+training)
   r=subprocess.run(['bash',str(script),'test'],env=e,capture_output=True,text=True);assert r.returncode==0,r.stderr
-  calls=[json.loads(line) for line in (t/'calls').read_text().splitlines()];assert len(calls)==8
+  calls=[json.loads(line) for line in (t/'calls').read_text().splitlines()];assert len(calls)==2
   pairs=set()
   for args in calls:
    source=Path(args[args.index('--data')+1]).name
    variant=source[len('test_'):-len('_episodes.json')];cond=args[args.index('--condition')+1]
    out=Path(args[args.index('--output-dir')+1]);assert out==run/'test'/variant/cond
+   assert args[args.index('--model')+1]==str(run/'merged_model')
    pairs.add((variant,cond))
-  assert pairs==set(itertools.product(['oneclass','notoneclass'],['noisy_policy','clean_policy','noisy_baseline','clean_baseline']))
+  assert pairs==set(itertools.product(['oneclass','notoneclass'],['noisy_policy']))
   matrix[training]=len(calls)
  # A partial old preparation must fail before any evaluation begins.
  (t/'calls').write_text('');(run/'data/test_notoneclass_episodes.json').unlink()

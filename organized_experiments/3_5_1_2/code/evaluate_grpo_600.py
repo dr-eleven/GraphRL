@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from episode import load_episodes, clean_episode
+from episode import load_episodes
 from evaluation_metrics import summarize
 from train_grpo import (GraphRLDataset, GraphRLDataArguments, GraphRLTrainingArguments,
                         ThinkWithGraphTrainer, graph_reward)
@@ -18,7 +18,7 @@ def main():
     p.add_argument('--data',required=True)
     p.add_argument('--output-dir',required=True)
     p.add_argument('--rollout-config',required=True,help='Training experiment_config.json')
-    p.add_argument('--condition',choices=['noisy_policy','clean_policy','noisy_baseline','clean_baseline'],default='noisy_policy')
+    p.add_argument('--condition',choices=['noisy_policy'],default='noisy_policy')
     p.add_argument('--batch-size',type=int,default=1)
     p.add_argument('--expected-count',type=int,default=600)
     p.add_argument('--limit',type=int)
@@ -29,8 +29,6 @@ def main():
     if a.limit is not None:
         if a.limit<1: raise ValueError('limit must be positive')
         rows=rows[:a.limit]
-    if a.condition in {'clean_policy','clean_baseline'}:
-        rows=[clean_episode(row) for row in rows]
     out=Path(a.output_dir)
     if out.exists() and any(out.iterdir()):
         raise FileExistsError(out)

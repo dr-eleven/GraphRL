@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-13T09:44:03.133330+00:00",
+  "checked_at": "2026-11-13T09:50:12.012567+00:00",
   "formal_training_or_evaluation_started": false,
   "launcher_checks_use_mock_python": true,
   "launcher_checks": {
@@ -47,8 +47,8 @@
     ],
     "invalid_layouts_rejected": 4,
     "evaluation_calls_per_training": {
-      "oneclass": 8,
-      "notoneclass": 8
+      "oneclass": 2,
+      "notoneclass": 2
     },
     "missing_second_test_rejected_before_evaluation": true
   },
@@ -381,5 +381,11 @@
         "/opt/data/private/GraphRL/data/test_data_600_notoneclass/test_grpo_episodes.json": "13a217378fbc5e8ac19d719d826f1b7b69400caf7a68dcff040b17ff47170bff"
       }
     }
+  },
+  "evaluation_policy": {
+    "condition": "noisy_policy",
+    "model": "each run merged_model",
+    "per_run": 2,
+    "two_runs_total": 4
   }
 }

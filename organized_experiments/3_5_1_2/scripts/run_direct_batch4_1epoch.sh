@@ -83,15 +83,11 @@ if [[ "$STAGE" == all || "$STAGE" == test ]]; then
         }
     done
     for variant in oneclass notoneclass; do
-        for condition in noisy_policy clean_policy noisy_baseline clean_baseline; do
-            model="$RUN/merged_model"
-            if [[ "$condition" == *_baseline ]]; then model="$MODEL"; fi
-            CUDA_VISIBLE_DEVICES="${EVAL_GPU:-${GPUs[0]}}" "$PY" "$ROOT/code/evaluate_grpo_600.py" \
-                --model "$model" --data "$RUN/data/test_${variant}_episodes.json" --condition "$condition" \
-                --rollout-config "$RUN/grpo/experiment_config.json" --batch-size "${EVAL_BATCH_SIZE:-1}" \
-                --expected-count "${EXPECTED_TEST_COUNT:-600}" \
-                --output-dir "$RUN/test/$variant/$condition" 2>&1 | tee "$RUN/test_${variant}_${condition}.log"
-        done
+        CUDA_VISIBLE_DEVICES="${EVAL_GPU:-${GPUs[0]}}" "$PY" "$ROOT/code/evaluate_grpo_600.py" \
+            --model "$RUN/merged_model" --data "$RUN/data/test_${variant}_episodes.json" --condition noisy_policy \
+            --rollout-config "$RUN/grpo/experiment_config.json" --batch-size "${EVAL_BATCH_SIZE:-1}" \
+            --expected-count "${EXPECTED_TEST_COUNT:-600}" \
+            --output-dir "$RUN/test/$variant/noisy_policy" 2>&1 | tee "$RUN/test_${variant}_noisy_policy.log"
     done
 fi
 printf 'complete: %s\n' "$STAGE" > "$RUN/status.txt"

@@ -23,7 +23,7 @@
   "scope": "LP support with task validation, masked query edges and strict binary-label evaluation; original experiment unchanged",
   "current_file_sha256": {
     "code/episode.py": "a9a0f7efe1cd0df162bc16c02e043e61237221638db596cbf1937b83e153dfa5",
-    "code/evaluate_grpo_600.py": "34a84cf87116d3cdf4b991ca37de086e3c91b09b82cb936d2e317a932b7e73a0",
+    "code/evaluate_grpo_600.py": "6c0007c9e291000f0927b045aeb2e696a9f71d2c2dd53a51ee4b002420b5a28e",
     "code/evaluation_metrics.py": "b03fe64fb42a0c3c32e3b1b9848a32a2fc3a242edb2ee2d91afb8984c2da9d9f",
     "code/graph_state.py": "2a90b78c59314851ca7fc5193f17a03bc49aa129f138148d722d395f48522f29",
     "code/label_utils.py": "42e713ec1af972a62b9d0bc8071cf20be990784242a774ffda7f667c0875b6f4",
@@ -33,7 +33,7 @@
     "code/tail_batching.py": "3e002806c2d31dcf2400d960006e172ec9298f9887bb96942dbba1c0c292ceec",
     "code/task_utils.py": "e5d2c56beb5ec37200dd7d7eff920446c9c69e26cff45ca1d6c4291e294abc45",
     "code/train_grpo.py": "7dda2c268ec00d0656bbb1048acdcdebeb8208e93a1f454c8896736a3d7a56f0",
-    "scripts/run_direct_batch4_1epoch.sh": "16138a366813bcae2c5f622f35af2f735065bb8518cca50a900ca950b131d6ad",
+    "scripts/run_direct_batch4_1epoch.sh": "e7d51a47710ad90a08162928c9d019bba9e529a72477441a069ebac21a7818a7",
     "scripts/run_portable.sh": "713a83cb4a884955b0261e1b00a76b28101353c93ecbefdfb1beb9fceeb5b50f",
     "scripts/setup_native_trl.sh": "adca42cca946101dbae6ecb43767878f6dcd6ddd494bcc7c7203272fe8c858f4",
     "configs/a7b_reference.json": "a4801a21f42973f7fc8d53bb67562416e8e51909acd1cdfcdf8016ba543897c7",
@@ -43,5 +43,5 @@
     "tests/test_prediction.py": "2548790e14c3b18c6da821b44912fd92a4bd7d9bddd50c94315f288b83834077"
   },
   "migration_document": "readme.md",
-  "execution_policy": "G=6; 2 source examples / 12 trajectories per update; every trained model evaluates both oneclass and notoneclass test sets"
+  "execution_policy": "G=6; 2 sources / 12 trajectories per update; trained merged model only, noisy_policy on both test sets; 2 evaluations per run, 4 total"
 }

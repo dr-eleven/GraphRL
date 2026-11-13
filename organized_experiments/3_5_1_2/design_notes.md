@@ -44,7 +44,7 @@
 
 batch和梯度累积按显存调整，每次更新必须2源数据/12轨迹，G=6。默认3卡batch2累积2，也可batch4累积1；需保证全局microbatch包含完整组。启动脚本自动检查并计算未指定的梯度累积。
 
-实际环境变量、完整执行命令和输出结构以[readme.md](readme.md)为准。测试路径变量为TEST_ONECLASS_EPISODES和TEST_NOTONECLASS_EPISODES；每个训练RUN自动执行两套测试×四种条件，并写入相互独立的目录。
+实际环境变量、完整执行命令和输出结构以[readme.md](readme.md)为准。测试路径变量为TEST_ONECLASS_EPISODES和TEST_NOTONECLASS_EPISODES；每个训练RUN自动执行两套攻击测试，各一次noisy_policy，并写入相互独立的目录。
 
 ## 验证
 
@@ -63,4 +63,4 @@ CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 \
 
 ## 当前执行要求
 
-batch和梯度累积可调，每次更新固定2条源数据/12条轨迹（G=6）。prepare同时保存oneclass和notoneclass测试数据；每个训练模型自动在两套测试集上各跑四种评测条件。参数与命令以readme.md为准。旧版单TEST_EPISODES配置不再使用。
+batch和梯度累积可调，每次更新固定2条源数据/12条轨迹（G=6）。prepare同时保存oneclass和notoneclass测试数据；每个训练模型自动在两套测试集上各执行一次noisy_policy评测。参数与命令以readme.md为准。旧版单TEST_EPISODES配置不再使用。
