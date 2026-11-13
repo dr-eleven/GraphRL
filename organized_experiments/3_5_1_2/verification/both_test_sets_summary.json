@@ -1,50 +1,108 @@
 {
-  "checked_at": "2026-11-13T09:50:12.012567+00:00",
+  "checked_at": "2026-11-13T10:13:17.936181+00:00",
   "formal_training_or_evaluation_started": false,
+  "h200_memory_or_throughput_benchmark_performed": false,
+  "unit_tests_passed": 18,
   "launcher_checks_use_mock_python": true,
   "launcher_checks": {
     "valid_batch_layouts": [
       {
-        "gpus": 1,
-        "batch": 6,
-        "accum": 2
+        "gpus": 8,
+        "batch": 48,
+        "accum": 1,
+        "G": 6,
+        "normal_update_trajectories": 384,
+        "normal_update_sources": 64
       },
       {
-        "gpus": 1,
-        "batch": 12,
-        "accum": 1
+        "gpus": 8,
+        "batch": 24,
+        "accum": 2,
+        "G": 6,
+        "normal_update_trajectories": 384,
+        "normal_update_sources": 64
       },
       {
-        "gpus": 2,
-        "batch": 3,
-        "accum": 2
+        "gpus": 8,
+        "batch": 24,
+        "accum": 1,
+        "G": 6,
+        "normal_update_trajectories": 192,
+        "normal_update_sources": 32
       },
       {
-        "gpus": 2,
-        "batch": 6,
-        "accum": 1
+        "gpus": 8,
+        "batch": 72,
+        "accum": 1,
+        "G": 6,
+        "normal_update_trajectories": 576,
+        "normal_update_sources": 96
       },
       {
-        "gpus": 3,
-        "batch": 2,
-        "accum": 2
+        "gpus": 8,
+        "batch": 96,
+        "accum": 1,
+        "G": 6,
+        "normal_update_trajectories": 768,
+        "normal_update_sources": 128
       },
       {
         "gpus": 3,
         "batch": 4,
-        "accum": 1
-      },
-      {
-        "gpus": 6,
-        "batch": 1,
-        "accum": 2
-      },
-      {
-        "gpus": 6,
-        "batch": 2,
-        "accum": 1
+        "accum": 2,
+        "G": 6,
+        "normal_update_trajectories": 24,
+        "normal_update_sources": 4
       }
     ],
+    "eight_rank_sampler_checks": [
+      {
+        "per_device_batch": 3,
+        "eight_rank_microbatches": 500,
+        "unique_sources": 2000,
+        "trajectories": 12000,
+        "last_microbatch_sources": 4,
+        "equal_rank_lengths": true,
+        "no_dropped_or_duplicated_source_groups": true
+      },
+      {
+        "per_device_batch": 24,
+        "eight_rank_microbatches": 63,
+        "unique_sources": 2000,
+        "trajectories": 12000,
+        "last_microbatch_sources": 16,
+        "equal_rank_lengths": true,
+        "no_dropped_or_duplicated_source_groups": true
+      },
+      {
+        "per_device_batch": 48,
+        "eight_rank_microbatches": 32,
+        "unique_sources": 2000,
+        "trajectories": 12000,
+        "last_microbatch_sources": 16,
+        "equal_rank_lengths": true,
+        "no_dropped_or_duplicated_source_groups": true
+      },
+      {
+        "per_device_batch": 72,
+        "eight_rank_microbatches": 21,
+        "unique_sources": 2000,
+        "trajectories": 12000,
+        "last_microbatch_sources": 80,
+        "equal_rank_lengths": true,
+        "no_dropped_or_duplicated_source_groups": true
+      },
+      {
+        "per_device_batch": 96,
+        "eight_rank_microbatches": 16,
+        "unique_sources": 2000,
+        "trajectories": 12000,
+        "last_microbatch_sources": 80,
+        "equal_rank_lengths": true,
+        "no_dropped_or_duplicated_source_groups": true
+      }
+    ],
+    "uneven_tail_rejected": true,
     "invalid_layouts_rejected": 4,
     "evaluation_calls_per_training": {
       "oneclass": 2,
@@ -52,6 +110,14 @@
     },
     "missing_second_test_rejected_before_evaluation": true
   },
+  "evaluation_policy": {
+    "condition": "noisy_policy",
+    "model": "each run merged_model",
+    "per_run": 2,
+    "two_runs_total": 4
+  },
+  "reference_hardware": "8x H200, approximately 140 GB per GPU",
+  "fixed_trajectories_per_source": 6,
   "preflight": {
     "oneclass": {
       "experiment_id": "3_5_1_2",
@@ -177,13 +243,17 @@
         }
       },
       "update_batch": {
-        "num_gpus": 3,
-        "per_device_batch": 4,
+        "num_gpus": 8,
+        "per_device_batch": 48,
         "gradient_accumulation_steps": 1,
         "trajectories_per_source": 6,
-        "trajectories_per_update": 12,
-        "sources_per_update": 2,
-        "optimizer_updates_per_epoch": 1000
+        "trajectories_per_update": 384,
+        "sources_per_update": 64,
+        "optimizer_updates_per_epoch": 32,
+        "final_update_sources": 16,
+        "final_update_trajectories": 96,
+        "total_trajectories_per_epoch": 12000,
+        "incomplete_final_update": true
       },
       "fraction": 1.0,
       "partition": "prefix",
@@ -205,7 +275,7 @@
         2064,
         2104
       ],
-      "microbatches_per_rank": 1000,
+      "microbatches_per_rank": 32,
       "max_prompt_tokens": {
         "train": 3433,
         "test_oneclass": 2294,
@@ -341,13 +411,17 @@
         }
       },
       "update_batch": {
-        "num_gpus": 3,
-        "per_device_batch": 2,
-        "gradient_accumulation_steps": 2,
+        "num_gpus": 8,
+        "per_device_batch": 48,
+        "gradient_accumulation_steps": 1,
         "trajectories_per_source": 6,
-        "trajectories_per_update": 12,
-        "sources_per_update": 2,
-        "optimizer_updates_per_epoch": 1000
+        "trajectories_per_update": 384,
+        "sources_per_update": 64,
+        "optimizer_updates_per_epoch": 32,
+        "final_update_sources": 16,
+        "final_update_trajectories": 96,
+        "total_trajectories_per_epoch": 12000,
+        "incomplete_final_update": true
       },
       "fraction": 1.0,
       "partition": "prefix",
@@ -369,7 +443,7 @@
         2064,
         2104
       ],
-      "microbatches_per_rank": 2000,
+      "microbatches_per_rank": 32,
       "max_prompt_tokens": {
         "train": 3388,
         "test_oneclass": 2294,
@@ -381,11 +455,5 @@
         "/opt/data/private/GraphRL/data/test_data_600_notoneclass/test_grpo_episodes.json": "13a217378fbc5e8ac19d719d826f1b7b69400caf7a68dcff040b17ff47170bff"
       }
     }
-  },
-  "evaluation_policy": {
-    "condition": "noisy_policy",
-    "model": "each run merged_model",
-    "per_run": 2,
-    "two_runs_total": 4
   }
 }

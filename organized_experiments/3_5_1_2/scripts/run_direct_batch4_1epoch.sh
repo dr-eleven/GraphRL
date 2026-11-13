@@ -13,22 +13,19 @@ if [[ -n "${TEST_EPISODES:-}" ]]; then
     echo "Use TEST_ONECLASS_EPISODES and TEST_NOTONECLASS_EPISODES; both test sets are required." >&2
     exit 2
 fi
-export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2}"
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3,4,5,6,7}"
 IFS=',' read -r -a GPUs <<< "$CUDA_VISIBLE_DEVICES"
 NGPU="${#GPUs[@]}"
-# Each update must contain two source examples, six trajectories per example.
-G="${NUM_GENERATIONS:-6}"
-[[ "$G" == 6 ]] && (( 6 % NGPU == 0 )) || { echo 'Require G=6 and GPU count dividing 6.' >&2; exit 2; }
-BATCH="${TRAIN_BATCH_SIZE:-$((6 / NGPU))}"
-[[ "$BATCH" =~ ^[1-9][0-9]*$ ]] || { echo 'TRAIN_BATCH_SIZE must be a positive integer.' >&2; exit 2; }
+# 8x H200 starting profile; tune batch/accumulation after measuring throughput.
+G="${NUM_GENERATIONS:-6}" BATCH="${TRAIN_BATCH_SIZE:-48}" ACCUM="${GRAD_ACCUM:-1}"
+for value in "$G" "$BATCH" "$ACCUM"; do
+    [[ "$value" =~ ^[1-9][0-9]*$ ]] || { echo 'G, batch and accumulation must be positive integers.' >&2; exit 2; }
+done
+[[ "$G" == 6 ]] || { echo 'This experiment keeps six trajectories per source (G=6).' >&2; exit 2; }
 MICROBATCH=$((NGPU * BATCH))
-(( MICROBATCH % G == 0 && 12 % MICROBATCH == 0 )) || {
-    echo 'Each global microbatch must contain complete G=6 groups and divide 12 trajectories.' >&2; exit 2;
-}
-ACCUM="${GRAD_ACCUM:-$((12 / MICROBATCH))}"
-[[ "$ACCUM" =~ ^[1-9][0-9]*$ ]] && (( MICROBATCH * ACCUM == 12 )) || {
-    echo 'Require GPUs * TRAIN_BATCH_SIZE * GRAD_ACCUM = 12 (two sources per update).' >&2; exit 2;
-}
+(( MICROBATCH % G == 0 )) || { echo 'Global microbatch must contain complete G-trajectory groups.' >&2; exit 2; }
+printf 'Batch profile: GPUs=%s, per-device=%s, accumulation=%s, G=%s, normal update=%s trajectories/%s sources\n' \
+    "$NGPU" "$BATCH" "$ACCUM" "$G" "$((MICROBATCH * ACCUM))" "$((MICROBATCH * ACCUM / G))"
 export PYTHONPATH="$ROOT/code${PYTHONPATH:+:$PYTHONPATH}" HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 export PYTHONUNBUFFERED=1 TOKENIZERS_PARALLELISM=false OMP_NUM_THREADS="${OMP_NUM_THREADS:-4}"
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
@@ -59,13 +56,13 @@ if [[ "$STAGE" == all || "$STAGE" == train ]]; then
         --per_device_train_batch_size "$BATCH" --per_device_eval_batch_size "$BATCH" --gradient_accumulation_steps "$ACCUM" \
         --num_generations "$G" --steps_per_generation 1 --num_iterations 1 --max_tool_calling_iterations 0 --num_train_epochs "${FINAL_EPOCH:-1}" \
         --lora_rank 32 --lora_alpha 32 --lora_dropout 0.05 --beta 0.01 --loss_type grpo \
-        --learning_rate 2e-6 --warmup_steps 55 --lr_scheduler_type cosine --weight_decay 0.01 --max_grad_norm 1.0 --optim adamw_torch \
+        --learning_rate "${LEARNING_RATE:-2e-6}" --warmup_steps "${WARMUP_STEPS:-0.05}" --lr_scheduler_type cosine --weight_decay 0.01 --max_grad_norm 1.0 --optim adamw_torch \
         --max_prompt_length 8192 --max_completion_length "${PREDICTION_TOKENS:-512}" \
-        --prediction_max_new_tokens "${PREDICTION_TOKENS:-512}" --logprob_micro_batch_size 1 \
+        --prediction_max_new_tokens "${PREDICTION_TOKENS:-512}" --logprob_micro_batch_size "${LOGPROB_MICRO_BATCH_SIZE:-4}" \
         --temperature 1.0 --top_p 0.95 --top_k 50 \
         --disable_flash_attn2 False --disable_dropout True --shuffle_dataset False --use_vllm False --bf16 True --fp16 False --tf32 True \
         --gradient_checkpointing True --gradient_checkpointing_kwargs '{"use_reentrant":true}' --use_liger_kernel True --logging_steps 1 \
-        --save_strategy steps --save_steps 100 --save_total_limit 3 --report_to none \
+        --save_strategy steps --save_steps "${SAVE_STEPS:-5}" --save_total_limit 3 --report_to none \
         --seed 42 --remove_unused_columns False --dataloader_num_workers 0 \
         2>&1 | tee "$RUN/train.log"
 fi
@@ -85,7 +82,7 @@ if [[ "$STAGE" == all || "$STAGE" == test ]]; then
     for variant in oneclass notoneclass; do
         CUDA_VISIBLE_DEVICES="${EVAL_GPU:-${GPUs[0]}}" "$PY" "$ROOT/code/evaluate_grpo_600.py" \
             --model "$RUN/merged_model" --data "$RUN/data/test_${variant}_episodes.json" --condition noisy_policy \
-            --rollout-config "$RUN/grpo/experiment_config.json" --batch-size "${EVAL_BATCH_SIZE:-1}" \
+            --rollout-config "$RUN/grpo/experiment_config.json" --batch-size "${EVAL_BATCH_SIZE:-8}" \
             --expected-count "${EXPECTED_TEST_COUNT:-600}" \
             --output-dir "$RUN/test/$variant/noisy_policy" 2>&1 | tee "$RUN/test_${variant}_noisy_policy.log"
     done

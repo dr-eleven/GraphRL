@@ -43,20 +43,20 @@ class GraphRLDataArguments:
     data_path: str = str(WORKSPACE / 'GraphRL/2000_oneclass_sorted/train_grpo_episodes_redesign.json')
     max_prompt_length: int = 8192
     prediction_max_new_tokens: int = 512
-    logprob_micro_batch_size: int = 1
+    logprob_micro_batch_size: int = 4
     continuation_checkpoint: str | None = None
     limit: int | None = None
 
 
 @dataclass
 class GraphRLTrainingArguments(GRPOConfig):
-    # 7_1-MRRA已完成7B A策略的实际参数（selected_profile / training_arguments）。
-    per_device_train_batch_size: int = 2
-    per_device_eval_batch_size: int = 2
-    gradient_accumulation_steps: int = 2
+    # Reference profile for 8x H200; hardware batch settings are adjustable.
+    per_device_train_batch_size: int = 48
+    per_device_eval_batch_size: int = 8
+    gradient_accumulation_steps: int = 1
     num_train_epochs: float = 1.0
     learning_rate: float = 2e-6
-    warmup_steps: float = 55
+    warmup_steps: float = 0.05
     lr_scheduler_type: str = 'cosine'
     weight_decay: float = 0.01
     max_grad_norm: float = 1.0
@@ -71,7 +71,7 @@ class GraphRLTrainingArguments(GRPOConfig):
     temperature: float = 1.0
     top_p: float = 0.95
     top_k: int = 50
-    save_steps: int = 100
+    save_steps: int = 5
     save_total_limit: int | None = 3
     logging_steps: float = 1
     # 本实验sampler每次提供一个候选微批次，保持3号完整G组和尾批不丢弃。

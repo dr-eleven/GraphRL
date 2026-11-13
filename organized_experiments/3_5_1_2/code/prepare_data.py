@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 from transformers import AutoTokenizer
 from episode import load_episodes, initial_messages
@@ -18,9 +19,9 @@ def main():
     p.add_argument('--fraction', type=float, default=1)
     p.add_argument('--partition', choices=['prefix', 'suffix'], default='prefix')
     p.add_argument('--num-generations', type=int, default=6)
-    p.add_argument('--num-gpus', type=int, default=3)
-    p.add_argument('--train-batch-size', type=int, default=2)
-    p.add_argument('--gradient-accumulation-steps', type=int, default=2)
+    p.add_argument('--num-gpus', type=int, default=8)
+    p.add_argument('--train-batch-size', type=int, default=48)
+    p.add_argument('--gradient-accumulation-steps', type=int, default=1)
     p.add_argument('--max-prompt-length', type=int, default=8192)
     p.add_argument('--expected-test-count', type=int, default=600)
     p.add_argument('--require-test-task-coverage', action='store_true')
@@ -32,8 +33,8 @@ def main():
         raise ValueError('fraction must be in (0,1]')
     if min(a.num_gpus, a.train_batch_size, a.gradient_accumulation_steps) < 1:
         raise ValueError('GPU count, batch and accumulation must be positive')
-    if a.num_generations != 6 or a.num_gpus*a.train_batch_size*a.gradient_accumulation_steps != 12:
-        raise ValueError('Require six trajectories per source and twelve trajectories/two sources per update')
+    if a.num_generations != 6:
+        raise ValueError('This experiment keeps six trajectories per source (G=6)')
     train = load_episodes(a.source)
     test_sources = {'oneclass': a.test_source, 'notoneclass': a.test_notoneclass_source}
     tests = {name: load_episodes(path) for name, path in test_sources.items()}
@@ -41,8 +42,8 @@ def main():
     start, end = ((0, int(len(train)*a.fraction)) if a.partition == 'prefix' else
                   (int(len(train)*(1-a.fraction)), len(train)))
     train = train[start:end]
-    if not train or len(train) % 2:
-        raise ValueError('Training selection must contain complete two-source updates')
+    if not train:
+        raise ValueError('Empty training selection')
     train_statistics = dataset_statistics(train)
     test_reports = {}
     for name, rows in tests.items():
@@ -56,6 +57,9 @@ def main():
                                  lp_test_coverage='available' if statistics['by_task'].get('LP') else
                                  'absent: LP accuracy cannot be evaluated with this test set')
     sampler = TailSafeRankBatchSampler(len(train), a.num_generations, a.num_gpus, 0, a.train_batch_size)
+    normal_update_sources = sampler.prompts_per_batch * a.gradient_accumulation_steps
+    update_count = math.ceil(len(sampler) / a.gradient_accumulation_steps)
+    final_update_sources = len(train) - (update_count - 1) * normal_update_sources
     tokenizer = AutoTokenizer.from_pretrained(a.model, local_files_only=True)
     template = get_training_chat_template(tokenizer) or tokenizer.chat_template
     lengths = {}
@@ -83,8 +87,14 @@ def main():
                   lp_test_coverage=primary['lp_test_coverage'], test_sets=test_reports,
                   update_batch=dict(num_gpus=a.num_gpus, per_device_batch=a.train_batch_size,
                                     gradient_accumulation_steps=a.gradient_accumulation_steps,
-                                    trajectories_per_source=6, trajectories_per_update=12,
-                                    sources_per_update=2, optimizer_updates_per_epoch=len(train)//2),
+                                    trajectories_per_source=a.num_generations,
+                                    trajectories_per_update=normal_update_sources*a.num_generations,
+                                    sources_per_update=normal_update_sources,
+                                    optimizer_updates_per_epoch=update_count,
+                                    final_update_sources=final_update_sources,
+                                    final_update_trajectories=final_update_sources*a.num_generations,
+                                    total_trajectories_per_epoch=len(train)*a.num_generations,
+                                    incomplete_final_update=final_update_sources != normal_update_sources),
                   fraction=a.fraction, partition=a.partition, selection=[start, end],
                   source_order_preserved=True, prediction_only=True,
                   first_source_indices=[r['source_index'] for r in train[:10]],

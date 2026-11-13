@@ -42,7 +42,7 @@
 
 两组训练各2000条：NC1000、LC200、LP800；LP正例407、负例393。无论训练使用oneclass还是notoneclass，都评测两套完整600条测试集，每套NC450、LC150、不含LP，因此不能验证LP测试准确率。prepare对两套测试同时进行长度和任务覆盖预检。
 
-batch和梯度累积按显存调整，每次更新必须2源数据/12轨迹，G=6。默认3卡batch2累积2，也可batch4累积1；需保证全局microbatch包含完整组。启动脚本自动检查并计算未指定的梯度累积。
+当前参考8×H200、每卡约140GB：G=6、每卡batch48、梯度累积1，常规每次更新64源数据/384轨迹；2000条单轮32次更新，末次16条。batch与累积可自行调整，完整组约束保留，尾批不丢弃。详见readme.md。
 
 实际环境变量、完整执行命令和输出结构以[readme.md](readme.md)为准。测试路径变量为TEST_ONECLASS_EPISODES和TEST_NOTONECLASS_EPISODES；每个训练RUN自动执行两套攻击测试，各一次noisy_policy，并写入相互独立的目录。
 
@@ -63,4 +63,4 @@ CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 \
 
 ## 当前执行要求
 
-batch和梯度累积可调，每次更新固定2条源数据/12条轨迹（G=6）。prepare同时保存oneclass和notoneclass测试数据；每个训练模型自动在两套测试集上各执行一次noisy_policy评测。参数与命令以readme.md为准。旧版单TEST_EPISODES配置不再使用。
+batch和梯度累积可调整；每条数据保持6条轨迹，8卡参考G=6，解除原12轨迹/2源数据每次更新限制。prepare同时保存oneclass和notoneclass测试数据；每个训练模型自动在两套测试集上各执行一次noisy_policy评测。参数与命令以readme.md为准。旧版单TEST_EPISODES配置不再使用。

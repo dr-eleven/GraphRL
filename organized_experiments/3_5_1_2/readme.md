@@ -71,7 +71,7 @@ nvidia-smi
 
 安装脚本支持`BOOTSTRAP_PYTHON`（默认python3.11）、`EXPERIMENT_ENV`（默认仓库/.venv-3_5_1_2）。FlashAttention锁定的公开wheel适用于CPython3.11、torch2.6、CUDA12、CXX11_ABI=False；其他平台不要静默跳过或降级内核。安装失败应记录环境并解决对应依赖，不能改实验参数掩盖错误。
 
-## 固定训练与生成参数
+## 8×H200参考参数与可调整项
 
 | 项目 | 值 |
 | --- | --- |
@@ -79,34 +79,43 @@ nvidia-smi
 | LoRA | r=32，alpha=32，dropout=0.05，bias=none |
 | LoRA目标层 | q_proj、k_proj、v_proj、o_proj、gate_proj、up_proj、down_proj |
 | 训练精度 | BF16；FP16=False；TF32=True；无量化 |
-| 分布式 | 默认3GPU、DeepSpeed ZeRO-3；配置不含CPU offload |
-| 每卡candidate batch / 梯度累积 | 可调整；默认3GPU时2 / 2，或4 / 1；固定每次更新2源数据/12轨迹 |
-| 全局每源样本候选数G | 6；num_iterations=1；steps_per_generation=1 |
-| 每次优化更新有效候选数 | 3×2×2=12，即2个源样本的6候选组 |
-| 数据及更新数 | 2000源样本，1epoch，12000个候选生成；默认1000次优化更新 |
+| 分布式 | 8×H200，每卡约140GB显存；DeepSpeed ZeRO-3；无CPU offload |
+| 每卡candidate batch / 梯度累积 | 参考48 / 1，可自行调整 |
+| 全局每源样本候选数G | 固定6，保持每条数据6条轨迹；num_iterations=1；steps_per_generation=1 |
+| 常规每次更新 | 8×48×1=384条轨迹，即64条源数据，每条6条轨迹 |
+| 数据及更新数 | 2000源样本，1epoch，12000条候选轨迹；参考配置32次更新，末次16源数据/96轨迹 |
 | 优化器 | adamw_torch；betas=(0.9,0.999)，eps=1e-8；lr=2e-6；weight_decay=0.01；max_grad_norm=1.0 |
-| 学习率 | warmup_steps=55；cosine |
+| 学习率 | 参考lr=2e-6；warmup占总更新数5%，参考配置2步；cosine |
 | GRPO | loss_type=grpo；beta=0.01；epsilon=0.2；scale_rewards=group |
 | prompt / completion上限 | 8192 / 512 tokens；prediction_max_new_tokens=512 |
 | 训练采样 | temperature=1.0；top_p=0.95；top_k=50；repetition_penalty=1.0 |
-| 省显存配置 | FlashAttention2、Liger、梯度检查点use_reentrant=True、logprob_micro_batch_size=1 |
+| 省显存配置 | FlashAttention2、Liger、梯度检查点use_reentrant=True、logprob_micro_batch_size=4，可调至8等 |
 | 其他 | disable_dropout=True；use_vllm=False；max_tool_calling_iterations=0 |
 | 顺序及种子 | seed=42；shuffle_dataset=False；全2000条，TRAIN_FRACTION=1 |
-| 日志及保存 | logging_steps=1；save_steps=100；save_total_limit=3；report_to=none |
-| 测试 | 贪心生成；每条1次；同样512生成上限；不做投票或按测试表现挑checkpoint |
+| 日志及保存 | logging_steps=1；save_steps=5（可调）；save_total_limit=3；report_to=none |
+| 测试 | 参考单卡batch=8，可调整；贪心生成，每条1次，生成上限512；不投票或按测试表现挑checkpoint |
 
-G=6是所有GPU合计每个源样本的6条轨迹。**每次优化更新固定2条源数据、12条轨迹，batch和梯度累积可按显存调整**，无需保持每卡batch=2或累积=2。
+以上是**8张H200（每卡约140GB）的吞吐优先参考起点，可自行调整，并非已在该硬件实测的最优参数**。不再限制每次更新12条轨迹或2条源数据。参考配置使用全部8卡；batch表示每卡候选轨迹数，G表示每条源数据的全局轨迹数，不是每卡各生成G条。
 
-必须满足`GPU数×每卡batch×梯度累积=12`。当前采样器还要求`6 % GPU数 == 0`及`(GPU数×每卡batch) % 6 == 0`，确保每次全局microbatch包含完整的6轨迹组。脚本会检查这些约束，避免看似累计12条却拆坏组。
+**每条源数据固定生成6条轨迹，G=6保持不变。** 常规每次更新轨迹数=`GPU数×TRAIN_BATCH_SIZE×GRAD_ACCUM`；源数据数=`上述轨迹数/6`。参考batch48、累积1时，8卡一次更新384轨迹/64源数据。
 
-| GPU数 | 每卡TRAIN_BATCH_SIZE | GRAD_ACCUM | 每次更新源数据 / 轨迹 |
-| --- | ---: | ---: | --- |
-| 1 | 6或12 | 分别2或1 | 2 / 12 |
-| 2 | 3或6 | 分别2或1 | 2 / 12 |
-| 3 | 2或4 | 分别2或1 | 2 / 12 |
-| 6 | 1或2 | 分别2或1 | 2 / 12 |
+当前采样器已经支持G=6与8卡组合，不再要求G能被GPU数整除。必须满足`(GPU数×每卡batch) % 6 == 0`，保证每个全局microbatch包含完整6轨迹组；还需`训练条数×6 % GPU数 == 0`，让尾批轨迹在各rank等量。2000条、8卡满足；8卡batch必须为3的倍数，例如24、48、72、96。源数据的6条轨迹可以跨rank分配，汇总奖励后仍按完整6轨迹组计算。尾批无法等量分配时预检报错，不丢弃、不重复补齐源数据。
 
-未指定TRAIN_BATCH_SIZE时，按GPU数自动选择`6/GPU数`；未指定GRAD_ACCUM时，自动设为`12/(GPU数×每卡batch)`。例如3GPU设`TRAIN_BATCH_SIZE=4`并`unset GRAD_ACCUM`，会自动使用累积1。若手动设置冲突则在运行前报错。2000条始终对应1epoch、12000条候选轨迹和1000次更新；禁止通过丢弃或重复数据凑组。
+| 8卡方案 | 每卡batch | 梯度累积 | 每条数据轨迹数 | 常规每次更新轨迹 / 源数据 | 2000条单轮预计更新数 |
+| --- | ---: | ---: | ---: | --- | ---: |
+| 参考起点 | 48 | 1 | 6 | 384 / 64 | 32 |
+| 降低峰值显存，保持有效batch | 24 | 2 | 6 | 384 / 64 | 32 |
+| 较小有效batch，增加更新次数 | 24 | 1 | 6 | 192 / 32 | 63 |
+| 显存与吞吐允许时增大batch | 72 | 1 | 6 | 576 / 96 | 21 |
+| 进一步试探吞吐 | 96 | 1 | 6 | 768 / 128 | 16 |
+
+参考配置前31次各64条源数据，末次16条，合计2000条，轨迹总数始终12000。实际更新数为`ceil(ceil(训练条数/每个全局microbatch源数据数)/梯度累积)`，由preflight和Trainer状态核验，不再硬编码1000步。表中的轨迹数与源数据数是常规完整更新值，最后一次允许较小。
+
+接手Codex可在不再询问固定batch的情况下，根据显存和实测吞吐自行调整TRAIN_BATCH_SIZE、GRAD_ACCUM、LOGPROB_MICRO_BATCH_SIZE、EVAL_BATCH_SIZE；两组正式训练使用同一套最终参数。先记录一次独立探测运行，使用最长prompt样本并覆盖生成512 token的峰值，测每卡峰值显存、源数据/秒、生成token/秒及step耗时。推荐从batch48开始，显存富余且吞吐继续提升时尝试72、96；显存不足时退回36或24，必要时增加累积。增大梯度累积主要改变有效batch，不会像增大单次batch那样充分利用额外显存，因此优先实测单次batch。不要为填满显存而接受吞吐下降或频繁OOM；保留约10%–15%显存余量应对长样本。探测输出与正式RUN分开，不能消耗正式训练的一部分后又从头重复而未记录。
+
+LOGPROB_MICRO_BATCH_SIZE参考4，可试8以减少分块开销；每次只改一个参数，观察峰值与吞吐。G固定6；有效batch变化也会影响学习过程，不能只按显存判断效果，报告中记录最终参数和更新数。学习率保留2e-6作为起点，不按batch盲目线性放大；支持LEARNING_RATE覆盖。
+
+warmup改为按总更新数约5%计算，避免32步训练仍使用旧55步预热。**锁定的Transformers版本使用`warmup_steps=0.05`表达比例**，即`ceil(总步数×0.05)`；脚本环境变量WARMUP_STEPS支持0.05或明确整数，不要使用该版本不存在的warmup_ratio参数。SAVE_STEPS参考5，可调整；最终始终保存final_adapter，不根据测试集选择checkpoint。换batch后重新检查实际warmup与保存间隔。
 
 ## 当前prompt、查询边与奖励
 
@@ -118,16 +127,17 @@ G=6是所有GPU合计每个源样本的6条轨迹。**每次优化更新固定2�
 
 ## 执行两组训练与测试
 
-在同一个shell中保持以下变量。默认用物理GPU0,1,2；如设备不同只修改显式设备与批量配置，并满足上述等式。不要覆盖已有RUN目录。
+在同一个shell中保持以下参考变量，使用物理GPU0–7。可按上节步骤自行调整批量参数；两组使用一致的最终设置，不要覆盖已有RUN目录。
 
 ```bash
 export REPO="$PWD"
 export EXP="$REPO/organized_experiments/3_5_1_2"
 export PYTHON_BIN="$REPO/.venv-3_5_1_2/bin/python"
 export TRAIN_MODEL="$REPO/models/Qwen2.5-7B-Instruct"
-export CUDA_VISIBLE_DEVICES=0,1,2
-export TRAIN_BATCH_SIZE=4 NUM_GENERATIONS=6
-unset GRAD_ACCUM  # 3卡batch4自动累积1；也可改成batch2、累积2
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+export TRAIN_BATCH_SIZE=48 GRAD_ACCUM=1 NUM_GENERATIONS=6
+export LOGPROB_MICRO_BATCH_SIZE=4 EVAL_BATCH_SIZE=8
+export LEARNING_RATE=2e-6 WARMUP_STEPS=0.05 SAVE_STEPS=5
 export TRAIN_FRACTION=1 FINAL_EPOCH=1 PREDICTION_TOKENS=512
 export EXPECTED_TEST_COUNT=600 REQUIRE_TEST_TASK_COVERAGE=0
 unset TEST_EPISODES  # 清除旧版单测试集配置
@@ -153,9 +163,9 @@ bash "$EXP/scripts/run_portable.sh" merge
 bash "$EXP/scripts/run_portable.sh" test
 ```
 
-先确认每组preflight为train_count=2000、train NC1000/LC200/LP800、source_order_preserved=true；test_sets中的oneclass和notoneclass均为600条、NC450/LC150、missing_test_tasks=[LP]；update_batch为sources_per_update=2、trajectories_per_update=12、optimizer_updates_per_epoch=1000。最大prompt小于8192。prepare不截断超长prompt，发现异常会报错。prepare完成后要在同一RUN_DIR运行train/merge/test，不能再次all/prepare覆盖；`all`只用于新的RUN目录从头完整执行。不要并行启动两组占满同一批GPU。
+先确认每组preflight为train_count=2000、train NC1000/LC200/LP800、source_order_preserved=true；test_sets中的oneclass和notoneclass均为600条、NC450/LC150、missing_test_tasks=[LP]；参考配置下update_batch为sources_per_update=64、trajectories_per_update=384、optimizer_updates_per_epoch=32、final_update_sources=16；调整参数后按公式核验新的实际值。最大prompt小于8192。prepare不截断超长prompt，发现异常会报错。prepare完成后要在同一RUN_DIR运行train/merge/test，不能再次all/prepare覆盖；`all`只用于新的RUN目录从头完整执行。不要并行启动两组占满同一批GPU。
 
-训练阶段输出adapter到`RUN_DIR/grpo/final_adapter`；合并阶段从adapter配置定位原始基座，在CPU加载BF16权重合并到`RUN_DIR/merged_model`，需预留主机内存和磁盘。此CPU合并与训练时CPU offload是两回事。评测默认单GPU，`EVAL_GPU`指定物理GPU，`EVAL_BATCH_SIZE`默认1。修改EVAL_BATCH_SIZE不改变样本和生成上限。
+训练阶段输出adapter到`RUN_DIR/grpo/final_adapter`；合并阶段从adapter配置定位原始基座，在CPU加载BF16权重合并到`RUN_DIR/merged_model`，需预留主机内存和磁盘。此CPU合并与训练时CPU offload是两回事。评测默认单GPU，`EVAL_GPU`指定物理GPU，`EVAL_BATCH_SIZE`参考8。修改EVAL_BATCH_SIZE不改变样本和生成上限。
 
 ## 测试矩阵与比较
 
@@ -176,7 +186,7 @@ bash "$EXP/scripts/run_portable.sh" test
 
 每个RUN应保留：`code_snapshot/`、`data/preflight.json`及处理后的train/test episodes、`prepare.log`、`train.log`、`grpo/experiment_config.json`、checkpoint/trainer_state、final_adapter、merged_model、两个测试集各自的predictions.jsonl与summary.json、status.txt。记录Git commit、数据manifest哈希、模型revision、GPU型号/数量、实际依赖freeze及启动命令。
 
-训练结束检查实际global_step（默认1000）、epoch=1、final_adapter和合并权重存在、候选采样按6组成完整组、两套攻击测试各完整600条。读取评测summary报告总体/NC/LC/数据集分组准确率、无效输出与截断数量；LP应标为无测试覆盖，不能填0伪装测得结果。预测无效保留为错误，不能删掉再计算准确率。不要通过加token、改prompt、反复挑checkpoint来选择性优化测试；需要改动另建运行并注明。跨版本比较必须使用同一测试版本与预算。
+训练结束检查实际global_step（参考配置32，随batch/累积调整）、epoch=1、final_adapter和合并权重存在、候选采样按配置的G组成完整组、两套攻击测试各完整600条。读取评测summary报告总体/NC/LC/数据集分组准确率、无效输出与截断数量；LP应标为无测试覆盖，不能填0伪装测得结果。预测无效保留为错误，不能删掉再计算准确率。不要通过加token、改prompt、反复挑checkpoint来选择性优化测试；需要改动另建运行并注明。跨版本比较必须使用同一测试版本与预算。
 
 训练中断先检查日志与checkpoint，不要自动从头覆盖目录或宣称已完成；当前launcher没有自动resume开关，如需恢复应使用train_grpo.py已有的--continuation_checkpoint显式指定完整checkpoint（内部传入Trainer的resume_from_checkpoint），复用原启动参数并验证optimizer/scheduler/global_step恢复，保留改动和命令，不能把加载adapter但优化器重置当成无缝恢复。GPU显存不足/环境不兼容/模型下载失败等应给出实际原因与已完成阶段。
 
