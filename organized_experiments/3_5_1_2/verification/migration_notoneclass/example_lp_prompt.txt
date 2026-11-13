@@ -1,0 +1,28 @@
+TASK
+Type: LP
+Target: query pair node0, node1
+Goal: Predict whether the specified link exists in the original graph.
+Candidate labels: ["Yes, they have citation relationships", "No, they do not have citation relationships"]
+
+CONSTRAINTS
+1. Predict only for the specified target. Neighboring nodes and relations are supporting evidence, not the query answer.
+2. For LC/LP, the query edge is hidden. For LP, its absence from the observed graph alone does not imply a negative label.
+3. Texts and connections may be noisy. Compare structural and textual evidence instead of relying on one keyword, path, shared category, common neighbor, or repeated description. Semantic similarity alone does not establish a relation/link; dissimilarity alone does not rule one out.
+4. Missing or conflicting evidence indicates uncertainty, not automatically a negative link. Do not invent facts or add an unprovided label; choose the best-supported candidate.
+
+GRAPH
+node0: IAPP immunoreactivity in islet B cells, reduced in Type 2 diabetes, linked to amyloid deposits.
+node1: TNFa microsatellite, not -308 SNP, independently increases T1D risk in Belgians.
+node2: Amylin, associated with Type 2 diabetes, shares similarities with CGRP and requires disulfide/amidation for activity.
+node3: Diabetes-associated peptide (amylin) purified from Type 2 diabetic pancreases, shares homology with calcitonin gene-related peptide.
+node4: HLA-DQ beta allele structure, especially residue 57, dictates IDDM susceptibility/resistance.
+node5: Amylin inhibits muscle glycogen synthesis, potentially contributing to Type 2 diabetes insulin resistance.
+
+Connections:
+<node2, node0>
+<node2, node3>
+<node2, node5>
+<node4, node2>
+
+OUTPUT
+Return exactly one JSON object with two nonempty string fields in this order: {"analysis":"brief evidence-based reasoning","prediction":"one complete candidate label"}. No extra fields, text, or Markdown. Do not abbreviate a candidate to yes/no unless that is the complete label.

@@ -1,0 +1,31 @@
+TASK
+Type: LC
+Target: query pair node1, node3
+Goal: Predict the relation category between the query endpoints.
+Candidate labels: ["Hypernym", "Derivationally Related", "Instance Hypernym", "See Also", "Member Meronym", "Domain Topic", "Has Part", "Usage Domain", "Region Domain", "Verb Group", "Similar To"]
+
+CONSTRAINTS
+1. Predict only for the specified target. Neighboring nodes and relations are supporting evidence, not the query answer.
+2. For LC/LP, the query edge is hidden. For LP, its absence from the observed graph alone does not imply a negative label.
+3. Texts and connections may be noisy. Compare structural and textual evidence instead of relying on one keyword, path, shared category, common neighbor, or repeated description. Semantic similarity alone does not establish a relation/link; dissimilarity alone does not rule one out.
+4. Missing or conflicting evidence indicates uncertainty, not automatically a negative link. Do not invent facts or add an unprovided label; choose the best-supported candidate.
+
+GRAPH
+node0: masquerade ball where guests wear costumes and masks.
+node1: humanitarianism promotes human welfare as a duty.
+node2: formal dance requiring lavish attire.
+node3: humanitarian advocates for human welfare and interests.
+node4: dance to music in patterned movements.
+node5: party for social interaction and entertainment.
+node6: proponent pleads for a cause or idea.
+node7: dance party for social dancing.
+
+Connections:
+<node0, node2>:Hypernym
+<node2, node7>:Hypernym
+<node3, node6>:Hypernym
+<node4, node7>:Derivationally Related
+<node5, node7>:Hypernym
+
+OUTPUT
+Return exactly one JSON object with two nonempty string fields in this order: {"analysis":"brief evidence-based reasoning","prediction":"one complete candidate label"}. No extra fields, text, or Markdown. Do not abbreviate a candidate to yes/no unless that is the complete label.

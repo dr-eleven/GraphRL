@@ -1,0 +1,276 @@
+{
+  "format": "graphrl-dataset-archive-v1",
+  "target": "data/test_data_600_oneclass",
+  "compression": "zstd",
+  "archive_bytes": 25861973,
+  "archive_sha256": "aa5197480745ddaa120d2817b6a545d996d7a52b98b04d76acb16425797dcc08",
+  "parts": [
+    {
+      "path": "archive/data.tar.zst.part000",
+      "bytes": 25861973,
+      "sha256": "aa5197480745ddaa120d2817b6a545d996d7a52b98b04d76acb16425797dcc08"
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 504,
+      "sha256": "c8111225f902a54f275cb325a2bdcf077e55bb3cab4a0a4acfc8cf7dd41969c7"
+    },
+    {
+      "path": "badgraph/budget1/attack_metadata.jsonl",
+      "bytes": 26975232,
+      "sha256": "a491828276b44c0f93b5f4c220208d483e90404af81e5b05e8cc543dc12aa115"
+    },
+    {
+      "path": "badgraph/budget1/attacked_qwen_rendered.json",
+      "bytes": 13209992,
+      "sha256": "040518b0bd789d4d3e339b897171ab672133a85e7f793c8b6311eb5ee6bbdeaf"
+    },
+    {
+      "path": "badgraph/budget1/indices_0.txt",
+      "bytes": 762,
+      "sha256": "541ead611a8b9291eefe163db1f65dbc16b1ab51a38c312016f134ae23c1620d"
+    },
+    {
+      "path": "badgraph/budget1/indices_1.txt",
+      "bytes": 764,
+      "sha256": "7511763b9f5a7b2dd9a0470595ed47192f36d1afd7ce53d8342900363d5aa590"
+    },
+    {
+      "path": "badgraph/budget1/indices_2.txt",
+      "bytes": 764,
+      "sha256": "9a398e7633095152e86c7acad09fc7b8f683b64735aaeb01f8b08343b3764657"
+    },
+    {
+      "path": "badgraph/budget2/attack_metadata.jsonl",
+      "bytes": 46839150,
+      "sha256": "6ad42f3587152bf11847830f8344f5babcc257c180158bd69f956a8f3cb16824"
+    },
+    {
+      "path": "badgraph/budget2/attacked_qwen_rendered.json",
+      "bytes": 13494316,
+      "sha256": "7bf7f44191d6565f817ed428bff8fb58ce5730ed8d78a1aaf61ea54917d5d563"
+    },
+    {
+      "path": "badgraph/budget2/indices_0.txt",
+      "bytes": 762,
+      "sha256": "541ead611a8b9291eefe163db1f65dbc16b1ab51a38c312016f134ae23c1620d"
+    },
+    {
+      "path": "badgraph/budget2/indices_1.txt",
+      "bytes": 764,
+      "sha256": "7511763b9f5a7b2dd9a0470595ed47192f36d1afd7ce53d8342900363d5aa590"
+    },
+    {
+      "path": "badgraph/budget2/indices_2.txt",
+      "bytes": 764,
+      "sha256": "9a398e7633095152e86c7acad09fc7b8f683b64735aaeb01f8b08343b3764657"
+    },
+    {
+      "path": "badgraph/budget3/attack_metadata.jsonl",
+      "bytes": 65954790,
+      "sha256": "0983e4b3058b3e2aece01410129fce6908d46558be9be0347a3d9536511bfe43"
+    },
+    {
+      "path": "badgraph/budget3/attacked_qwen_rendered.json",
+      "bytes": 13779760,
+      "sha256": "55426bcd0568e2b07f731d75683713ce354c4139de093e198b381f0c0b011188"
+    },
+    {
+      "path": "badgraph/budget3/indices_0.txt",
+      "bytes": 762,
+      "sha256": "541ead611a8b9291eefe163db1f65dbc16b1ab51a38c312016f134ae23c1620d"
+    },
+    {
+      "path": "badgraph/budget3/indices_1.txt",
+      "bytes": 764,
+      "sha256": "7511763b9f5a7b2dd9a0470595ed47192f36d1afd7ce53d8342900363d5aa590"
+    },
+    {
+      "path": "badgraph/budget3/indices_2.txt",
+      "bytes": 764,
+      "sha256": "9a398e7633095152e86c7acad09fc7b8f683b64735aaeb01f8b08343b3764657"
+    },
+    {
+      "path": "badgraph/budget4/attack_metadata.jsonl",
+      "bytes": 84425987,
+      "sha256": "5f66171dc7c1fd1ad1a1272ec9f865c07f93f18f52948de5d9d5eedf886d0476"
+    },
+    {
+      "path": "badgraph/budget4/attacked_qwen_rendered.json",
+      "bytes": 14077404,
+      "sha256": "790fe3ec8467012fceb0ba32ebe151cf79d045298cc91bdac3d36588ee5f132c"
+    },
+    {
+      "path": "badgraph/budget4/indices_0.txt",
+      "bytes": 762,
+      "sha256": "541ead611a8b9291eefe163db1f65dbc16b1ab51a38c312016f134ae23c1620d"
+    },
+    {
+      "path": "badgraph/budget4/indices_1.txt",
+      "bytes": 764,
+      "sha256": "7511763b9f5a7b2dd9a0470595ed47192f36d1afd7ce53d8342900363d5aa590"
+    },
+    {
+      "path": "badgraph/budget4/indices_2.txt",
+      "bytes": 764,
+      "sha256": "9a398e7633095152e86c7acad09fc7b8f683b64735aaeb01f8b08343b3764657"
+    },
+    {
+      "path": "badgraph/budget5/attack_metadata.jsonl",
+      "bytes": 101539732,
+      "sha256": "90c2757b94dba7cc48d6ca979382398391be6dcb37a1172dc7558e425d7cb6ed"
+    },
+    {
+      "path": "badgraph/budget5/attacked_qwen_rendered.json",
+      "bytes": 14373632,
+      "sha256": "9c844a93f873cf66e8b4f113686ab5fb7dfdb0efbecaae00f77bc8715a1b5795"
+    },
+    {
+      "path": "badgraph/budget5/indices_0.txt",
+      "bytes": 762,
+      "sha256": "541ead611a8b9291eefe163db1f65dbc16b1ab51a38c312016f134ae23c1620d"
+    },
+    {
+      "path": "badgraph/budget5/indices_1.txt",
+      "bytes": 764,
+      "sha256": "7511763b9f5a7b2dd9a0470595ed47192f36d1afd7ce53d8342900363d5aa590"
+    },
+    {
+      "path": "badgraph/budget5/indices_2.txt",
+      "bytes": 764,
+      "sha256": "9a398e7633095152e86c7acad09fc7b8f683b64735aaeb01f8b08343b3764657"
+    },
+    {
+      "path": "clean/clean_qwen_rendered.json",
+      "bytes": 12880194,
+      "sha256": "30ad04c3e45452c725fa8f1da11723694728433f4031f9947869c56d17c0266f"
+    },
+    {
+      "path": "episodes_by_group/lc_budget_1.json",
+      "bytes": 481119,
+      "sha256": "304c9679f7063f9ad393021d635ecf6c11f71ac712b5cae1224922e58c074013"
+    },
+    {
+      "path": "episodes_by_group/lc_budget_2.json",
+      "bytes": 487331,
+      "sha256": "cef60668d5ca3f3807b541d5f80845b37c6a5e0d194972a9ca43907d8aa34454"
+    },
+    {
+      "path": "episodes_by_group/lc_budget_3.json",
+      "bytes": 483294,
+      "sha256": "99bc86035f69717c080f15d87614804b7a6bda3a95795dd0c988b5ffbf029060"
+    },
+    {
+      "path": "episodes_by_group/lc_budget_4.json",
+      "bytes": 481301,
+      "sha256": "64f0db8937fe127d7c2bf228fb40469872fb7a9c66e1da1578e38ae3977f5b3f"
+    },
+    {
+      "path": "episodes_by_group/lc_budget_5.json",
+      "bytes": 493646,
+      "sha256": "96f105f0c1ac52581e73e572afcaf2da6e4a1391bdfbda092a2d175a13614fe6"
+    },
+    {
+      "path": "episodes_by_group/nc_budget_1.json",
+      "bytes": 1583490,
+      "sha256": "e6bda4ce131ef60ea286684b98511275d7c4777af4d0006b2a65d25e3250b4be"
+    },
+    {
+      "path": "episodes_by_group/nc_budget_2.json",
+      "bytes": 1598475,
+      "sha256": "32f0523284ce70082813d60ad4f872fed810fdaba74607968a52537b41d72e35"
+    },
+    {
+      "path": "episodes_by_group/nc_budget_3.json",
+      "bytes": 1633551,
+      "sha256": "80cd56c68f7b1c4e546b0e69bb2dc842d7b107fa253a4517a7a13cc08106e6b1"
+    },
+    {
+      "path": "episodes_by_group/nc_budget_4.json",
+      "bytes": 1673318,
+      "sha256": "9cf608364081ea332de0f1e92a7933e408f35277c057eaf3cedc8ef5155f4b52"
+    },
+    {
+      "path": "episodes_by_group/nc_budget_5.json",
+      "bytes": 1709774,
+      "sha256": "29218cb028477c0c5c118f102e3524b20724e45d18080d60b1a8bf71e2ed82a2"
+    },
+    {
+      "path": "group_indices.json",
+      "bytes": 21373,
+      "sha256": "8a101f98b1e9a073d31f42c02dd591909ea9bc8cc43e06ce8acfdece52610af6"
+    },
+    {
+      "path": "groups/indices_lc_budget_1.txt",
+      "bytes": 113,
+      "sha256": "655e07b16446384e4da9e43f82a2a2bfaaf073ec23e2a436ef20cf6f1d2df411"
+    },
+    {
+      "path": "groups/indices_lc_budget_2.txt",
+      "bytes": 111,
+      "sha256": "8d4deb63846139dbc1c18e4440c1660d512c7a3177cafaa1cedf42b14c801f53"
+    },
+    {
+      "path": "groups/indices_lc_budget_3.txt",
+      "bytes": 115,
+      "sha256": "25a3fd4878a8630719fdfdf0b7512fe486f8235c0ad9221f161afcf978d282d4"
+    },
+    {
+      "path": "groups/indices_lc_budget_4.txt",
+      "bytes": 113,
+      "sha256": "04ae8f2f0eb9f287d8d31d6e02376c204a9907d94516a10b876b24d2266f7be9"
+    },
+    {
+      "path": "groups/indices_lc_budget_5.txt",
+      "bytes": 116,
+      "sha256": "a6740c69f13b3b231bf46734c28e651380b0867fda91ca585423520cb5598875"
+    },
+    {
+      "path": "groups/indices_nc_budget_1.txt",
+      "bytes": 343,
+      "sha256": "7e538ad387639d256bba786c0a86e8400758481e47a684eabeddc611c314d622"
+    },
+    {
+      "path": "groups/indices_nc_budget_2.txt",
+      "bytes": 346,
+      "sha256": "c77b79da1bb70534b73b97db036c04fa425801ff44f55fa95f7a4279e52c548e"
+    },
+    {
+      "path": "groups/indices_nc_budget_3.txt",
+      "bytes": 347,
+      "sha256": "f78bfff24020da6ae9db12447a019f4f26308668d61640ee7137bf2aa20284b8"
+    },
+    {
+      "path": "groups/indices_nc_budget_4.txt",
+      "bytes": 343,
+      "sha256": "32030f16e7dc512be2fd438aa46204b943abe920ce79d5210c46df1651f28def"
+    },
+    {
+      "path": "groups/indices_nc_budget_5.txt",
+      "bytes": 343,
+      "sha256": "8b37a27ccf1e926a0dd6861f45da3f587973080ccb96d295244a3c13b185b973"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 3009,
+      "sha256": "f5b7131872e04773fb62f57e7b9bb4f894e053001428f87a13ab118ff9ea8a61"
+    },
+    {
+      "path": "test.parquet",
+      "bytes": 4095708,
+      "sha256": "48128abbaa262bdd42ed0e0f7aebe9fe021281dfa91e8638a384c2fd491617e0"
+    },
+    {
+      "path": "test_grpo_episodes.json",
+      "bytes": 10625299,
+      "sha256": "90669a06ca2422aa33ac9055e1c572e3a1133ab0156be00143b752226ad0197f"
+    },
+    {
+      "path": "validation_report.json",
+      "bytes": 561,
+      "sha256": "f81ed9bd9b492faa1d9525552b1c438821a4f6c1fa4445cb4c68407a26ada283"
+    }
+  ]
+}

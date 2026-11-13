@@ -1,0 +1,6 @@
+/*
+!/.gitignore
+!/.gitattributes
+!/archive/
+!/archive_manifest.json
+!/*.md

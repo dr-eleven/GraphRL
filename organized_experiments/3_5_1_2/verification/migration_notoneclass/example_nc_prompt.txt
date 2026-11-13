@@ -1,0 +1,23 @@
+TASK
+Type: NC
+Target: node0
+Goal: Predict the target node's category.
+Candidate labels: ["Agents", "ML", "IR", "DB", "HCI", "AI"]
+
+CONSTRAINTS
+1. Predict only for the specified target. Neighboring nodes and relations are supporting evidence, not the query answer.
+2. For LC/LP, the query edge is hidden. For LP, its absence from the observed graph alone does not imply a negative label.
+3. Texts and connections may be noisy. Compare structural and textual evidence instead of relying on one keyword, path, shared category, common neighbor, or repeated description. Semantic similarity alone does not establish a relation/link; dissimilarity alone does not rule one out.
+4. Missing or conflicting evidence indicates uncertainty, not automatically a negative link. Do not invent facts or add an unprovided label; choose the best-supported candidate.
+
+GRAPH
+node0: Framework for intelligent web search using token-templates and logic programs to extract and reason about web content.
+node1: Semantics and answer-complete calculus for logic programs extended with token-templates.
+node2: Applications in intelligent mediators, web information systems, and deductive databases.
+node3: Addressing the need for smarter web search beyond traditional document engines.
+
+Connections:
+(none)
+
+OUTPUT
+Return exactly one JSON object with two nonempty string fields in this order: {"analysis":"brief evidence-based reasoning","prediction":"one complete candidate label"}. No extra fields, text, or Markdown. Do not abbreviate a candidate to yes/no unless that is the complete label.

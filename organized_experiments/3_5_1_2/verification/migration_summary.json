@@ -1,0 +1,239 @@
+{
+  "checked_at": "2026-11-13T09:15:17.591665+00:00",
+  "unit_tests": {
+    "passed": 18,
+    "failed": 0,
+    "includes_native_cpu_lp_grpo_lora_update": true
+  },
+  "full_7b_training_started": false,
+  "input_order_preserved": true,
+  "prepared": {
+    "oneclass": {
+      "experiment_id": "3_5_1_2",
+      "original_train_count": 2000,
+      "train_count": 2000,
+      "test_count": 600,
+      "supported_tasks": [
+        "NC",
+        "LC",
+        "LP"
+      ],
+      "train_statistics": {
+        "count": 2000,
+        "by_task": {
+          "NC": 1000,
+          "LC": 200,
+          "LP": 800
+        },
+        "by_dataset_and_task": {
+          "citeseer/NC": 100,
+          "instagram/NC": 100,
+          "wn18rr/LC": 200,
+          "pubmed/LP": 100,
+          "arxiv/LP": 100,
+          "sports/NC": 100,
+          "computer/NC": 100,
+          "photo/NC": 100,
+          "pubmed/NC": 100,
+          "children/NC": 100,
+          "arxiv/NC": 100,
+          "history/NC": 100,
+          "reddit/NC": 100,
+          "sports/LP": 100,
+          "computer/LP": 100,
+          "photo/LP": 100,
+          "history/LP": 100,
+          "reddit/LP": 100,
+          "children/LP": 100
+        },
+        "lp_polarity_counts": {
+          "negative": 393,
+          "positive": 407
+        },
+        "query_edges_removed": {
+          "clean": 0,
+          "noisy": 0
+        }
+      },
+      "test_statistics": {
+        "count": 600,
+        "by_task": {
+          "LC": 150,
+          "NC": 450
+        },
+        "by_dataset_and_task": {
+          "fb15k237/LC": 150,
+          "cora_node/NC": 150,
+          "products/NC": 150,
+          "wikics/NC": 150
+        },
+        "lp_polarity_counts": {},
+        "query_edges_removed": {
+          "clean": 0,
+          "noisy": 0
+        }
+      },
+      "missing_test_tasks": [
+        "LP"
+      ],
+      "lp_test_coverage": "absent: LP accuracy cannot be evaluated with this test set",
+      "fraction": 1.0,
+      "partition": "prefix",
+      "selection": [
+        0,
+        2000
+      ],
+      "source_order_preserved": true,
+      "prediction_only": true,
+      "first_source_indices": [
+        367,
+        537,
+        985,
+        1299,
+        1583,
+        1659,
+        1922,
+        1961,
+        2064,
+        2104
+      ],
+      "microbatches_per_rank": 2000,
+      "max_prompt_tokens": {
+        "train": 3433,
+        "test": 2294
+      },
+      "inputs": {
+        "/opt/data/private/GraphRL/2000_oneclass_sorted/train_grpo_episodes_redesign.json": "01770a2973dd6cbec2357e09268040fc9c39cccbc77a14e20d99b9185808cfe2",
+        "/opt/data/private/GraphRL/data/test_data_600_oneclass/test_grpo_episodes.json": "90669a06ca2422aa33ac9055e1c572e3a1133ab0156be00143b752226ad0197f"
+      }
+    },
+    "notoneclass": {
+      "experiment_id": "3_5_1_2",
+      "original_train_count": 2000,
+      "train_count": 2000,
+      "test_count": 600,
+      "supported_tasks": [
+        "NC",
+        "LC",
+        "LP"
+      ],
+      "train_statistics": {
+        "count": 2000,
+        "by_task": {
+          "NC": 1000,
+          "LC": 200,
+          "LP": 800
+        },
+        "by_dataset_and_task": {
+          "citeseer/NC": 100,
+          "instagram/NC": 100,
+          "wn18rr/LC": 200,
+          "pubmed/LP": 100,
+          "arxiv/LP": 100,
+          "sports/NC": 100,
+          "computer/NC": 100,
+          "photo/NC": 100,
+          "pubmed/NC": 100,
+          "children/NC": 100,
+          "arxiv/NC": 100,
+          "history/NC": 100,
+          "reddit/NC": 100,
+          "sports/LP": 100,
+          "computer/LP": 100,
+          "photo/LP": 100,
+          "history/LP": 100,
+          "reddit/LP": 100,
+          "children/LP": 100
+        },
+        "lp_polarity_counts": {
+          "negative": 393,
+          "positive": 407
+        },
+        "query_edges_removed": {
+          "clean": 0,
+          "noisy": 0
+        }
+      },
+      "test_statistics": {
+        "count": 600,
+        "by_task": {
+          "LC": 150,
+          "NC": 450
+        },
+        "by_dataset_and_task": {
+          "fb15k237/LC": 150,
+          "cora_node/NC": 150,
+          "products/NC": 150,
+          "wikics/NC": 150
+        },
+        "lp_polarity_counts": {},
+        "query_edges_removed": {
+          "clean": 0,
+          "noisy": 0
+        }
+      },
+      "missing_test_tasks": [
+        "LP"
+      ],
+      "lp_test_coverage": "absent: LP accuracy cannot be evaluated with this test set",
+      "fraction": 1.0,
+      "partition": "prefix",
+      "selection": [
+        0,
+        2000
+      ],
+      "source_order_preserved": true,
+      "prediction_only": true,
+      "first_source_indices": [
+        367,
+        537,
+        985,
+        1299,
+        1583,
+        1659,
+        1922,
+        1961,
+        2064,
+        2104
+      ],
+      "microbatches_per_rank": 2000,
+      "max_prompt_tokens": {
+        "train": 3388,
+        "test": 2306
+      },
+      "inputs": {
+        "/opt/data/private/GraphRL/2000_notoneclass_sorted/train_grpo_episodes_redesign.json": "d5299527c1b42a56131c90b0b95ec73fc9eb47ddbd0d0b79c83f13fd7695ca6a",
+        "/opt/data/private/GraphRL/data/test_data_600_notoneclass/test_grpo_episodes.json": "13a217378fbc5e8ac19d719d826f1b7b69400caf7a68dcff040b17ff47170bff"
+      }
+    }
+  },
+  "3_5_vs_notoneclass_test": {
+    "count": 600,
+    "all_data_fields_equal_in_order": true,
+    "differing_protocol_fields": {
+      "prompt_version": 600,
+      "reward_version": 600,
+      "prompt": 600,
+      "text_action_version": 600
+    }
+  },
+  "paired_test_check": {
+    "count": 600,
+    "equal_fields": [
+      "source_index",
+      "source_id",
+      "dataset",
+      "task_type",
+      "target",
+      "label_space",
+      "ground_truth",
+      "attack_budget",
+      "clean_graph"
+    ]
+  },
+  "archive_roundtrip": {
+    "file_count": 143,
+    "all_restored_files_match_source_sha256": true,
+    "targets": 4
+  }
+}

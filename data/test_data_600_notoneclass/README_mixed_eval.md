@@ -1,0 +1,9 @@
+# 600条混合测试输入
+
+原有clean/、badgraph/budget1–5/、injection/不变。新增test.parquet、test_grpo_episodes.json、group_indices.json、groups/、episodes_by_group/，以及mixed_test_manifest.json，逐字节复制自GraphRL_test_data中的对应文件（manifest.json更名为mixed_test_manifest.json）。这样新服务器只需恢复此目录即可评测。
+
+混合输入为600条：NC450（cora/products/wikics各150），LC150（fb15k237）；budget1–5各120条，每个budget为NC90+LC30。不包含LP。每条源样本只选择其既定budget的攻击图，不是把5个budget合成3000条测试。
+
+与3_5实际运行目录中test_episodes.json逐条逐字段核对：600条的顺序、source_index、source_id、任务、目标、候选标签、ground_truth、attack_budget、clean_graph、noisy_graph等数据字段完全相同。差异仅在prompt、reward_version、text_action_version、prompt_version等实验协议字段；3_5_1_2会按自身代码重新生成prompt，因此不会沿用3_5的旧工具调用prompt。
+
+test_grpo_episodes.json SHA256：13a217378fbc5e8ac19d719d826f1b7b69400caf7a68dcff040b17ff47170bff。
