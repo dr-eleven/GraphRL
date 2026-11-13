@@ -1,0 +1,50 @@
+{
+  "valid_batch_layouts": [
+    {
+      "gpus": 1,
+      "batch": 6,
+      "accum": 2
+    },
+    {
+      "gpus": 1,
+      "batch": 12,
+      "accum": 1
+    },
+    {
+      "gpus": 2,
+      "batch": 3,
+      "accum": 2
+    },
+    {
+      "gpus": 2,
+      "batch": 6,
+      "accum": 1
+    },
+    {
+      "gpus": 3,
+      "batch": 2,
+      "accum": 2
+    },
+    {
+      "gpus": 3,
+      "batch": 4,
+      "accum": 1
+    },
+    {
+      "gpus": 6,
+      "batch": 1,
+      "accum": 2
+    },
+    {
+      "gpus": 6,
+      "batch": 2,
+      "accum": 1
+    }
+  ],
+  "invalid_layouts_rejected": 4,
+  "evaluation_calls_per_training": {
+    "oneclass": 8,
+    "notoneclass": 8
+  },
+  "missing_second_test_rejected_before_evaluation": true
+}

@@ -38,38 +38,13 @@
 
 没有新增工具、图编辑动作或奖励权重；三种任务均按相同表评分。输入标签分布保持原样，不自动重采样。
 
-## 当前数据与测试覆盖
+## 当前数据、测试覆盖与执行
 
-默认训练源：`GraphRL/2000_oneclass_sorted/train_grpo_episodes_redesign.json`，NC 1000、LC 200、LP 800；LP正例407、负例393。默认测试源：`GraphRL/data/test_data_600_oneclass/test_grpo_episodes.json`，NC 450、LC 150，**没有LP**。
+两组训练各2000条：NC1000、LC200、LP800；LP正例407、负例393。无论训练使用oneclass还是notoneclass，都评测两套完整600条测试集，每套NC450、LC150、不含LP，因此不能验证LP测试准确率。prepare对两套测试同时进行长度和任务覆盖预检。
 
-所以默认600条测试只能给出NC/LC评测，不能验证LP模型准确率。需要评测LP时，应提供含LP的独立测试episodes并设置 `TEST_EPISODES`、`EXPECTED_TEST_COUNT`；数据准备支持 `--require-test-task-coverage`，可要求测试覆盖训练涉及的全部任务，缺失时在加载模型前报错。启动脚本可设置 `REQUIRE_TEST_TASK_COVERAGE=1` 启用此强制检查。常规preflight会显式记录 `missing_test_tasks=["LP"]`。
+batch和梯度累积按显存调整，每次更新必须2源数据/12轨迹，G=6。默认3卡batch2累积2，也可batch4累积1；需保证全局microbatch包含完整组。启动脚本自动检查并计算未指定的梯度累积。
 
-## 运行
-
-只准备数据（默认本地Python环境和基座目录与3_5_1相同）：
-
-```bash
-RUN_DIR=/your/runs/3_5_1_2_oneclass \
-  bash organized_experiments/3_5_1_2/scripts/run_direct_batch4_1epoch.sh prepare
-```
-
-完整prepare → train → merge → test：
-
-```bash
-RUN_DIR=/your/runs/3_5_1_2_oneclass \
-  bash organized_experiments/3_5_1_2/scripts/run_direct_batch4_1epoch.sh all
-```
-
-输出目录不可覆盖。支持原有 `PYTHON_BIN`、`TRAIN_MODEL`、`CUDA_VISIBLE_DEVICES`、`TRAIN_EPISODES`、`TEST_EPISODES`、`PREDICTION_TOKENS` 等环境变量。使用not-one-class配对数据：
-
-```bash
-TRAIN_EPISODES=/opt/data/private/GraphRL/2000_notoneclass_sorted/train_grpo_episodes_redesign.json \
-TEST_EPISODES=/opt/data/private/GraphRL/data/test_data_600_notoneclass/test_grpo_episodes.json \
-RUN_DIR=/your/runs/3_5_1_2_notoneclass \
-  bash organized_experiments/3_5_1_2/scripts/run_direct_batch4_1epoch.sh prepare
-```
-
-四种评估条件仍为noisy_policy、clean_policy、noisy_baseline、clean_baseline，并使用相同任务prompt和评分规则。
+实际环境变量、完整执行命令和输出结构以[readme.md](readme.md)为准。测试路径变量为TEST_ONECLASS_EPISODES和TEST_NOTONECLASS_EPISODES；每个训练RUN自动执行两套测试×四种条件，并写入相互独立的目录。
 
 ## 验证
 
@@ -81,7 +56,11 @@ CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 \
 
 覆盖NC原有奖励、格式、截断和隐藏信息隔离，LP正负完整标签、双向/有向查询边屏蔽、非法端点与候选、缺失文本、评测无效预测，以及CPU小模型的真实TRL GRPO LoRA更新和未替换生成叶子的预算检查。只用小模型验证训练链路；没有启动完整7B训练。
 
-`verification/prepared_oneclass`、`verification/prepared_notoneclass`记录两套实际数据准备与token长度审计；`verification/tests.log`记录测试结果。原数据文件的degree顺序保持不变。
+`verification/migration_oneclass`、`verification/migration_notoneclass`记录迁移时的长度审计；后续双测试流程见`verification/both_test_sets_summary.json`。原数据文件的degree顺序保持不变。
 
 
 迁移执行请以 [readme.md](readme.md) 为准；最终prompt以当前code/episode.py为准，不含Query direction字段。
+
+## 当前执行要求
+
+batch和梯度累积可调，每次更新固定2条源数据/12条轨迹（G=6）。prepare同时保存oneclass和notoneclass测试数据；每个训练模型自动在两套测试集上各跑四种评测条件。参数与命令以readme.md为准。旧版单TEST_EPISODES配置不再使用。

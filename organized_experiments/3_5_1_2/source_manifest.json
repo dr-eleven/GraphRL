@@ -28,13 +28,13 @@
     "code/graph_state.py": "2a90b78c59314851ca7fc5193f17a03bc49aa129f138148d722d395f48522f29",
     "code/label_utils.py": "42e713ec1af972a62b9d0bc8071cf20be990784242a774ffda7f667c0875b6f4",
     "code/merge_adapter.py": "374d9dd176486a99335f3f8f5af4e60fd83296c679423d93d2b9d228ac7486f6",
-    "code/prepare_data.py": "f6c9e628032f6c8439714afa2af809e61fc17dad489b1821a65d626db9cfca41",
+    "code/prepare_data.py": "53e7c3ebf8d5a19060f70df7657bbb8aa66b6452bb1d8308e8f3e588a3b16166",
     "code/reward.py": "0418b5f7910bcefdd7be44df554870129e3ce003e9421ebe2b0c82d1584928ec",
     "code/tail_batching.py": "3e002806c2d31dcf2400d960006e172ec9298f9887bb96942dbba1c0c292ceec",
     "code/task_utils.py": "e5d2c56beb5ec37200dd7d7eff920446c9c69e26cff45ca1d6c4291e294abc45",
     "code/train_grpo.py": "7dda2c268ec00d0656bbb1048acdcdebeb8208e93a1f454c8896736a3d7a56f0",
-    "scripts/run_direct_batch4_1epoch.sh": "7a11a95c713606981584d401bd3a357734a2485cb52100fa9e0005361be9741b",
-    "scripts/run_portable.sh": "2730b65b9789f7c45ab364473d523df9a65bdc984a91244e1ee9272bcd72c071",
+    "scripts/run_direct_batch4_1epoch.sh": "16138a366813bcae2c5f622f35af2f735065bb8518cca50a900ca950b131d6ad",
+    "scripts/run_portable.sh": "713a83cb4a884955b0261e1b00a76b28101353c93ecbefdfb1beb9fceeb5b50f",
     "scripts/setup_native_trl.sh": "adca42cca946101dbae6ecb43767878f6dcd6ddd494bcc7c7203272fe8c858f4",
     "configs/a7b_reference.json": "a4801a21f42973f7fc8d53bb67562416e8e51909acd1cdfcdf8016ba543897c7",
     "configs/zero2.json": "f04fc25ede88234f600c2a3ddc074ea8a1b198f17608091351c86d434336857c",
@@ -42,5 +42,6 @@
     "tests/test_lp_constraints.py": "7efa9ab3e720b51a00aa0b9abc9f860ae46787c10f4ac807c2f922174b615e64",
     "tests/test_prediction.py": "2548790e14c3b18c6da821b44912fd92a4bd7d9bddd50c94315f288b83834077"
   },
-  "migration_document": "readme.md"
+  "migration_document": "readme.md",
+  "execution_policy": "G=6; 2 source examples / 12 trajectories per update; every trained model evaluates both oneclass and notoneclass test sets"
 }

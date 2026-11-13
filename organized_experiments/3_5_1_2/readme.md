@@ -12,8 +12,10 @@
 
 | 实验 | 训练文件（仓库根目录相对路径） | 测试文件 |
 | --- | --- | --- |
-| oneclass | `2000_oneclass_sorted/train_grpo_episodes_redesign.json` | `data/test_data_600_oneclass/test_grpo_episodes.json` |
-| notoneclass | `2000_notoneclass_sorted/train_grpo_episodes_redesign.json` | `data/test_data_600_notoneclass/test_grpo_episodes.json` |
+| oneclass | `2000_oneclass_sorted/train_grpo_episodes_redesign.json` | 下述oneclass、notoneclass两套测试集都测 |
+| notoneclass | `2000_notoneclass_sorted/train_grpo_episodes_redesign.json` | 下述oneclass、notoneclass两套测试集都测 |
+
+两组都必须测试`data/test_data_600_oneclass/test_grpo_episodes.json`和`data/test_data_600_notoneclass/test_grpo_episodes.json`，不能只测与训练同名的一套。prepare阶段同时预检并保存两套测试输入。
 
 oneclass攻击候选来自按目标文本语义选择的同一个最远类别；notoneclass为此前不限制候选来自单一类别的版本。两套训练数据使用相同2000个源ID、任务、标签和逐ID的clean/budget分配。攻击图分别来自各自版本。每条源数据仅使用一个选定版本，不能把clean.parquet或其余budget追加成更多训练条目。
 
@@ -78,7 +80,7 @@ nvidia-smi
 | LoRA目标层 | q_proj、k_proj、v_proj、o_proj、gate_proj、up_proj、down_proj |
 | 训练精度 | BF16；FP16=False；TF32=True；无量化 |
 | 分布式 | 默认3GPU、DeepSpeed ZeRO-3；配置不含CPU offload |
-| 每卡candidate batch / 梯度累积 | 2 / 2 |
+| 每卡candidate batch / 梯度累积 | 可调整；默认3GPU时2 / 2，或4 / 1；固定每次更新2源数据/12轨迹 |
 | 全局每源样本候选数G | 6；num_iterations=1；steps_per_generation=1 |
 | 每次优化更新有效候选数 | 3×2×2=12，即2个源样本的6候选组 |
 | 数据及更新数 | 2000源样本，1epoch，12000个候选生成；默认1000次优化更新 |
@@ -93,7 +95,18 @@ nvidia-smi
 | 日志及保存 | logging_steps=1；save_steps=100；save_total_limit=3；report_to=none |
 | 测试 | 贪心生成；每条1次；同样512生成上限；不做投票或按测试表现挑checkpoint |
 
-G=6是所有GPU合计每个源样本的6个候选，不是每GPU各6个。默认全局microbatch有3×2=6个候选，对应一个完整源样本组；累积2次更新。2000为偶数，不存在尾组丢弃。若迁移服务器GPU数不同，应同时满足`6 % GPU数 == 0`、`(GPU数×每卡batch) % 6 == 0`，并保持`GPU数×每卡batch×累积步数=12`。例如1GPU/batch6/累积2，2GPU/batch3/累积2，6GPU/batch1/累积2；须按可用显存预检。不能仅减小batch造成group不完整或静默丢数据。显存不足时先确认其他进程、可用设备、评测batch；如需改变实验核心参数，应单独说明，不能混入同一结果。
+G=6是所有GPU合计每个源样本的6条轨迹。**每次优化更新固定2条源数据、12条轨迹，batch和梯度累积可按显存调整**，无需保持每卡batch=2或累积=2。
+
+必须满足`GPU数×每卡batch×梯度累积=12`。当前采样器还要求`6 % GPU数 == 0`及`(GPU数×每卡batch) % 6 == 0`，确保每次全局microbatch包含完整的6轨迹组。脚本会检查这些约束，避免看似累计12条却拆坏组。
+
+| GPU数 | 每卡TRAIN_BATCH_SIZE | GRAD_ACCUM | 每次更新源数据 / 轨迹 |
+| --- | ---: | ---: | --- |
+| 1 | 6或12 | 分别2或1 | 2 / 12 |
+| 2 | 3或6 | 分别2或1 | 2 / 12 |
+| 3 | 2或4 | 分别2或1 | 2 / 12 |
+| 6 | 1或2 | 分别2或1 | 2 / 12 |
+
+未指定TRAIN_BATCH_SIZE时，按GPU数自动选择`6/GPU数`；未指定GRAD_ACCUM时，自动设为`12/(GPU数×每卡batch)`。例如3GPU设`TRAIN_BATCH_SIZE=4`并`unset GRAD_ACCUM`，会自动使用累积1。若手动设置冲突则在运行前报错。2000条始终对应1epoch、12000条候选轨迹和1000次更新；禁止通过丢弃或重复数据凑组。
 
 ## 当前prompt、查询边与奖励
 
@@ -113,13 +126,16 @@ export EXP="$REPO/organized_experiments/3_5_1_2"
 export PYTHON_BIN="$REPO/.venv-3_5_1_2/bin/python"
 export TRAIN_MODEL="$REPO/models/Qwen2.5-7B-Instruct"
 export CUDA_VISIBLE_DEVICES=0,1,2
-export TRAIN_BATCH_SIZE=2 GRAD_ACCUM=2 NUM_GENERATIONS=6
+export TRAIN_BATCH_SIZE=4 NUM_GENERATIONS=6
+unset GRAD_ACCUM  # 3卡batch4自动累积1；也可改成batch2、累积2
 export TRAIN_FRACTION=1 FINAL_EPOCH=1 PREDICTION_TOKENS=512
 export EXPECTED_TEST_COUNT=600 REQUIRE_TEST_TASK_COVERAGE=0
+unset TEST_EPISODES  # 清除旧版单测试集配置
+export TEST_ONECLASS_EPISODES="$REPO/data/test_data_600_oneclass/test_grpo_episodes.json"
+export TEST_NOTONECLASS_EPISODES="$REPO/data/test_data_600_notoneclass/test_grpo_episodes.json"
 
 # A：oneclass。prepare不会加载完整模型权重或启动训练。
 export TRAIN_EPISODES="$REPO/2000_oneclass_sorted/train_grpo_episodes_redesign.json"
-export TEST_EPISODES="$REPO/data/test_data_600_oneclass/test_grpo_episodes.json"
 export RUN_DIR="$EXP/runs/oneclass_2000"
 bash "$EXP/scripts/run_portable.sh" prepare
 cat "$RUN_DIR/data/preflight.json"
@@ -129,7 +145,6 @@ bash "$EXP/scripts/run_portable.sh" test
 
 # B：notoneclass。从同一原始基座重新创建adapter，不沿用A的adapter。
 export TRAIN_EPISODES="$REPO/2000_notoneclass_sorted/train_grpo_episodes_redesign.json"
-export TEST_EPISODES="$REPO/data/test_data_600_notoneclass/test_grpo_episodes.json"
 export RUN_DIR="$EXP/runs/notoneclass_2000"
 bash "$EXP/scripts/run_portable.sh" prepare
 cat "$RUN_DIR/data/preflight.json"
@@ -138,42 +153,39 @@ bash "$EXP/scripts/run_portable.sh" merge
 bash "$EXP/scripts/run_portable.sh" test
 ```
 
-先确认每组preflight为train_count=2000、test_count=600、train NC1000/LC200/LP800、test NC450/LC150、source_order_preserved=true、missing_test_tasks=[LP]，最大prompt小于8192。prepare不截断超长prompt，发现异常会报错。prepare完成后要在同一RUN_DIR运行train/merge/test，不能再次all/prepare覆盖；`all`只用于新的RUN目录从头完整执行。不要并行启动两组占满同一批GPU。
+先确认每组preflight为train_count=2000、train NC1000/LC200/LP800、source_order_preserved=true；test_sets中的oneclass和notoneclass均为600条、NC450/LC150、missing_test_tasks=[LP]；update_batch为sources_per_update=2、trajectories_per_update=12、optimizer_updates_per_epoch=1000。最大prompt小于8192。prepare不截断超长prompt，发现异常会报错。prepare完成后要在同一RUN_DIR运行train/merge/test，不能再次all/prepare覆盖；`all`只用于新的RUN目录从头完整执行。不要并行启动两组占满同一批GPU。
 
 训练阶段输出adapter到`RUN_DIR/grpo/final_adapter`；合并阶段从adapter配置定位原始基座，在CPU加载BF16权重合并到`RUN_DIR/merged_model`，需预留主机内存和磁盘。此CPU合并与训练时CPU offload是两回事。评测默认单GPU，`EVAL_GPU`指定物理GPU，`EVAL_BATCH_SIZE`默认1。修改EVAL_BATCH_SIZE不改变样本和生成上限。
 
 ## 测试矩阵与比较
 
-每组test阶段均评测下表四种条件，使用相同当前prompt和生成预算，不沿用3_5旧工具prompt。
+**每个训练模型自动评测oneclass、notoneclass两套完整600条测试集**；每套均执行下表四种条件，使用相同当前prompt和生成预算，不沿用3_5旧工具prompt。
 
 | condition | 模型 | 输入图 |
 | --- | --- | --- |
-| noisy_policy | 本组训练合并模型 | 本组攻击混合测试图 |
-| clean_policy | 本组训练合并模型 | 同600条clean图 |
-| noisy_baseline | 原始基座 | 本组攻击混合测试图 |
-| clean_baseline | 原始基座 | 同600条clean图 |
+| noisy_policy | 本组训练合并模型 | 当前测试集的攻击混合图 |
+| clean_policy | 本组训练合并模型 | 当前测试集的同600条clean图 |
+| noisy_baseline | 原始基座 | 当前测试集的攻击混合图 |
+| clean_baseline | 原始基座 | 当前测试集的同600条clean图 |
 
-匹配版本的A/B结果同时改变了训练攻击分布与测试攻击分布，报告必须写明，不能把其差值全部归因于训练方法。若要比较训练方法在固定测试攻击下的差异，补充2×2交叉评测：分别将两个训练模型都测在oneclass与notoneclass混合测试上。下面两项补足已执行矩阵中的另外两格（在上述变量已设置的shell运行）：
+完整执行矩阵如下，不需要另跑手工交叉评测命令：
 
-```bash
-for TRAIN_VARIANT in oneclass notoneclass; do
-  if [ "$TRAIN_VARIANT" = oneclass ]; then TEST_VARIANT=notoneclass; else TEST_VARIANT=oneclass; fi
-  RUN="$EXP/runs/${TRAIN_VARIANT}_2000"
-  CUDA_VISIBLE_DEVICES=0 "$PYTHON_BIN" "$EXP/code/evaluate_grpo_600.py" \
-    --model "$RUN/merged_model" \
-    --data "$REPO/data/test_data_600_${TEST_VARIANT}/test_grpo_episodes.json" \
-    --condition noisy_policy --rollout-config "$RUN/grpo/experiment_config.json" \
-    --expected-count 600 --batch-size 1 --output-dir "$RUN/test/cross_${TEST_VARIANT}"
-done
-```
+| 训练集 | oneclass测试集 | notoneclass测试集 |
+| --- | --- | --- |
+| oneclass | 四种条件，各600条 | 四种条件，各600条 |
+| notoneclass | 四种条件，各600条 | 四种条件，各600条 |
 
-clean图相同，可比较两模型clean_policy；两个clean_baseline在相同模型/prompt/预算下应相符。所有正式评测用完整600条，不能使用`--limit`抽样结果替代。现有evaluate脚本会重建prompt并屏蔽查询边。
+每个训练RUN有8次评测，两组训练合计16次。输出为`RUN_DIR/test/{oneclass,notoneclass}/{noisy_policy,clean_policy,noisy_baseline,clean_baseline}/`，日志为`test_<测试集>_<condition>.log`。两套测试输入在prepare时保存为`RUN_DIR/data/test_oneclass_episodes.json`和`test_notoneclass_episodes.json`；test阶段缺少任意一套均报错，不能只完成同名测试就宣布完成。旧`test_episodes.json`保留为oneclass兼容副本，正式test阶段只读两个带名称的文件。
+
+训练使用哪套数据都不会改变测试矩阵。比较训练方法时，在同一测试集上比较两个训练模型的noisy_policy；跨测试集比较时，固定训练模型。clean图相同，两套clean_baseline在同模型/prompt/预算下应相符。所有正式评测用完整600条，不能使用`--limit`抽样结果替代，当前两套均无LP测试覆盖。
+
+数据位置通过`TEST_ONECLASS_EPISODES`与`TEST_NOTONECLASS_EPISODES`分别指定；旧单一`TEST_EPISODES`变量会报错，请先`unset TEST_EPISODES`。如果准备目录来自旧版单测试流程，应新建RUN重新prepare，不能遗漏第二套测试。
 
 ## 输出、核验与故障处理
 
-每个RUN应保留：`code_snapshot/`、`data/preflight.json`及处理后的train/test episodes、`prepare.log`、`train.log`、`grpo/experiment_config.json`、checkpoint/trainer_state、final_adapter、merged_model、每种条件的predictions.jsonl与summary.json、status.txt。记录Git commit、数据manifest哈希、模型revision、GPU型号/数量、实际依赖freeze及启动命令。
+每个RUN应保留：`code_snapshot/`、`data/preflight.json`及处理后的train/test episodes、`prepare.log`、`train.log`、`grpo/experiment_config.json`、checkpoint/trainer_state、final_adapter、merged_model、两个测试集下每种条件的predictions.jsonl与summary.json、status.txt。记录Git commit、数据manifest哈希、模型revision、GPU型号/数量、实际依赖freeze及启动命令。
 
-训练结束检查实际global_step（默认1000）、epoch=1、final_adapter和合并权重存在、候选采样按6组成完整组、完整测试600条。读取评测summary报告总体/NC/LC/数据集分组准确率、无效输出与截断数量；LP应标为无测试覆盖，不能填0伪装测得结果。预测无效保留为错误，不能删掉再计算准确率。不要通过加token、改prompt、反复挑checkpoint来选择性优化测试；需要改动另建运行并注明。跨版本比较必须使用同一测试版本与预算。
+训练结束检查实际global_step（默认1000）、epoch=1、final_adapter和合并权重存在、候选采样按6组成完整组、两套测试的四种条件各完整600条。读取评测summary报告总体/NC/LC/数据集分组准确率、无效输出与截断数量；LP应标为无测试覆盖，不能填0伪装测得结果。预测无效保留为错误，不能删掉再计算准确率。不要通过加token、改prompt、反复挑checkpoint来选择性优化测试；需要改动另建运行并注明。跨版本比较必须使用同一测试版本与预算。
 
 训练中断先检查日志与checkpoint，不要自动从头覆盖目录或宣称已完成；当前launcher没有自动resume开关，如需恢复应使用train_grpo.py已有的--continuation_checkpoint显式指定完整checkpoint（内部传入Trainer的resume_from_checkpoint），复用原启动参数并验证optimizer/scheduler/global_step恢复，保留改动和命令，不能把加载adapter但优化器重置当成无缝恢复。GPU显存不足/环境不兼容/模型下载失败等应给出实际原因与已完成阶段。
 
