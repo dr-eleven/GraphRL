@@ -1,0 +1,2 @@
+EXPERIMENT_ID = '5_1'
+DEFAULT_MODE = 'free'

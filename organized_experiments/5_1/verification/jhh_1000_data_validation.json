@@ -1,0 +1,51 @@
+{
+  "1000_oneclass_sorted": {
+    "count": 1000,
+    "sha256": "f98ced319e66fe4085832bc66807df11c71ec2d0bec54e38c0e9c0ed4bc8dec1",
+    "by_task": {
+      "NC": 500,
+      "LC": 100,
+      "LP": 400
+    },
+    "by_budget": {
+      "0": 200,
+      "1": 160,
+      "2": 160,
+      "3": 160,
+      "4": 160,
+      "5": 160
+    }
+  },
+  "600_test_data_oneclass": {
+    "count": 600,
+    "sha256": "a6edfc54de05369f46c01f1cbd7eb131d947f26c5c6b9f97124b8c0b8fb150b8",
+    "by_task": {
+      "LC": 150,
+      "NC": 450
+    },
+    "by_budget": {
+      "3": 96,
+      "0": 120,
+      "4": 96,
+      "1": 96,
+      "5": 96,
+      "2": 96
+    }
+  },
+  "600_test_data_notoneclass": {
+    "count": 600,
+    "sha256": "e97e9a389f1b05a481f3afcf554a10bba8dac3ce289a6e1c8064aa14e53d2912",
+    "by_task": {
+      "LC": 150,
+      "NC": 450
+    },
+    "by_budget": {
+      "3": 96,
+      "0": 120,
+      "4": 96,
+      "1": 96,
+      "5": 96,
+      "2": 96
+    }
+  }
+}

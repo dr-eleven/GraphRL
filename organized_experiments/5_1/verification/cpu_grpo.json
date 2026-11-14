@@ -1,0 +1,33 @@
+{
+  "mode": "free",
+  "device": "cpu",
+  "tiny_model": true,
+  "scripted_generation": true,
+  "real_grpo_update": true,
+  "lora_updated": true,
+  "real_hf_bounded_generation": true,
+  "loss_mask_verified": true,
+  "feedback_attention_verified": true,
+  "rewards": [
+    1,
+    0
+  ],
+  "homogeneous_groups": [
+    [
+      1.0,
+      1.0
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "model_tokens": [
+    581,
+    578
+  ],
+  "feedback_tokens": [
+    828,
+    828
+  ]
+}

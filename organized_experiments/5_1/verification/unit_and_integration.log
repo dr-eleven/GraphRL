@@ -1,0 +1,48 @@
+test_analysis_required_nonempty_before_actions (test_binary_controller.ProtocolTests.test_analysis_required_nonempty_before_actions) ... ok
+test_extreme_json_is_model_error_not_infrastructure (test_binary_controller.ProtocolTests.test_extreme_json_is_model_error_not_infrastructure) ... ok
+test_invalid_events_and_duplicate_keys (test_binary_controller.ProtocolTests.test_invalid_events_and_duplicate_keys) ... ok
+test_json_parsable_schema_errors (test_binary_controller.ProtocolTests.test_json_parsable_schema_errors) ... ok
+test_public_label_collision (test_binary_controller.ProtocolTests.test_public_label_collision) ... ok
+test_truncated_vs_complete_event (test_binary_controller.ProtocolTests.test_truncated_vs_complete_event) ... ok
+test_action_batch_atomic_rejection (test_binary_controller.StateTests.test_action_batch_atomic_rejection) ... ok
+test_all_errors_collected_atomically_and_counted_once (test_binary_controller.StateTests.test_all_errors_collected_atomically_and_counted_once) ... ok
+test_complete_length_stop_executes_incomplete_never_executes (test_binary_controller.StateTests.test_complete_length_stop_executes_incomplete_never_executes) ... ok
+test_feedback_capacity_failure_never_requests_extra_answer (test_binary_controller.StateTests.test_feedback_capacity_failure_never_requests_extra_answer) ... ok
+test_final_on_tenth_turn_is_scored (test_binary_controller.StateTests.test_final_on_tenth_turn_is_scored) ... ok
+test_final_outside_label_and_format_repair (test_binary_controller.StateTests.test_final_outside_label_and_format_repair) ... ok
+test_final_schema_only_and_no_hidden_supervision_feedback (test_binary_controller.StateTests.test_final_schema_only_and_no_hidden_supervision_feedback) ... ok
+test_final_schema_repair_has_no_separate_quota (test_binary_controller.StateTests.test_final_schema_repair_has_no_separate_quota) ... ok
+test_fixed_cannot_answer_before_rewrite_success (test_binary_controller.StateTests.test_fixed_cannot_answer_before_rewrite_success) ... ok
+test_free_repeat_undo_redo (test_binary_controller.StateTests.test_free_repeat_undo_redo) ... ok
+test_infra_is_not_reward_zero (test_binary_controller.StateTests.test_infra_is_not_reward_zero) ... ok
+test_legal_harmful_edit_still_binary (test_binary_controller.StateTests.test_legal_harmful_edit_still_binary) ... ok
+test_multi_event_atomic_rejection (test_binary_controller.StateTests.test_multi_event_atomic_rejection) ... ok
+test_no_stage_or_error_limit (test_binary_controller.StateTests.test_no_stage_or_error_limit) ... ok
+test_noop_uses_previous_graph (test_binary_controller.StateTests.test_noop_uses_previous_graph) ... ok
+test_parse_error_terminates_without_feedback (test_binary_controller.StateTests.test_parse_error_terminates_without_feedback) ... ok
+test_success_allows_repeat_or_immediate_next (test_binary_controller.StateTests.test_success_allows_repeat_or_immediate_next) ... ok
+test_system_user_split_and_compact_tool_descriptions (test_binary_controller.StateTests.test_system_user_split_and_compact_tool_descriptions) ... ok
+test_tenth_tool_executes_then_zero_no_eleventh (test_binary_controller.StateTests.test_tenth_tool_executes_then_zero_no_eleventh) ... ok
+test_tool_schema_required_actions_only (test_binary_controller.StateTests.test_tool_schema_required_actions_only) ... ok
+test_unknown_and_bad_args_recover (test_binary_controller.StateTests.test_unknown_and_bad_args_recover) ... ok
+test_zero_tool_correct_and_valid_wrong_terminal (test_binary_controller.StateTests.test_zero_tool_correct_and_valid_wrong_terminal) ... ok
+test_feedback_snapshot_overflow_discards_graph (test_rollout_runtime.RuntimeTests.test_feedback_snapshot_overflow_discards_graph) ... ok
+test_first_and_later_schema_errors_both_return_feedback (test_rollout_runtime.RuntimeTests.test_first_and_later_schema_errors_both_return_feedback) ... ok
+test_infra_retries_entire_group_only (test_rollout_runtime.RuntimeTests.test_infra_retries_entire_group_only) ... ok
+test_later_parse_error_stops_without_error_obs (test_rollout_runtime.RuntimeTests.test_later_parse_error_stops_without_error_obs) ... ok
+test_model_error_never_triggers_infra_resample (test_rollout_runtime.RuntimeTests.test_model_error_never_triggers_infra_resample) ... ok
+test_persistent_infra_raises_after_two_retries (test_rollout_runtime.RuntimeTests.test_persistent_infra_raises_after_two_retries) ... ok
+test_qwen_suffix_matches_chat_template (test_rollout_runtime.RuntimeTests.test_qwen_suffix_matches_chat_template) ... ok
+test_ten_schema_errors_no_resampling_or_extra_final (test_rollout_runtime.RuntimeTests.test_ten_schema_errors_no_resampling_or_extra_final) ... ok
+test_real_grpo_update_masks_and_zero_variance_groups (test_trl_integration.TRLIntegration.test_real_grpo_update_masks_and_zero_variance_groups) ... [2026-11-14 17:49:30,247] [WARNING] [real_accelerator.py:213:get_accelerator] Setting accelerator to CPU. If you have GPU or other accelerator, we were unable to detect it.
+/opt/data/private/GraphRL/organized_experiments/5_1/code/train_grpo.py:143: UserWarning: You are using 'environment_factory', which is an experimental feature. This API may change or be removed at any time without prior notice. Silence this warning by setting environment variable TRL_EXPERIMENTAL_SILENCE=1.
+  super().__init__(*args, **kwargs)
+[RANK 0] Detected kernel version 5.4.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 20.028s
+
+OK
+{'loss': '2.98e-08', 'grad_norm': '8.136e-05', 'learning_rate': '0.001', 'num_tokens': '5211', 'completions/mean_length': '579.5', 'completions/min_length': '578', 'completions/max_length': '581', 'rewards/graph_reward/mean': '0.5', 'rewards/graph_reward/std': '0.7071', 'reward': '0.5', 'reward_std': '0.7071', 'frac_reward_zero_std': '0', 'binary/all_zero_groups': '0', 'binary/all_one_groups': '0', 'kl': '0', 'entropy': '5.571', 'clip_ratio/low_mean': '0', 'clip_ratio/high_mean': '0', 'clip_ratio/region_mean': '0', 'clip_ratio/low_min': '0', 'clip_ratio/high_max': '0', 'step_time': '0.4705', 'epoch': '1'}
+{'train_runtime': '0.4741', 'train_samples_per_second': '4.219', 'train_steps_per_second': '2.109', 'train_loss': '2.98e-08', 'epoch': '1'}

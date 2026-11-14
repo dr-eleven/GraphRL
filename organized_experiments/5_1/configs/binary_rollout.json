@@ -1,0 +1,11 @@
+{
+  "max_model_turns": 10,
+  "max_new_tokens_per_turn": 2048,
+  "max_total_model_tokens": 12288,
+  "max_completion_tokens": 16384,
+  "max_initial_prompt_tokens": 8192,
+  "max_actions_per_call": 64,
+  "tool_timeout_sec": 10,
+  "worker_watchdog_sec": 900,
+  "infra_retries": 2
+}

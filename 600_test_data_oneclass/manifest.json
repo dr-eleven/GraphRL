@@ -1,0 +1,306 @@
+{
+  "variant": "oneclass",
+  "seed": 42,
+  "total": 600,
+  "clean_count": 120,
+  "badgraph_count": 480,
+  "budget_counts": {
+    "3": 96,
+    "0": 120,
+    "4": 96,
+    "1": 96,
+    "5": 96,
+    "2": 96
+  },
+  "clean_source_indices": [
+    1,
+    6,
+    7,
+    12,
+    17,
+    32,
+    36,
+    45,
+    49,
+    57,
+    58,
+    59,
+    60,
+    73,
+    74,
+    77,
+    86,
+    87,
+    89,
+    91,
+    95,
+    97,
+    98,
+    101,
+    103,
+    112,
+    116,
+    126,
+    131,
+    133,
+    134,
+    139,
+    141,
+    147,
+    148,
+    160,
+    162,
+    163,
+    168,
+    171,
+    179,
+    187,
+    192,
+    195,
+    200,
+    206,
+    210,
+    212,
+    216,
+    220,
+    227,
+    236,
+    237,
+    245,
+    253,
+    266,
+    271,
+    279,
+    282,
+    291,
+    292,
+    296,
+    299,
+    306,
+    312,
+    322,
+    326,
+    327,
+    334,
+    346,
+    355,
+    357,
+    360,
+    370,
+    373,
+    381,
+    383,
+    386,
+    393,
+    395,
+    404,
+    405,
+    419,
+    420,
+    430,
+    432,
+    433,
+    439,
+    441,
+    443,
+    444,
+    449,
+    459,
+    463,
+    467,
+    468,
+    471,
+    473,
+    478,
+    484,
+    486,
+    489,
+    491,
+    493,
+    498,
+    502,
+    509,
+    510,
+    521,
+    526,
+    537,
+    539,
+    542,
+    543,
+    561,
+    566,
+    570,
+    571,
+    581,
+    596
+  ],
+  "source": "/opt/data/private/GraphRL/data/test_data_600_oneclass/test_grpo_episodes.json",
+  "source_sha256": "90669a06ca2422aa33ac9055e1c572e3a1133ab0156be00143b752226ad0197f",
+  "paired_source_sha256": {
+    "notoneclass": "13a217378fbc5e8ac19d719d826f1b7b69400caf7a68dcff040b17ff47170bff",
+    "oneclass": "90669a06ca2422aa33ac9055e1c572e3a1133ab0156be00143b752226ad0197f"
+  },
+  "builder_sha256": "6723bbe4533f1255946760fb4b6c7589ce68d9fd7f612104607ab69347c1f363",
+  "source_order_preserved": true,
+  "selection": "6 source IDs per dataset/task/original-budget cell; same IDs clean in both variants; remaining original attack budgets unchanged",
+  "dataset_task_counts": {
+    "fb15k237/LC": 150,
+    "cora_node/NC": 150,
+    "products/NC": 150,
+    "wikics/NC": 150
+  },
+  "distribution": [
+    {
+      "dataset": "cora_node",
+      "task": "NC",
+      "budget": 0,
+      "count": 30
+    },
+    {
+      "dataset": "cora_node",
+      "task": "NC",
+      "budget": 1,
+      "count": 20
+    },
+    {
+      "dataset": "cora_node",
+      "task": "NC",
+      "budget": 2,
+      "count": 26
+    },
+    {
+      "dataset": "cora_node",
+      "task": "NC",
+      "budget": 3,
+      "count": 28
+    },
+    {
+      "dataset": "cora_node",
+      "task": "NC",
+      "budget": 4,
+      "count": 26
+    },
+    {
+      "dataset": "cora_node",
+      "task": "NC",
+      "budget": 5,
+      "count": 20
+    },
+    {
+      "dataset": "fb15k237",
+      "task": "LC",
+      "budget": 0,
+      "count": 30
+    },
+    {
+      "dataset": "fb15k237",
+      "task": "LC",
+      "budget": 1,
+      "count": 24
+    },
+    {
+      "dataset": "fb15k237",
+      "task": "LC",
+      "budget": 2,
+      "count": 24
+    },
+    {
+      "dataset": "fb15k237",
+      "task": "LC",
+      "budget": 3,
+      "count": 24
+    },
+    {
+      "dataset": "fb15k237",
+      "task": "LC",
+      "budget": 4,
+      "count": 24
+    },
+    {
+      "dataset": "fb15k237",
+      "task": "LC",
+      "budget": 5,
+      "count": 24
+    },
+    {
+      "dataset": "products",
+      "task": "NC",
+      "budget": 0,
+      "count": 30
+    },
+    {
+      "dataset": "products",
+      "task": "NC",
+      "budget": 1,
+      "count": 28
+    },
+    {
+      "dataset": "products",
+      "task": "NC",
+      "budget": 2,
+      "count": 20
+    },
+    {
+      "dataset": "products",
+      "task": "NC",
+      "budget": 3,
+      "count": 21
+    },
+    {
+      "dataset": "products",
+      "task": "NC",
+      "budget": 4,
+      "count": 24
+    },
+    {
+      "dataset": "products",
+      "task": "NC",
+      "budget": 5,
+      "count": 27
+    },
+    {
+      "dataset": "wikics",
+      "task": "NC",
+      "budget": 0,
+      "count": 30
+    },
+    {
+      "dataset": "wikics",
+      "task": "NC",
+      "budget": 1,
+      "count": 24
+    },
+    {
+      "dataset": "wikics",
+      "task": "NC",
+      "budget": 2,
+      "count": 26
+    },
+    {
+      "dataset": "wikics",
+      "task": "NC",
+      "budget": 3,
+      "count": 23
+    },
+    {
+      "dataset": "wikics",
+      "task": "NC",
+      "budget": 4,
+      "count": 22
+    },
+    {
+      "dataset": "wikics",
+      "task": "NC",
+      "budget": 5,
+      "count": 25
+    }
+  ],
+  "actual_unchanged_by_budget": {
+    "0": 120
+  },
+  "files": {
+    "test_episodes.json": "a6edfc54de05369f46c01f1cbd7eb131d947f26c5c6b9f97124b8c0b8fb150b8",
+    "test_grpo_episodes.json": "a6edfc54de05369f46c01f1cbd7eb131d947f26c5c6b9f97124b8c0b8fb150b8",
+    "group_indices.json": "60cc0ae7890855ca1e30f7aec011ff14abcc452ad68a23eaeb8a6327abdccc4c"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "layout": "system: task/protocol/constraints; user: public data and graph",
+  "tool_description_reference": "3_6",
+  "tool_description_verbatim": false,
+  "old_max_prompt_tokens": {
+    "train": 4394,
+    "test_data_600_notoneclass": 3267,
+    "test_data_600_oneclass": 3255
+  },
+  "new_max_prompt_tokens": {
+    "train": 4066,
+    "test_data_600_notoneclass": 2969,
+    "test_data_600_oneclass": 2957
+  },
+  "data_counts": {
+    "train": 2000,
+    "test_data_600_notoneclass": 600,
+    "test_data_600_oneclass": 600
+  },
+  "native_tool_header": "Call at most one function per turn.",
+  "description_note": "3_6 meanings retained; shared instructions consolidated in system; initial and updated graphs distinguished."
+}

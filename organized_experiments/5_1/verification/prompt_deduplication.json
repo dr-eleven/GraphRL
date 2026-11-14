@@ -1,0 +1,19 @@
+{
+  "prompt_version": "system_user_shared_tool_rules_v2",
+  "previous_max_prompt_tokens": {
+    "train": 4106,
+    "test_data_600_notoneclass": 3009,
+    "test_data_600_oneclass": 2997
+  },
+  "current_max_prompt_tokens": {
+    "train": 4066,
+    "test_data_600_notoneclass": 2969,
+    "test_data_600_oneclass": 2957
+  },
+  "initial_graph_tag": "initial_graph",
+  "updated_graph_tag": "restored_graph",
+  "structural_validation_unchanged": true,
+  "semantic_constraints_in_system": true,
+  "unit_and_integration_tests": 37,
+  "all_passed": true
+}

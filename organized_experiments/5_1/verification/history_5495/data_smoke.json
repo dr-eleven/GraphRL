@@ -1,0 +1,201 @@
+{
+  "mode": "free",
+  "count": 32,
+  "selection": "32 evenly spaced positions in unchanged 5495-row source order",
+  "scripted_gold_submission": true,
+  "not_model_accuracy": true,
+  "records": [
+    {
+      "source_index": 5122,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 5057,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 871,
+      "task_type": "NC",
+      "dataset": "pubmed",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 4507,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 5410,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 4418,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 5346,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 1212,
+      "task_type": "NC",
+      "dataset": "instagram",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 5144,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 4869,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 5324,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 3886,
+      "task_type": "NC",
+      "dataset": "sports",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 3044,
+      "task_type": "NC",
+      "dataset": "computer",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 3910,
+      "task_type": "NC",
+      "dataset": "sports",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 131,
+      "task_type": "NC",
+      "dataset": "arxiv",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 3416,
+      "task_type": "NC",
+      "dataset": "photo",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 778,
+      "task_type": "NC",
+      "dataset": "pubmed",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 2061,
+      "task_type": "NC",
+      "dataset": "children",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 3111,
+      "task_type": "NC",
+      "dataset": "computer",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 862,
+      "task_type": "NC",
+      "dataset": "pubmed",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 1400,
+      "task_type": "NC",
+      "dataset": "instagram",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 1621,
+      "task_type": "NC",
+      "dataset": "instagram",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 2866,
+      "task_type": "NC",
+      "dataset": "computer",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 1800,
+      "task_type": "NC",
+      "dataset": "instagram",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 2117,
+      "task_type": "NC",
+      "dataset": "children",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 346,
+      "task_type": "NC",
+      "dataset": "arxiv",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 4228,
+      "task_type": "NC",
+      "dataset": "sports",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 1057,
+      "task_type": "NC",
+      "dataset": "pubmed",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 2086,
+      "task_type": "NC",
+      "dataset": "children",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 3299,
+      "task_type": "NC",
+      "dataset": "computer",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 832,
+      "task_type": "NC",
+      "dataset": "pubmed",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 2783,
+      "task_type": "NC",
+      "dataset": "children",
+      "tool_successes": 4
+    }
+  ]
+}

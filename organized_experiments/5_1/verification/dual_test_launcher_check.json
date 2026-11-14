@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "model_evaluation_run": false,
+  "calls": [
+    {
+      "test_set": "test_data_600_notoneclass",
+      "condition": "restored"
+    },
+    {
+      "test_set": "test_data_600_notoneclass",
+      "condition": "clean_policy"
+    },
+    {
+      "test_set": "test_data_600_notoneclass",
+      "condition": "noisy_baseline"
+    },
+    {
+      "test_set": "test_data_600_notoneclass",
+      "condition": "clean_baseline"
+    },
+    {
+      "test_set": "test_data_600_oneclass",
+      "condition": "restored"
+    },
+    {
+      "test_set": "test_data_600_oneclass",
+      "condition": "clean_policy"
+    },
+    {
+      "test_set": "test_data_600_oneclass",
+      "condition": "noisy_baseline"
+    },
+    {
+      "test_set": "test_data_600_oneclass",
+      "condition": "clean_baseline"
+    }
+  ]
+}

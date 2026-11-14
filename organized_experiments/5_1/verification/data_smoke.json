@@ -1,0 +1,203 @@
+{
+  "mode": "free",
+  "count": 32,
+  "source": "/opt/data/private/GraphRL/1000_oneclass_sorted/train_grpo_episodes_redesign.json",
+  "source_count": 1000,
+  "selection": "32 evenly spaced positions in unchanged 1000-row source order",
+  "scripted_gold_submission": true,
+  "not_model_accuracy": true,
+  "records": [
+    {
+      "source_index": 537,
+      "task_type": "NC",
+      "dataset": "instagram",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 1936,
+      "task_type": "NC",
+      "dataset": "citeseer",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 7893,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 10785,
+      "task_type": "LP",
+      "dataset": "pubmed",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 2729,
+      "task_type": "NC",
+      "dataset": "arxiv",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 8179,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 13251,
+      "task_type": "LP",
+      "dataset": "arxiv",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 10304,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 13190,
+      "task_type": "LP",
+      "dataset": "arxiv",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 3177,
+      "task_type": "NC",
+      "dataset": "sports",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 7885,
+      "task_type": "NC",
+      "dataset": "pubmed",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 12571,
+      "task_type": "LP",
+      "dataset": "pubmed",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 14953,
+      "task_type": "LP",
+      "dataset": "reddit",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 14527,
+      "task_type": "LP",
+      "dataset": "sports",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 2196,
+      "task_type": "NC",
+      "dataset": "citeseer",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 4508,
+      "task_type": "NC",
+      "dataset": "history",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 9063,
+      "task_type": "LC",
+      "dataset": "wn18rr",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 15064,
+      "task_type": "LP",
+      "dataset": "reddit",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 12784,
+      "task_type": "LP",
+      "dataset": "photo",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 554,
+      "task_type": "NC",
+      "dataset": "arxiv",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 1856,
+      "task_type": "NC",
+      "dataset": "citeseer",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 3341,
+      "task_type": "NC",
+      "dataset": "photo",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 5583,
+      "task_type": "NC",
+      "dataset": "computer",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 10397,
+      "task_type": "LP",
+      "dataset": "children",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 12221,
+      "task_type": "LP",
+      "dataset": "photo",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 14017,
+      "task_type": "LP",
+      "dataset": "reddit",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 13639,
+      "task_type": "LP",
+      "dataset": "photo",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 2191,
+      "task_type": "NC",
+      "dataset": "photo",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 7672,
+      "task_type": "NC",
+      "dataset": "reddit",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 5146,
+      "task_type": "NC",
+      "dataset": "reddit",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 5328,
+      "task_type": "NC",
+      "dataset": "arxiv",
+      "tool_successes": 4
+    },
+    {
+      "source_index": 7347,
+      "task_type": "NC",
+      "dataset": "computer",
+      "tool_successes": 4
+    }
+  ]
+}

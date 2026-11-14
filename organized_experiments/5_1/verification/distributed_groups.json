@@ -1,0 +1,31 @@
+{
+  "backend": "gloo",
+  "cpu_workers": 2,
+  "scripted_generation": true,
+  "cross_rank_group_retry_verified": true,
+  "healthy_group_not_resampled": true,
+  "workers": [
+    {
+      "rank": 0,
+      "retries": [
+        1,
+        0
+      ],
+      "generations": [
+        2,
+        1
+      ]
+    },
+    {
+      "rank": 1,
+      "retries": [
+        1,
+        0
+      ],
+      "generations": [
+        2,
+        1
+      ]
+    }
+  ]
+}

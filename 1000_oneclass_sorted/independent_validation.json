@@ -1,0 +1,20 @@
+{
+  "total": 1000,
+  "task_counts": {
+    "NC": 500,
+    "LC": 100,
+    "LP": 400
+  },
+  "clean": 200,
+  "each_attack_budget": 160,
+  "cells_checked": 114,
+  "source_payloads_exactly_preserved": true,
+  "source_files_unchanged": true,
+  "parquet_schemas_preserved": true,
+  "jsonl_lines_exactly_preserved": true,
+  "all_formats_same_source_order": true,
+  "degree_order_verified": true,
+  "paired_source_ids_budgets_and_prediction_targets_equal": true,
+  "clean_200_graphs_equal": true,
+  "checked_at": "2026-11-14T07:52:58.584366+00:00"
+}

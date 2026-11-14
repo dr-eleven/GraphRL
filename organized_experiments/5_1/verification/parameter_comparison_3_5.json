@@ -1,0 +1,24 @@
+{
+  "reference": "3_5 current source and default launcher",
+  "model_arguments_identical": true,
+  "training_arguments_differences": {
+    "max_tool_calling_iterations": [
+      "4",
+      "10"
+    ],
+    "max_completion_length": [
+      "8704",
+      "16384"
+    ]
+  },
+  "zero3_config_identical": true,
+  "group_sampler_identical": true,
+  "generation_micro_batch_size": {
+    "3_5": 2,
+    "5_1": 1
+  },
+  "default_optimizer_steps_for_new_data": 1000,
+  "default_candidates_per_optimizer_step": 12,
+  "default_source_questions_per_optimizer_step": 2,
+  "training_started": false
+}

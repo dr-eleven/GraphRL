@@ -1,0 +1,17 @@
+{
+  "project": "5_1",
+  "unit_and_integration_tests": 33,
+  "all_passed": true,
+  "full_train_count": 5495,
+  "full_test_count": 600,
+  "max_prompt_tokens": {
+    "train": 2680,
+    "test": 3149
+  },
+  "deterministic_real_data_smoke_count": 32,
+  "cpu_tiny_grpo_update": true,
+  "cpu_gloo_workers": 2,
+  "original_3_5_unchanged": true,
+  "real_7b_gpu_validation": false,
+  "pilot_or_full_training_started": false
+}

@@ -1,0 +1,41 @@
+{
+  "reference": "organized_experiments/3_6_1/scripts/run_pipeline.py",
+  "train_sources": 1000,
+  "epoch": 1,
+  "expected_updates": 500,
+  "cuda_visible_devices": "1",
+  "zero_stage": 2,
+  "cpu_offload": false,
+  "bf16": true,
+  "fp16": false,
+  "tf32": true,
+  "per_device_train_batch_size": 12,
+  "gradient_accumulation_steps": 1,
+  "num_generations": 6,
+  "lora_rank": 32,
+  "lora_alpha": 32,
+  "lora_dropout": 0.05,
+  "learning_rate": 2e-06,
+  "warmup_steps": 55,
+  "beta": 0.01,
+  "gradient_checkpointing": true,
+  "use_liger_kernel": true,
+  "save_steps": 10,
+  "protocol": "5_1 free tools, max 10 model turns, binary terminal reward",
+  "test_conditions": [
+    "restored"
+  ],
+  "test_counts": {
+    "600_test_data_oneclass": 600,
+    "600_test_data_notoneclass": 600
+  },
+  "max_prompt_tokens": {
+    "train": 3874,
+    "600_test_data_oneclass": 2957,
+    "600_test_data_notoneclass": 2969
+  },
+  "cpu_tests_passed": 37,
+  "real_gpu_validation": false,
+  "training_started": false,
+  "remote_host": "awaiting JHH confirmation"
+}
