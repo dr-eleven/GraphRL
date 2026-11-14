@@ -1,0 +1,258 @@
+{
+  "count": 600,
+  "task_accuracy": 0.30333333333333334,
+  "format_valid": 0.9966666666666667,
+  "prediction_correct": 0.30333333333333334,
+  "prediction_format_valid": 0.9966666666666667,
+  "prediction_in_candidates": 0.895,
+  "structure_reward": 0.9966666666666667,
+  "task_reward": 0.362499999999998,
+  "token_limit_exceeded": 0.0,
+  "total": 1.3591666666666748,
+  "lp": {
+    "available": false,
+    "count": 0,
+    "positive_count": 0,
+    "negative_count": 0,
+    "both_gold_classes_present": false,
+    "confusion": {
+      "positive": {
+        "positive": 0,
+        "negative": 0,
+        "invalid": 0
+      },
+      "negative": {
+        "positive": 0,
+        "negative": 0,
+        "invalid": 0
+      }
+    },
+    "invalid_predictions": 0,
+    "positive_recall": null,
+    "negative_recall": null,
+    "balanced_accuracy": null,
+    "macro_f1": null
+  },
+  "condition": "noisy_policy",
+  "development_subset": false,
+  "by_task": {
+    "LC": {
+      "count": 150,
+      "task_accuracy": 0.30666666666666664,
+      "format_valid": 0.9933333333333333,
+      "prediction_correct": 0.30666666666666664,
+      "prediction_format_valid": 0.9933333333333333,
+      "prediction_in_candidates": 0.86,
+      "structure_reward": 0.9933333333333333,
+      "task_reward": 0.36200000000000054,
+      "token_limit_exceeded": 0.0,
+      "total": 1.3553333333333315,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    },
+    "NC": {
+      "count": 450,
+      "task_accuracy": 0.3022222222222222,
+      "format_valid": 0.9977777777777778,
+      "prediction_correct": 0.3022222222222222,
+      "prediction_format_valid": 0.9977777777777778,
+      "prediction_in_candidates": 0.9066666666666666,
+      "structure_reward": 0.9977777777777778,
+      "task_reward": 0.36266666666666486,
+      "token_limit_exceeded": 0.0,
+      "total": 1.3604444444444515,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    }
+  },
+  "by_dataset_and_task": {
+    "cora_node/NC": {
+      "count": 150,
+      "task_accuracy": 0.36666666666666664,
+      "format_valid": 1.0,
+      "prediction_correct": 0.36666666666666664,
+      "prediction_format_valid": 1.0,
+      "prediction_in_candidates": 0.9533333333333334,
+      "structure_reward": 1.0,
+      "task_reward": 0.42533333333333384,
+      "token_limit_exceeded": 0.0,
+      "total": 1.4253333333333313,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    },
+    "fb15k237/LC": {
+      "count": 150,
+      "task_accuracy": 0.30666666666666664,
+      "format_valid": 0.9933333333333333,
+      "prediction_correct": 0.30666666666666664,
+      "prediction_format_valid": 0.9933333333333333,
+      "prediction_in_candidates": 0.86,
+      "structure_reward": 0.9933333333333333,
+      "task_reward": 0.36200000000000054,
+      "token_limit_exceeded": 0.0,
+      "total": 1.3553333333333315,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    },
+    "products/NC": {
+      "count": 150,
+      "task_accuracy": 0.13333333333333333,
+      "format_valid": 0.9933333333333333,
+      "prediction_correct": 0.13333333333333333,
+      "prediction_format_valid": 0.9933333333333333,
+      "prediction_in_candidates": 0.8,
+      "structure_reward": 0.9933333333333333,
+      "task_reward": 0.20000000000000015,
+      "token_limit_exceeded": 0.0,
+      "total": 1.1933333333333311,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    },
+    "wikics/NC": {
+      "count": 150,
+      "task_accuracy": 0.4066666666666667,
+      "format_valid": 1.0,
+      "prediction_correct": 0.4066666666666667,
+      "prediction_format_valid": 1.0,
+      "prediction_in_candidates": 0.9666666666666667,
+      "structure_reward": 1.0,
+      "task_reward": 0.4626666666666669,
+      "token_limit_exceeded": 0.0,
+      "total": 1.4626666666666646,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    }
+  }
+}
