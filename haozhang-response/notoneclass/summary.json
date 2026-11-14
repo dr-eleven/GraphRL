@@ -1,0 +1,258 @@
+{
+  "count": 600,
+  "task_accuracy": 0.29833333333333334,
+  "format_valid": 0.995,
+  "prediction_correct": 0.29833333333333334,
+  "prediction_format_valid": 0.995,
+  "prediction_in_candidates": 0.9066666666666666,
+  "structure_reward": 0.995,
+  "task_reward": 0.3591666666666645,
+  "token_limit_exceeded": 0.0,
+  "total": 1.3541666666666752,
+  "lp": {
+    "available": false,
+    "count": 0,
+    "positive_count": 0,
+    "negative_count": 0,
+    "both_gold_classes_present": false,
+    "confusion": {
+      "positive": {
+        "positive": 0,
+        "negative": 0,
+        "invalid": 0
+      },
+      "negative": {
+        "positive": 0,
+        "negative": 0,
+        "invalid": 0
+      }
+    },
+    "invalid_predictions": 0,
+    "positive_recall": null,
+    "negative_recall": null,
+    "balanced_accuracy": null,
+    "macro_f1": null
+  },
+  "condition": "noisy_policy",
+  "development_subset": false,
+  "by_task": {
+    "LC": {
+      "count": 150,
+      "task_accuracy": 0.26666666666666666,
+      "format_valid": 0.9933333333333333,
+      "prediction_correct": 0.26666666666666666,
+      "prediction_format_valid": 0.9933333333333333,
+      "prediction_in_candidates": 0.88,
+      "structure_reward": 0.9933333333333333,
+      "task_reward": 0.3280000000000005,
+      "token_limit_exceeded": 0.0,
+      "total": 1.3213333333333313,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    },
+    "NC": {
+      "count": 450,
+      "task_accuracy": 0.3088888888888889,
+      "format_valid": 0.9955555555555555,
+      "prediction_correct": 0.3088888888888889,
+      "prediction_format_valid": 0.9955555555555555,
+      "prediction_in_candidates": 0.9155555555555556,
+      "structure_reward": 0.9955555555555555,
+      "task_reward": 0.3695555555555538,
+      "token_limit_exceeded": 0.0,
+      "total": 1.3651111111111178,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    }
+  },
+  "by_dataset_and_task": {
+    "cora_node/NC": {
+      "count": 150,
+      "task_accuracy": 0.38,
+      "format_valid": 1.0,
+      "prediction_correct": 0.38,
+      "prediction_format_valid": 1.0,
+      "prediction_in_candidates": 0.9466666666666667,
+      "structure_reward": 1.0,
+      "task_reward": 0.4366666666666669,
+      "token_limit_exceeded": 0.0,
+      "total": 1.4366666666666648,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    },
+    "fb15k237/LC": {
+      "count": 150,
+      "task_accuracy": 0.26666666666666666,
+      "format_valid": 0.9933333333333333,
+      "prediction_correct": 0.26666666666666666,
+      "prediction_format_valid": 0.9933333333333333,
+      "prediction_in_candidates": 0.88,
+      "structure_reward": 0.9933333333333333,
+      "task_reward": 0.3280000000000005,
+      "token_limit_exceeded": 0.0,
+      "total": 1.3213333333333313,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    },
+    "products/NC": {
+      "count": 150,
+      "task_accuracy": 0.14666666666666667,
+      "format_valid": 0.9866666666666667,
+      "prediction_correct": 0.14666666666666667,
+      "prediction_format_valid": 0.9866666666666667,
+      "prediction_in_candidates": 0.8466666666666667,
+      "structure_reward": 0.9866666666666667,
+      "task_reward": 0.21666666666666715,
+      "token_limit_exceeded": 0.0,
+      "total": 1.203333333333331,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    },
+    "wikics/NC": {
+      "count": 150,
+      "task_accuracy": 0.4,
+      "format_valid": 1.0,
+      "prediction_correct": 0.4,
+      "prediction_format_valid": 1.0,
+      "prediction_in_candidates": 0.9533333333333334,
+      "structure_reward": 1.0,
+      "task_reward": 0.4553333333333337,
+      "token_limit_exceeded": 0.0,
+      "total": 1.4553333333333316,
+      "lp": {
+        "available": false,
+        "count": 0,
+        "positive_count": 0,
+        "negative_count": 0,
+        "both_gold_classes_present": false,
+        "confusion": {
+          "positive": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          },
+          "negative": {
+            "positive": 0,
+            "negative": 0,
+            "invalid": 0
+          }
+        },
+        "invalid_predictions": 0,
+        "positive_recall": null,
+        "negative_recall": null,
+        "balanced_accuracy": null,
+        "macro_f1": null
+      }
+    }
+  }
+}
