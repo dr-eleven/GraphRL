@@ -1,0 +1,46 @@
+{
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "transformers": "4.52.4",
+    "peft": "0.19.1",
+    "verl": "0.5.0",
+    "vllm": "0.8.5.post1",
+    "ray": "2.46.0",
+    "flask": "3.1.3",
+    "safetensors": "0.8.0",
+    "pyarrow": "25.0.0"
+  },
+  "model_exists": true,
+  "workflow": "/opt/data/private/GraphRL/github_exports/6_1_Flow_20261117/repository/organized_experiments/6_1-Flow/code/workflow.py",
+  "flow_transport": "/opt/data/private/GraphRL/github_exports/6_1_Flow_20261117/repository/organized_experiments/6_1-Flow/code/flow_transport.py",
+  "agentflow.verl.entrypoint": "/opt/data/private/GraphRL/github_exports/6_1_Flow_20261117/repository/organized_experiments/6_1-Flow/upstream/agentflow/verl/entrypoint.py",
+  "verl.workers.fsdp_workers": "/opt/data/private/GraphRL/organized_experiments/6_1-Flow/.venv/lib/python3.10/site-packages/verl/workers/fsdp_workers.py",
+  "verl.workers.rollout.vllm_rollout.vllm_async_server": "/opt/data/private/GraphRL/organized_experiments/6_1-Flow/.venv/lib/python3.10/site-packages/verl/workers/rollout/vllm_rollout/vllm_async_server.py",
+  "changed_upstream_files": [
+    {
+      "path": "agentflow/__init__.py",
+      "source_sha256": "2642a16a2b12438a51bcc2097e27b5fdeacec495f668c2be6ff10eff8bdb6750",
+      "actual_sha256": "178b57877350f13c01d78ea7b11644a736001b1855da31ce407c63c68873729b"
+    },
+    {
+      "path": "agentflow/instrumentation/vllm.py",
+      "source_sha256": "04a04d40da570587badaf27011e6c0515773a4a39b6896ead87704dae9e7583c",
+      "actual_sha256": "7815095fa17af489875540403e358a70296c2767efdb29b1cc6dd2e9ff021fa6"
+    },
+    {
+      "path": "agentflow/verl/__init__.py",
+      "source_sha256": "12c79b7bee60160a9d9e05ae26e074b583f1c516cefc240767ec37d5100fb0ef",
+      "actual_sha256": "a9037654b275d9781db1de4f97adf570ffe91c5a7be1b0f08b8c47d828a0db33"
+    },
+    {
+      "path": "agentflow/verl/entrypoint.py",
+      "source_sha256": "609bad6cc9091e8f439c05902338cd78e42e98a711f739bad1c43ab5ccc91c75",
+      "actual_sha256": "f5472ede6712b16c224337c7d8c305eee43c18e6a9016accb5d0cea147630790"
+    },
+    {
+      "path": "agentflow/verl/trainer.py",
+      "source_sha256": "08f554c17da63152106cc93c6bf4fa5768f6af4b3cbd9df87fdc74380fcbc366",
+      "actual_sha256": "4837a83e86fe4d0589699c4ec25b49a6c3b6ceb55ecace4b66bd19f0982ee588"
+    }
+  ]
+}

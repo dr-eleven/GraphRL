@@ -1,0 +1,85 @@
+test_capacity_before_planner_is_logged_and_excluded_without_resampling (test_empty_capacity_flow.CapacityFlowTests) ... ok
+test_atomic_rejection (test_graph_flow.GraphFlowTests) ... ok
+test_candidate_matching (test_graph_flow.GraphFlowTests) ... ok
+test_empty_actions_rejected_for_every_tool (test_graph_flow.GraphFlowTests) ... ok
+test_free_order_and_candidate_isolation (test_graph_flow.GraphFlowTests) ... ok
+test_invalid_set_does_not_abort_original_workflow_logging (test_graph_flow.GraphFlowTests) ... ok
+test_literal_execution (test_graph_flow.GraphFlowTests) ... ok
+test_local_engine_structured_response_and_raw_trace (test_graph_flow.GraphFlowTests) ... ok
+test_original_solver_all_roles (test_graph_flow.GraphFlowTests) ... ok
+test_public_whitelist (test_graph_flow.GraphFlowTests) ... ok
+test_python_only_literals_rejected_and_audit_serializable (test_graph_flow.GraphFlowTests) ... ok
+test_reject_arbitrary_python (test_graph_flow.GraphFlowTests) ... ok
+test_async_lora_sync_matches_peft_merge (test_native_training.NativeTrainingTests) ... /opt/data/private/conda/envs/graphssr1/lib/python3.10/site-packages/peft/utils/save_and_load.py:372: UserWarning: Could not find a config file in  - will assume that the vocabulary was not modified.
+  warnings.warn(
+ok
+test_native_flow_grpo_lora_single_update_variable_flows (test_native_training.NativeTrainingTests) ... ok
+test_original_daemon_transition_tensorization (test_native_training.NativeTrainingTests) ... 2026-11-17 10:07:45,146 [INFO] (Process-3954854 agentflow.verl.daemon)   Training completed: 12 rollouts out of 12 total tasks
+ok
+test_eight_gpu_split_and_no_overlapping_roles (test_portable_launch.PortableLaunchTests) ... ok
+test_http_payload_really_uses_8192_generation_tokens (test_portable_launch.PortableLaunchTests) ... ok
+test_relocated_repository_and_explicit_paths (test_portable_launch.PortableLaunchTests) ... ok
+test_twelve_flows_reach_all_six_planner_servers_with_8192_cap (test_portable_launch.PortableLaunchTests) ... ok
+test_only_same_run_and_process_group_ray_actors_are_stopped (test_process_cleanup.CleanupTests) ... ok
+test_latest_graph_once_with_complete_independent_audit_history (test_prompt_memory.PromptMemoryTests) ... ok
+test_ten_turn_original_solver_uses_views_but_logs_full_snapshots (test_prompt_memory.PromptMemoryTests) ... ok
+test_http_error_saves_exact_failed_request (test_text_encoding.EncodingTests) ... ok
+test_sent_prompt_trace_and_diagnostics_match (test_text_encoding.EncodingTests) ... ok
+test_valid_text_unchanged_and_invalid_units_visible (test_text_encoding.EncodingTests) ... ok
+test_each_source_requires_two_retained_flows (test_trajectory_limits.TrajectoryLimitTests) ... ok
+test_exact_limit_and_whole_flow_overflow (test_trajectory_limits.TrajectoryLimitTests) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 3.570s
+
+OK
+Input data of `analyze_query()`:  ['\nTask: Analyze the given query to determine necessary skills and tools.\n\nInputs:\n- Query: Solve the public graph classification task. The initial graph may contain noise. Use only graph structure, node text and public constraints; noise locations and amounts are unknown. Use the CURRENT graph in the latest successful tool result; failed calls do not change it. Select any of del_node, del_edge, add_edge, rewrite in any order; repeats are allowed. Select a tool only when there is at least one supported applicable action. Every tool call MUST contain a nonempty actions list; actions=[] is forbidden. Never delete protected nodes or edit protected edges. No self-loops, missing endpoints, duplicate/conflicting actions. DEL_EDGE requires a present edge, ADD_EDGE an absent edge. REWRITE only target/query endpoints; preserve supported facts and never invent labels or answer hints. Submit the final answer as one JSON object {"analysis":"prediction reasoning","prediction":"one exact candidate label"}. Do not use a ground-truth label or hidden clean graph. A tool command must be exactly execution = tool.execute(analysis="reason", actions=[...]), using literal parameter values. The generator decides the final label from the current graph.\nPUBLIC TASK\n{"task_type": "NC", "target": "node0", "target_node": 0, "label_space": ["class_a", "class_b"], "protected_nodes": [0], "protected_edges": [], "protected_query_nodes": [0]}\n<initial_graph>\nnode0: Target factual text\nnode1: Related fact\nnode2: Injected irrelevant\n\nConnections:\n<node0, node1>\n<node1, node2>\n</initial_graph>\n- Available tools: [\'del_node\', \'del_edge\', \'add_edge\', \'rewrite\']\n- Metadata for tools: {\'del_node\': {\'tool_name\': \'del_node\', \'description\': \'Delete unsupported noise nodes.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=DELETE_NODE and exactly fields [\'node\', \'op\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'DELETE_NODE\\\', \\\'node\\\': 2}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}, \'del_edge\': {\'tool_name\': \'del_edge\', \'description\': \'Delete unsupported edges.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=DEL_EDGE and exactly fields [\'op\', \'u\', \'v\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'DEL_EDGE\\\', \\\'u\\\': 0, \\\'v\\\': 1}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}, \'add_edge\': {\'tool_name\': \'add_edge\', \'description\': \'Restore missing supported edges.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=ADD_EDGE and exactly fields [\'op\', \'u\', \'v\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'ADD_EDGE\\\', \\\'u\\\': 0, \\\'v\\\': 2}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}, \'rewrite\': {\'tool_name\': \'rewrite\', \'description\': \'Repair noise in target/query node text.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=REWRITE and exactly fields [\'node\', \'op\', \'text\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'REWRITE\\\', \\\'node\\\': 0, \\\'text\\\': \\\'Full repaired text grounded in supported facts\\\'}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}}\n\nInstructions:\n1. Identify the main objectives in the query.\n2. List the necessary skills and tools.\n3. For each skill and tool, explain how it helps address the query.\n4. Note any additional considerations.\n\nFormat your response with a summary of the query, lists of skills and tools with explanations, and a section for additional considerations.\n\nBe biref and precise with insight. \n']
+arielg 1
+
+==> 🐙 Final Answer:
+
+{"analysis":"factual target","prediction":"class_a"}
+
+[Total Time]: 0.0s
+
+==> ✅ Query Solved!
+Input data of `analyze_query()`:  ['\nTask: Analyze the given query to determine necessary skills and tools.\n\nInputs:\n- Query: Solve the public graph classification task. The initial graph may contain noise. Use only graph structure, node text and public constraints; noise locations and amounts are unknown. Use the CURRENT graph in the latest successful tool result; failed calls do not change it. Select any of del_node, del_edge, add_edge, rewrite in any order; repeats are allowed. Select a tool only when there is at least one supported applicable action. Every tool call MUST contain a nonempty actions list; actions=[] is forbidden. Never delete protected nodes or edit protected edges. No self-loops, missing endpoints, duplicate/conflicting actions. DEL_EDGE requires a present edge, ADD_EDGE an absent edge. REWRITE only target/query endpoints; preserve supported facts and never invent labels or answer hints. Submit the final answer as one JSON object {"analysis":"prediction reasoning","prediction":"one exact candidate label"}. Do not use a ground-truth label or hidden clean graph. A tool command must be exactly execution = tool.execute(analysis="reason", actions=[...]), using literal parameter values. The generator decides the final label from the current graph.\nPUBLIC TASK\n{"task_type": "NC", "target": "node0", "target_node": 0, "label_space": ["class_a", "class_b"], "protected_nodes": [0], "protected_edges": [], "protected_query_nodes": [0]}\n<initial_graph>\nnode0: Target factual text\nnode1: Related fact\nnode2: Injected irrelevant\n\nConnections:\n<node0, node1>\n<node1, node2>\n</initial_graph>\n- Available tools: [\'del_node\', \'del_edge\', \'add_edge\', \'rewrite\']\n- Metadata for tools: {\'del_node\': {\'tool_name\': \'del_node\', \'description\': \'Delete unsupported noise nodes.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=DELETE_NODE and exactly fields [\'node\', \'op\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'DELETE_NODE\\\', \\\'node\\\': 2}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}, \'del_edge\': {\'tool_name\': \'del_edge\', \'description\': \'Delete unsupported edges.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=DEL_EDGE and exactly fields [\'op\', \'u\', \'v\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'DEL_EDGE\\\', \\\'u\\\': 0, \\\'v\\\': 1}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}, \'add_edge\': {\'tool_name\': \'add_edge\', \'description\': \'Restore missing supported edges.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=ADD_EDGE and exactly fields [\'op\', \'u\', \'v\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'ADD_EDGE\\\', \\\'u\\\': 0, \\\'v\\\': 2}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}, \'rewrite\': {\'tool_name\': \'rewrite\', \'description\': \'Repair noise in target/query node text.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=REWRITE and exactly fields [\'node\', \'op\', \'text\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'REWRITE\\\', \\\'node\\\': 0, \\\'text\\\': \\\'Full repaired text grounded in supported facts\\\'}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}}\n\nInstructions:\n1. Identify the main objectives in the query.\n2. List the necessary skills and tools.\n3. For each skill and tool, explain how it helps address the query.\n4. Note any additional considerations.\n\nFormat your response with a summary of the query, lists of skills and tools with explanations, and a section for additional considerations.\n\nBe biref and precise with insight. \n']
+arielg 1
+
+==> 🐙 Final Answer:
+
+{"analysis":"factual target","prediction":"class_a"}
+
+[Total Time]: 0.0s
+
+==> ✅ Query Solved!
+Actor use_remove_padding=False
+Actor use_fused_kernels=False
+Actor use_remove_padding=False
+Actor use_fused_kernels=False
+Actor use_remove_padding=False
+Actor use_fused_kernels=False
+Actor use_remove_padding=False
+Actor use_fused_kernels=False
+Actor use_remove_padding=False
+Actor use_fused_kernels=False
+[STEP-WISE DEBUG]: valid response trace length in this training step is [14/14]
+Input data of `analyze_query()`:  ['\nTask: Analyze the given query to determine necessary skills and tools.\n\nInputs:\n- Query: Solve the public graph classification task. The initial graph may contain noise. Use only graph structure, node text and public constraints; noise locations and amounts are unknown. Use the CURRENT graph in the latest successful tool result; failed calls do not change it. Select any of del_node, del_edge, add_edge, rewrite in any order; repeats are allowed. Select a tool only when there is at least one supported applicable action. Every tool call MUST contain a nonempty actions list; actions=[] is forbidden. Never delete protected nodes or edit protected edges. No self-loops, missing endpoints, duplicate/conflicting actions. DEL_EDGE requires a present edge, ADD_EDGE an absent edge. REWRITE only target/query endpoints; preserve supported facts and never invent labels or answer hints. Submit the final answer as one JSON object {"analysis":"prediction reasoning","prediction":"one exact candidate label"}. Do not use a ground-truth label or hidden clean graph. A tool command must be exactly execution = tool.execute(analysis="reason", actions=[...]), using literal parameter values. The generator decides the final label from the current graph.\nPUBLIC TASK\n{"task_type": "NC", "target": "node0", "target_node": 0, "label_space": ["class_a", "class_b"], "protected_nodes": [0], "protected_edges": [], "protected_query_nodes": [0]}\n<initial_graph>\nnode0: Target factual text\nnode1: Related fact\nnode2: Injected irrelevant\n\nConnections:\n<node0, node1>\n<node1, node2>\n</initial_graph>\n- Available tools: [\'del_node\', \'del_edge\', \'add_edge\', \'rewrite\']\n- Metadata for tools: {\'del_node\': {\'tool_name\': \'del_node\', \'description\': \'Delete unsupported noise nodes.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=DELETE_NODE and exactly fields [\'node\', \'op\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'DELETE_NODE\\\', \\\'node\\\': 2}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}, \'del_edge\': {\'tool_name\': \'del_edge\', \'description\': \'Delete unsupported edges.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=DEL_EDGE and exactly fields [\'op\', \'u\', \'v\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'DEL_EDGE\\\', \\\'u\\\': 0, \\\'v\\\': 1}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}, \'add_edge\': {\'tool_name\': \'add_edge\', \'description\': \'Restore missing supported edges.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=ADD_EDGE and exactly fields [\'op\', \'u\', \'v\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'ADD_EDGE\\\', \\\'u\\\': 0, \\\'v\\\': 2}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}, \'rewrite\': {\'tool_name\': \'rewrite\', \'description\': \'Repair noise in target/query node text.\', \'parameters\': {\'analysis\': \'nonempty evidence-based reasoning\', \'actions\': "Nonempty list (1-64 actions) with op=REWRITE and exactly fields [\'node\', \'op\', \'text\']; empty actions are forbidden"}, \'command_example\': \'execution = tool.execute(analysis="reason", actions=[{\\\'op\\\': \\\'REWRITE\\\', \\\'node\\\': 0, \\\'text\\\': \\\'Full repaired text grounded in supported facts\\\'}])\', \'example_note\': \'Illustrative IDs only; use existing permitted nodes and supported edits in the CURRENT graph.\'}}\n\nInstructions:\n1. Identify the main objectives in the query.\n2. List the necessary skills and tools.\n3. For each skill and tool, explain how it helps address the query.\n4. Note any additional considerations.\n\nFormat your response with a summary of the query, lists of skills and tools with explanations, and a section for additional considerations.\n\nBe biref and precise with insight. \n']
+arielg 1
+arielg 1
+arielg 1
+arielg 1
+arielg 1
+arielg 1
+arielg 1
+arielg 1
+arielg 1
+arielg 1
+
+==> 🐙 Final Answer:
+
+{"analysis":"factual target","prediction":"class_a"}
+
+[Total Time]: 0.02s
+
+==> ✅ Query Solved!

@@ -6,6 +6,9 @@
 |---|---|---|
 | 3_5_1 | noisy 图直接输出 analysis+prediction；奖励 S+T | [实验说明](organized_experiments/3_5_1/README.md) |
 | 3_6 | 四阶段工具执行；奖励 S+B+T+H | [实验说明](organized_experiments/3_6/README.md) |
+| 6_1-Flow | AgentFlow / Flow-GRPO 解决 GraphRL；Qwen2.5-7B、8×H200、8192 token | [跨服务器执行说明](organized_experiments/6_1-Flow/README.md) |
+
+`6_1-Flow` 使用独立的 VERL/FSDP/vLLM 环境与启动流程，按其目录内 README 执行；下方原有的共用 TRL 环境说明适用于 3_5_1 与 3_6。
 
 ## 文件
 

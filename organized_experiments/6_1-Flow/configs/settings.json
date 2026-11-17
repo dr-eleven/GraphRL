@@ -1,0 +1,23 @@
+{
+  "model": "models/Qwen2.5-7B-Instruct",
+  "fixed_url": "http://127.0.0.1:8621/v1",
+  "fixed_served_model": "graphrl-fixed",
+  "tool_steps": 10,
+  "agent_timeout": 500,
+  "train_temperature": 0.7,
+  "test_temperature": 0.0,
+  "workers": 12,
+  "planner_flows_per_server": 2,
+  "planner_max_total_tokens": 8192,
+  "seed": 42,
+  "train_batch_size": 2,
+  "rollout_n": 6,
+  "lora_rank": 32,
+  "lora_alpha": 32,
+  "train_source": "1000_oneclass_sorted/train_grpo_episodes_redesign.json",
+  "test_sources": {
+    "test_data_600_oneclass": "600_test_data_oneclass/test_grpo_episodes.json",
+    "test_data_600_notoneclass": "600_test_data_notoneclass/test_grpo_episodes.json"
+  },
+  "max_tokens": 8192
+}

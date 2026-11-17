@@ -1,0 +1,12 @@
+{
+  "native_verl": "0.5.0",
+  "real_tiny_qwen_forward_backward": true,
+  "lora_updated": true,
+  "source_questions": 2,
+  "flows": 12,
+  "real_transitions": 13,
+  "padding_transitions": 1,
+  "optimizer_steps": 1,
+  "all_model_and_lora_bf16": true,
+  "optimizer_moments_bf16": true
+}

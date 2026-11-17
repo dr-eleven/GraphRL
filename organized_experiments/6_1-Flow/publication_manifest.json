@@ -1,0 +1,999 @@
+{
+  "format": "graphrl-6_1-flow-publication-v1",
+  "source_agentflow_commit": "b94006436b8712ab8682846fb0d886a5f174f2d4",
+  "changed_upstream_files": [
+    "agentflow/__init__.py",
+    "agentflow/instrumentation/vllm.py",
+    "agentflow/verl/__init__.py",
+    "agentflow/verl/entrypoint.py",
+    "agentflow/verl/trainer.py"
+  ],
+  "self_excluded": "publication_manifest.json",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 64,
+      "sha256": "bfb8714eecf21581be9785d3866c45f42b1351a5295e4ae7638c09dd3ef15334"
+    },
+    {
+      "path": "6_1-Flow_实现详解与完整实例.md",
+      "bytes": 112601,
+      "sha256": "c2d0b5884aafe6b66102e760517c1dcc4f8f4a57aae549cf8fad585b82bb2f37"
+    },
+    {
+      "path": "README.md",
+      "bytes": 16872,
+      "sha256": "e9d1c0128e3002176828ae99d7f5f4197bed0f3a5b670efb8adffeed91012534"
+    },
+    {
+      "path": "code/batching.py",
+      "bytes": 3890,
+      "sha256": "72e07c2573fcb96ac0c3dede43abced3632eabda6c77768b24d3d0c745d3b1a0"
+    },
+    {
+      "path": "code/bootstrap.py",
+      "bytes": 984,
+      "sha256": "96bb5f444f3e057e59bc10b88a4184292a07e20433f4c861d66ef2cbae814680"
+    },
+    {
+      "path": "code/check_launch.py",
+      "bytes": 2876,
+      "sha256": "49ca1fc6e6b49f09276c72fa856424bb306c83af4cf3fb52ae8aa78e8173f433"
+    },
+    {
+      "path": "code/engines.py",
+      "bytes": 3904,
+      "sha256": "d867b3f6976b9019ad201334e9f50e0013dc1c48718876163798b83505ad1179"
+    },
+    {
+      "path": "code/evaluate.py",
+      "bytes": 2498,
+      "sha256": "6a213333cf08b489a8c2d92e2ec9c03864e5cc3a795b242029e3a1a2a4941e96"
+    },
+    {
+      "path": "code/flow_transport.py",
+      "bytes": 7028,
+      "sha256": "3f04de4fb7fda3e29741852fd016fb26255f0d564c9cf001b385bc7ec99c8e8c"
+    },
+    {
+      "path": "code/flow_workers.py",
+      "bytes": 2598,
+      "sha256": "449884196ac1a735920647c013df25edc95a3b9617f497604485f29986ae4c93"
+    },
+    {
+      "path": "code/graph_core/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "code/graph_core/graph_state.py",
+      "bytes": 7925,
+      "sha256": "147861d6d1bd52bb2dc5bf1b7052bf041d06a4a20c08d6599e27255be9166cd5"
+    },
+    {
+      "path": "code/graph_core/label_utils.py",
+      "bytes": 204,
+      "sha256": "9d4f0b0cb25d243d490a9c2b104975795c8772e4fc75bd21e5662cba5be8aae5"
+    },
+    {
+      "path": "code/graph_core/protocol.py",
+      "bytes": 5474,
+      "sha256": "6f2b5310787d929fad3cc42fcc10625978792b899567c7a154f1730ab99cd5bc"
+    },
+    {
+      "path": "code/graph_core/validation.py",
+      "bytes": 7313,
+      "sha256": "c9c345cf7239089d8b8c023da99f035c1ee1cf7517e291ce7bb0320cd2c989bd"
+    },
+    {
+      "path": "code/graph_task.py",
+      "bytes": 7339,
+      "sha256": "44d4de0cf2963c7a8a19de8703aaa54b5934846418ac21ce38149b514fe5ee09"
+    },
+    {
+      "path": "code/latest_adapter.py",
+      "bytes": 387,
+      "sha256": "339237b8907df76c6dfa47278e76fe342fce9d089239499c745ffc6b12adf36d"
+    },
+    {
+      "path": "code/lora_sync.py",
+      "bytes": 3369,
+      "sha256": "1be4b6a5352e689658419f45f40b916455ef37633a61c4f225e255de7cebbfe5"
+    },
+    {
+      "path": "code/merge_adapter.py",
+      "bytes": 1462,
+      "sha256": "41b60ad097e4eea531f7c2140cfce5c48edeb0f8465b01f8f636fdaefd338a89"
+    },
+    {
+      "path": "code/preflight.py",
+      "bytes": 1372,
+      "sha256": "3da2b645279a6b74f48a59735a3062239ffc4769f850a13d21e5197b0605d54a"
+    },
+    {
+      "path": "code/prepare_data.py",
+      "bytes": 2168,
+      "sha256": "af8313f386f003ff18bd90c6bb8417b0c5e199b9802b30ccfc8cd0341b4c0bdd"
+    },
+    {
+      "path": "code/probe_real_flow.py",
+      "bytes": 1291,
+      "sha256": "4d00841229ef7c0ebeefe75e7f1ea3e0e52b00dab1485127b22d8135c1717902"
+    },
+    {
+      "path": "code/process_cleanup.py",
+      "bytes": 902,
+      "sha256": "6dc8948527846c5048d613b93fcfdb30d7900b6d9feaf347bb86691fc78faf73"
+    },
+    {
+      "path": "code/prompt_memory.py",
+      "bytes": 1112,
+      "sha256": "f2285f27121874e0bf7087706008f2b83db4b6488a9db87cdaa617a89f330be1"
+    },
+    {
+      "path": "code/resolve_settings.py",
+      "bytes": 1493,
+      "sha256": "620ac174e21f089dac16fd2957258b36eab1d72e6072ec4ec2f865c3361dc569"
+    },
+    {
+      "path": "code/serve.py",
+      "bytes": 312,
+      "sha256": "580895dd6aa6667b76cd877e10da3bea0989585f33dce5caf6ff99fe63715788"
+    },
+    {
+      "path": "code/set_status.py",
+      "bytes": 442,
+      "sha256": "915d3a9bc136026b40d2c61271178e1c4cd880ace6f6dc1a65c5699e0b86c273"
+    },
+    {
+      "path": "code/status.py",
+      "bytes": 2574,
+      "sha256": "eb747300461b3920b2d4b73b08bd002ef685f7f70191a20a29e352467eaa5009"
+    },
+    {
+      "path": "code/text_encoding.py",
+      "bytes": 757,
+      "sha256": "d2c4028bde8fc9534ef43466c589e715b6bb6bb0b38d1f8000f17b601bc77527"
+    },
+    {
+      "path": "code/train.py",
+      "bytes": 428,
+      "sha256": "a50283b3c3484e549dcf4b885a100337ea01df1d5300d19d2c1fb812f43d00a8"
+    },
+    {
+      "path": "code/trajectory_limits.py",
+      "bytes": 615,
+      "sha256": "d6fb04d5e4f2cab8d5ebdf991b09703005be4ee43ca85d2ca2b504e4e00e5390"
+    },
+    {
+      "path": "code/transfer_compat.py",
+      "bytes": 1296,
+      "sha256": "87520e321206cbf015c1696110d9491a4178de358c7c38828b7f994dcb0f6ef6"
+    },
+    {
+      "path": "code/wait_server.py",
+      "bytes": 491,
+      "sha256": "602fb574d00ba30d592dd7ce733bce7b541f798834160dd1b59044aa7f5ce235"
+    },
+    {
+      "path": "code/workflow.py",
+      "bytes": 3946,
+      "sha256": "a7c0d5a52f2a077bbec4cbebeeeb75ef9af53e2ffb921472698739a3ba275505"
+    },
+    {
+      "path": "configs/graph_flow.yaml",
+      "bytes": 2405,
+      "sha256": "41d8160f7faef91d630324fd5d9990df8a8437d96e310cd2c0df1caaec2f256e"
+    },
+    {
+      "path": "configs/settings.json",
+      "bytes": 697,
+      "sha256": "3a1968904711d86eed4e6d8a372e696d02e8907d3d9fd2a99d5d648cbc20e893"
+    },
+    {
+      "path": "plan.md",
+      "bytes": 20254,
+      "sha256": "d4288b60b77fd88e55e0dc06dfb52e4a5355a4f8e5c969ae922a5af410d8583d"
+    },
+    {
+      "path": "requirements-native.txt",
+      "bytes": 667,
+      "sha256": "7da8ff93e045bfdf0c9eaf8e78c5f6b15bfd30c9d629c6e53d8d8205e3eadc2c"
+    },
+    {
+      "path": "scripts/pipeline.sh",
+      "bytes": 4683,
+      "sha256": "127817ece35ff95b928890d69735ccd21a20f360e33082b55ff3267efb7a3807"
+    },
+    {
+      "path": "scripts/setup.sh",
+      "bytes": 829,
+      "sha256": "86e6848d0d7a74ce5b392a12aee2151ed2a37e8d01ee8244f74440ff86b61f80"
+    },
+    {
+      "path": "source_manifest.json",
+      "bytes": 20420,
+      "sha256": "3f9b4e892c8c89f2ff582034b13dae2ee5e4e850132407c1ebb0a9d5367fef8d"
+    },
+    {
+      "path": "tests/test_empty_capacity_flow.py",
+      "bytes": 1882,
+      "sha256": "ceac4f9865497add029e6773b3504768926c34c8e9589970b79315815f957dfe"
+    },
+    {
+      "path": "tests/test_graph_flow.py",
+      "bytes": 7985,
+      "sha256": "5195ffae3c1846de42d915ca027d8c8e69c5bdf7e166f427002646706314c404"
+    },
+    {
+      "path": "tests/test_native_training.py",
+      "bytes": 8793,
+      "sha256": "f0ba11fa6e3324436bfdef88e44e98ef4c6266420631df3910e09fd8ab2c0dae"
+    },
+    {
+      "path": "tests/test_portable_launch.py",
+      "bytes": 3807,
+      "sha256": "444183f8993750b90136b6f55432baf0a57312047b231fc2a6a0192990e3b297"
+    },
+    {
+      "path": "tests/test_process_cleanup.py",
+      "bytes": 1413,
+      "sha256": "424e9851003691d99496c85be518fab07b61e7dfb7e69618c7fc2d8c91cef850"
+    },
+    {
+      "path": "tests/test_prompt_memory.py",
+      "bytes": 3588,
+      "sha256": "f775e06549991e97af90afd34f177ec8bf1ef2bab995f0f4796d9edcb6e1a1b0"
+    },
+    {
+      "path": "tests/test_text_encoding.py",
+      "bytes": 2463,
+      "sha256": "d5e9d9c8753ef10cb1e355b786d77c8168aaf66484f08e5d5b194ee444a74df6"
+    },
+    {
+      "path": "tests/test_trajectory_limits.py",
+      "bytes": 976,
+      "sha256": "866e6d77af0ee559110e5352d594de338336b8f81d8afc56d3527e484ca2ee31"
+    },
+    {
+      "path": "upstream/.gitignore",
+      "bytes": 4839,
+      "sha256": "58af41cfcaa32edbfe285b9cc0eb1e6e177c3ce14aaea0b8aed79f1f3d5e8c4f"
+    },
+    {
+      "path": "upstream/LICENSE",
+      "bytes": 1075,
+      "sha256": "7b3d5313d62030d656f5237984c011b40381292cbe8ea97d7998cd0a752826a0"
+    },
+    {
+      "path": "upstream/README.md",
+      "bytes": 17343,
+      "sha256": "2f9ef131b0d6cb6819ab7118a46bb5ee52d8345fe9514982b3885e6e877aed41"
+    },
+    {
+      "path": "upstream/agentflow/.env.template",
+      "bytes": 1561,
+      "sha256": "8034e6611ceaa015fa6a89bc4ec6bbe480cca7a9f7eb751d7ea655130a6a4893"
+    },
+    {
+      "path": "upstream/agentflow/.gitignore",
+      "bytes": 3439,
+      "sha256": "10fbc8fd8d15d1f048678882dd2b5511d9a767f3f9d94bac52fe1e1c492a718f"
+    },
+    {
+      "path": "upstream/agentflow/__init__.py",
+      "bytes": 295,
+      "sha256": "178b57877350f13c01d78ea7b11644a736001b1855da31ce407c63c68873729b"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/anthropic.py",
+      "bytes": 5345,
+      "sha256": "dac6f4cdc8a9e7cf3f35ff446730610c11b6ec3773b0a0ecf263498c0b78f8ab"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/azure.py",
+      "bytes": 13569,
+      "sha256": "055229f14d55665c9bbb4cc9e926ae096132802a9b2caf2d0a34e5abb78ca532"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/base.py",
+      "bytes": 1281,
+      "sha256": "2a6899a766dd0a4425f0664c4e443735dc5e72874fda4318577022d20e9ad936"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/dashscope.py",
+      "bytes": 9928,
+      "sha256": "f515b7b616aa39b7d460776af811b7405b00c06bc703fe6639394867f126b761"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/deepseek.py",
+      "bytes": 3487,
+      "sha256": "9d28850beb7f1e7081cf412eebdea57c27739c64ebdc39d7ea60ac71b0efaa28"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/engine_utils.py",
+      "bytes": 435,
+      "sha256": "4650fe43280d5fad150e479636a50fccae378964c41ee3641a798e050c474c64"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/factory.py",
+      "bytes": 7706,
+      "sha256": "7b90b3bb4a5488d70d1f19c2d4e945c0ee3104d9a386ef7716f0bb2c4e3581f4"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/gemini.py",
+      "bytes": 6208,
+      "sha256": "7eecad01f72ef03fb81813b2b6f3bc4d4ddfd89acaf80ca05972c4b0eb878097"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/litellm.py",
+      "bytes": 14646,
+      "sha256": "b2b5f2bd3e90397ce1fe748d516572a8f44fc29bdad38a324aff2bd299ab68e7"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/ollama.py",
+      "bytes": 6388,
+      "sha256": "86b4457196d0b7a13f5a05b70facc308d27d9510b8e2b542f8b486f63abc1846"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/openai.py",
+      "bytes": 12941,
+      "sha256": "e6da07225f05678a171fc67204ee3cf87f16b6ec98b34cfab8af97eff028dd06"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/together.py",
+      "bytes": 6988,
+      "sha256": "0bf00e969b0b89c97a4dae32da0075cae8004878e3679f7055773bdf323fddda"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/vllm.py",
+      "bytes": 6848,
+      "sha256": "baeae1c91117630e1ca98f981cbc9e9013c6f383134e888f0f392b0cc18d3cda"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/engine/xai.py",
+      "bytes": 7112,
+      "sha256": "26a448f8609247641affcd5bbb45ce4260cf2e72f4a46c50d44112d83421a96e"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/models/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/models/executor.py",
+      "bytes": 14096,
+      "sha256": "5605fe169463313eb6b193852fc12927e532e9a57f52ab63463c83ccb8e213f1"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/models/formatters.py",
+      "bytes": 772,
+      "sha256": "5c82cfcf4323a8fd5c52b998ade14eb7b646b142f81fd414c16d748623afbaab"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/models/initializer.py",
+      "bytes": 24525,
+      "sha256": "db4bc9dc0ac0a4853cc9ca7eee0353937113ba6f03869bc0022fbee2704952f7"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/models/memory.py",
+      "bytes": 3311,
+      "sha256": "9564198863ef8d1d0929d7e4f02dc1396a06ab17fa7e096d8953434ed34e2c2a"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/models/planner.py",
+      "bytes": 17612,
+      "sha256": "aff8f0de55e1bad912e2d92773316ca905153919912132d4b0cb63f7f0f4ea69"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/models/utils.py",
+      "bytes": 1417,
+      "sha256": "cbabe72b5340a16adab4cd594374fcd1a7f5c355c94da6d68175610d200f6e65"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/models/verifier.py",
+      "bytes": 8402,
+      "sha256": "7e099fd7095a77da884b765ea03112dd7ef5bff81f2e13bbec4003fd2651dcae"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/solver.py",
+      "bytes": 13713,
+      "sha256": "a38399ffc7225153479d499717560dcd310c7560e810daa18efbb953046c2593"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/base.py",
+      "bytes": 4158,
+      "sha256": "ca07eb2e1fe54b1dd4a1181b5183bed65a671b182dc1f9d06465ed89fa9dd9cd"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/base_generator/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/base_generator/examples/baseball.png",
+      "bytes": 88597,
+      "sha256": "6c6073ef8914f7d98c672401cabcc0a20fb71fce0ef4f487fc63d029a97e92f1"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/base_generator/tool.py",
+      "bytes": 5292,
+      "sha256": "fd52fdbb434360c258c81158f63c8ab526f2b9f72203e1c79284e9d695d50dd2"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/google_search/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/google_search/tool.py",
+      "bytes": 10322,
+      "sha256": "54897e2f3da45e40b2678928cdf96016a363f31149fb14b869eab132d591b64c"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/python_coder/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/python_coder/tool.py",
+      "bytes": 13884,
+      "sha256": "53c45ce1cb091079c4a2a5cbfc10b9e79de929cf03994e05245b2564d50811df"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/test_all_tools.sh",
+      "bytes": 1065,
+      "sha256": "71e905a20a0676765e3454a1ee551ad138295ff2869bc9af6f7869288f8004cc"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/web_search/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/web_search/tool.py",
+      "bytes": 12918,
+      "sha256": "321e9628c48c92b882a82fee80ad8347a10efc9922e5e655f82ab6f19139b8de"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/wikipedia_search/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/wikipedia_search/tool.py",
+      "bytes": 11799,
+      "sha256": "0ef99a9577aed5da68e3bad333e04a36bd1f15ef8a142cf5a5465d559c68ae8d"
+    },
+    {
+      "path": "upstream/agentflow/agentflow/tools/wikipedia_search/web_rag.py",
+      "bytes": 11321,
+      "sha256": "86a0ac30ed1b72d8efdbcc3ac9cd4551f0c934202d85a5c1523c60f742bd1eb6"
+    },
+    {
+      "path": "upstream/agentflow/cli/agentops_server.py",
+      "bytes": 644,
+      "sha256": "f84cf81a8e677062f9d0ff031a71660fb76e257dd2011d517de7c3a72ca8435b"
+    },
+    {
+      "path": "upstream/agentflow/cli/vllm.py",
+      "bytes": 190,
+      "sha256": "4bd2888cae44ef4946b29c72750610c4c3260d1b41fdf446e78b671ef7c77d7f"
+    },
+    {
+      "path": "upstream/agentflow/client.py",
+      "bytes": 15086,
+      "sha256": "11219066625d11bb0f8fbe1692b5c09bc035f9c80b410f66ad5e1edc3591096c"
+    },
+    {
+      "path": "upstream/agentflow/config.py",
+      "bytes": 13940,
+      "sha256": "c2effbc7826f65c7e415e0f6f94f3b40e5f996ebe91e76b289a2afb13eab0bc2"
+    },
+    {
+      "path": "upstream/agentflow/instrumentation/__init__.py",
+      "bytes": 2812,
+      "sha256": "57140cde76a1f4b0d35dd82be9a2c5de4779a570b2b539f2871b169aeab15b91"
+    },
+    {
+      "path": "upstream/agentflow/instrumentation/agentops.py",
+      "bytes": 9821,
+      "sha256": "1fba11bd1c5826f903e750c84d23a1b89cabec871a967197b7e6e65b72850f6c"
+    },
+    {
+      "path": "upstream/agentflow/instrumentation/agentops_langchain.py",
+      "bytes": 1268,
+      "sha256": "ae9ed77421edb7e7448d4ac1f3625f2a4da52c30cb5e81dbedeb9efd9ea1be93"
+    },
+    {
+      "path": "upstream/agentflow/instrumentation/litellm.py",
+      "bytes": 969,
+      "sha256": "f889319fc06fb9f22cc3ef26cb70122bdbff9a5c75637c8bd15ab9e821a790c1"
+    },
+    {
+      "path": "upstream/agentflow/instrumentation/verl_chat_scheduler.py",
+      "bytes": 6332,
+      "sha256": "37df8dcd41399768bae98950d707dee6582f59904d8720d502da35b1d4718dec"
+    },
+    {
+      "path": "upstream/agentflow/instrumentation/vllm.py",
+      "bytes": 2181,
+      "sha256": "7815095fa17af489875540403e358a70296c2767efdb29b1cc6dd2e9ff021fa6"
+    },
+    {
+      "path": "upstream/agentflow/litagent.py",
+      "bytes": 6888,
+      "sha256": "4760ae346113ce907e12dbaf2e37befb388aa020d17b325c7e517d976baf4fcf"
+    },
+    {
+      "path": "upstream/agentflow/logging.py",
+      "bytes": 565,
+      "sha256": "4887259b70d3b159283fca32e5c773d54a6ebe89d479734b4a6095e26ff17f2e"
+    },
+    {
+      "path": "upstream/agentflow/pyproject.toml",
+      "bytes": 1256,
+      "sha256": "d6568f542ba93d48b38e6e8e6bc68cc2946f7b264cbea6dfc61636da64d09d76"
+    },
+    {
+      "path": "upstream/agentflow/requirements.txt",
+      "bytes": 360,
+      "sha256": "31a6799e0f6d6cc0e075b182fd6411d3ddd8d02a883a7f81cf5b6cbdf339c6d9"
+    },
+    {
+      "path": "upstream/agentflow/reward.py",
+      "bytes": 1942,
+      "sha256": "24299912bc811b2929a67e6302286c0966d0d7105e9dc8e1b6997c932e83ad41"
+    },
+    {
+      "path": "upstream/agentflow/runner.py",
+      "bytes": 10871,
+      "sha256": "bc388982c3fef050f3be70bf16406e64740519bd8e5c3e7efbedb2470f8f9ce3"
+    },
+    {
+      "path": "upstream/agentflow/scripts/assets/chinook.db",
+      "bytes": 913408,
+      "sha256": "84f5d9143ac4deebdb81650ab650e226d909e660106846b119a5c47c33f94c13"
+    },
+    {
+      "path": "upstream/agentflow/scripts/assets/prompt_caches.jsonl",
+      "bytes": 43874,
+      "sha256": "8a70b13f03f47b3fd4711ffd7fbbe67bd142afbb4509cd36b36ab652f99889fc"
+    },
+    {
+      "path": "upstream/agentflow/scripts/test_llm_engine.py",
+      "bytes": 8021,
+      "sha256": "c7d8ff5acdee29656245a46797826e36d64016636cb7f40776509025d9a40cfc"
+    },
+    {
+      "path": "upstream/agentflow/scripts/test_vllm.py",
+      "bytes": 8974,
+      "sha256": "a12ef3207c2aa2fe520705a9c50c8c0e6388ad92ae632b5767c35c3caa1cf1b6"
+    },
+    {
+      "path": "upstream/agentflow/server.py",
+      "bytes": 15262,
+      "sha256": "dbab1b35982f03337a7950e56c1f12e4db863beeb905b4a38b3c32d54f34a136"
+    },
+    {
+      "path": "upstream/agentflow/tracer/__init__.py",
+      "bytes": 103,
+      "sha256": "59c9f93e0c646f931e8650d5c38be6a5a5d94cd74143255d039b30af0672a7bd"
+    },
+    {
+      "path": "upstream/agentflow/tracer/agentops.py",
+      "bytes": 9292,
+      "sha256": "b48ac6d131087b65ebe9444ba99d104d5038a1f805ea46cefa3e2c4d68cf8663"
+    },
+    {
+      "path": "upstream/agentflow/tracer/base.py",
+      "bytes": 3285,
+      "sha256": "16cf015f3c29be197d7e3ee20ed69cb8b7da251bdd446c2d10da0da5150e1368"
+    },
+    {
+      "path": "upstream/agentflow/tracer/http.py",
+      "bytes": 14123,
+      "sha256": "34014687c9c5063db4d7d58689a5b6386f91e2dd2fbac3e498ee1c2e6bfd5dc1"
+    },
+    {
+      "path": "upstream/agentflow/tracer/triplet.py",
+      "bytes": 21979,
+      "sha256": "80db144311ad2d1e5a64b7e14249b9321d16393da52ecd3bef814728f4261ac5"
+    },
+    {
+      "path": "upstream/agentflow/trainer.py",
+      "bytes": 13476,
+      "sha256": "1ba18279294f1a7c302064ce79182ac4d97ca901d7a8616054fa8023a78866eb"
+    },
+    {
+      "path": "upstream/agentflow/types.py",
+      "bytes": 5847,
+      "sha256": "987f484dcbb43175c9280e37e1a30a979bad0efa2d8e99a54a9489d86567f5dd"
+    },
+    {
+      "path": "upstream/agentflow/verl/__init__.py",
+      "bytes": 76,
+      "sha256": "a9037654b275d9781db1de4f97adf570ffe91c5a7be1b0f08b8c47d828a0db33"
+    },
+    {
+      "path": "upstream/agentflow/verl/__main__.py",
+      "bytes": 68,
+      "sha256": "582ef24292fe3d36fc24b6df24aad5310f31f5899f5615ccece2808268bed0f9"
+    },
+    {
+      "path": "upstream/agentflow/verl/async_server.py",
+      "bytes": 1578,
+      "sha256": "f3ac16e9746ac6e3413e189417051c0b94e5ec7886b37b45f674bb4bb82c0025"
+    },
+    {
+      "path": "upstream/agentflow/verl/config.yaml",
+      "bytes": 321,
+      "sha256": "44bd2d568cb754fd315ebdb14e3bfc0e9340d5934bd35d7d69b1aa4acca8343c"
+    },
+    {
+      "path": "upstream/agentflow/verl/daemon.py",
+      "bytes": 38080,
+      "sha256": "133a0ec2610e69070fdb01e78bb851da5e8987b2c699e417ec6c8d474b3b4b57"
+    },
+    {
+      "path": "upstream/agentflow/verl/dataset.py",
+      "bytes": 600,
+      "sha256": "3a759aee089b28ea88b4232095633666b603b0e93436c96d2207ef556e2dfb81"
+    },
+    {
+      "path": "upstream/agentflow/verl/entrypoint.py",
+      "bytes": 6265,
+      "sha256": "f5472ede6712b16c224337c7d8c305eee43c18e6a9016accb5d0cea147630790"
+    },
+    {
+      "path": "upstream/agentflow/verl/trainer.py",
+      "bytes": 23052,
+      "sha256": "4837a83e86fe4d0589699c4ec25b49a6c3b6ceb55ecace4b66bd19f0982ee588"
+    },
+    {
+      "path": "upstream/assets/doc/api_key.md",
+      "bytes": 4727,
+      "sha256": "304cdc5c2a0dce455109d709ffb8c739148feeb9c211b1b900c1518bc0158101"
+    },
+    {
+      "path": "upstream/assets/doc/benchmark.md",
+      "bytes": 4302,
+      "sha256": "326adf29baf3bcac974c706029bdeb27159dc4f9728b893de406552b58c1a37e"
+    },
+    {
+      "path": "upstream/assets/doc/llm_engine.md",
+      "bytes": 3213,
+      "sha256": "513843d77d5549c72dfcac12529004460f5711977519c90452a3591571ba23e0"
+    },
+    {
+      "path": "upstream/assets/doc/logs.md",
+      "bytes": 3024,
+      "sha256": "29ea45b464158085ae1cc09ec47c1f8066fbcf8e769dd5af0cb44270282320bc"
+    },
+    {
+      "path": "upstream/assets/doc/serve_vllm_local.md",
+      "bytes": 6791,
+      "sha256": "f336575d4d33c357311abe994acc241c0a17a318195a5979be15fb5e92546c18"
+    },
+    {
+      "path": "upstream/assets/doc/test_env.md",
+      "bytes": 2812,
+      "sha256": "18846c51516b993c377f6a5ad6e3838afe1613ed9db3eabedba4a6fa5d066740"
+    },
+    {
+      "path": "upstream/assets/img/devin.png",
+      "bytes": 128423,
+      "sha256": "e70fbb74f1a8348a3ccc7e3e6b6cd394a280988375108cbc63848d0a1ad9a665"
+    },
+    {
+      "path": "upstream/assets/img/flow_grpo.png",
+      "bytes": 342155,
+      "sha256": "b288fe2419b5ec33bf792fd6f1d90fa7e167cf892609d9d6449066d1bfcfe91f"
+    },
+    {
+      "path": "upstream/assets/img/framework.png",
+      "bytes": 371345,
+      "sha256": "c7033a52658f28485fe4297a98df5011f32052ceefda0ea0b723da1dd4aab256"
+    },
+    {
+      "path": "upstream/assets/img/logo.png",
+      "bytes": 260739,
+      "sha256": "daec8cb766258e7b17589d8b717470f110e668438073518a5b74986d9f72eb92"
+    },
+    {
+      "path": "upstream/assets/img/logo.svg",
+      "bytes": 10382,
+      "sha256": "12cf0d9e06b78b6242f03734b9ae03c3b2ce381c911c450e56c5dd34cf508ec2"
+    },
+    {
+      "path": "upstream/assets/img/main_table.png",
+      "bytes": 471329,
+      "sha256": "751d90f0b0a723713ec355b5791004f3b8ef3adc161c5f3a0859d63b86820b67"
+    },
+    {
+      "path": "upstream/assets/img/maintable1.png",
+      "bytes": 914591,
+      "sha256": "701c1c54a509282e434146845a670a0c52a7aa8fbbd521ab3316fcf6b713d628"
+    },
+    {
+      "path": "upstream/assets/img/maintable2.png",
+      "bytes": 872606,
+      "sha256": "d96cc0c57b6f4a87b8737b03fba1e5494ec36c2cddbd0b03c0e30e26c940d7aa"
+    },
+    {
+      "path": "upstream/assets/img/tool_call.png",
+      "bytes": 256274,
+      "sha256": "301ec6b72bdf41e94f526eb16a63d1200d84a3467e900317a1c219a6f9b265c2"
+    },
+    {
+      "path": "upstream/assets/img/wechat_group.jpg",
+      "bytes": 263935,
+      "sha256": "3a005849fd1527b91ee89d104ddcbc627b4603ed5d289ff0ae5d684b6e6c925d"
+    },
+    {
+      "path": "upstream/data/aime24_data.py",
+      "bytes": 4216,
+      "sha256": "08cbb6772266a99dfe284867b50c49fd00518bd17364df7bbe8752d5a5bbc000"
+    },
+    {
+      "path": "upstream/data/get_train_data.py",
+      "bytes": 5748,
+      "sha256": "136a7e75015237834bfbd6994a9948f5177eebb01d739e302c05a9d55497767e"
+    },
+    {
+      "path": "upstream/pyproject.toml",
+      "bytes": 1126,
+      "sha256": "490c5fd16194856e17def63e774ec18c135bc6ed21971728ab00e6230cb732dd"
+    },
+    {
+      "path": "upstream/quick_start.py",
+      "bytes": 467,
+      "sha256": "c3eb078878945fc515dfa1e99beb94c2bf7cfe7d9620033b2f568883b7be88a5"
+    },
+    {
+      "path": "upstream/scripts/restart_ray.sh",
+      "bytes": 208,
+      "sha256": "4a176b20f9fca007d68ac27216d2e3fe37be27e1611a25700bc76a180812d4fd"
+    },
+    {
+      "path": "upstream/scripts/serve_vllm.sh",
+      "bytes": 1302,
+      "sha256": "8881859229bf72152dc9fd41d7697c9e887b74031f1f2a8d958303cc379d0806"
+    },
+    {
+      "path": "upstream/scripts/setup_stable_gpu.sh",
+      "bytes": 537,
+      "sha256": "1c7566dbc8d5305e2f97df4522dd4f6cfd93c9a4af10716eb84e16b449a7842b"
+    },
+    {
+      "path": "upstream/setup.sh",
+      "bytes": 1561,
+      "sha256": "88fc155e0cad5c8522a4ae2d0239a5bae31bf9b5883024a4987f20b8c90a3cbd"
+    },
+    {
+      "path": "upstream/test/2wiki/data/data.json",
+      "bytes": 35575,
+      "sha256": "eb4b045ebf8e3441bb14a7420e5d84bafcaea58c776cfec75c3bb98ee1653122"
+    },
+    {
+      "path": "upstream/test/2wiki/run.sh",
+      "bytes": 3662,
+      "sha256": "2d048676d3dc636337216cb203e3905b7eb6a4db1bb4c45f010fed73af68d867"
+    },
+    {
+      "path": "upstream/test/aime24/data/data.json",
+      "bytes": 32713,
+      "sha256": "9284356275e85963bc7508d41c42b73215faffc962abad02f248a650ca51feb2"
+    },
+    {
+      "path": "upstream/test/aime24/run.sh",
+      "bytes": 3663,
+      "sha256": "4e01663e70dc7c0d91e0bdc13f6418d757319cba94fecbf09a4a25031b62d28e"
+    },
+    {
+      "path": "upstream/test/amc23/data/data.json",
+      "bytes": 25808,
+      "sha256": "ad7c8d4930ac9399e01915632c92fa69f7988f6f097bd57ebc7067569aa63072"
+    },
+    {
+      "path": "upstream/test/amc23/run.sh",
+      "bytes": 3662,
+      "sha256": "2ba788ae3e7eb82d5fb819d34a281e07bd66cb0079bdd9e40eb10258ea518451"
+    },
+    {
+      "path": "upstream/test/bamboogle/data/data.json",
+      "bytes": 74771,
+      "sha256": "647c37dda2f27341e3f28e5b2a9625f6abcff44639f26a08dcbe1667d831d5e2"
+    },
+    {
+      "path": "upstream/test/bamboogle/run.sh",
+      "bytes": 3667,
+      "sha256": "760d9e895a8fd085d8741cb4fe32ec1692482d35724e03c9ce6189d97c0358ae"
+    },
+    {
+      "path": "upstream/test/calculate_score_unified.py",
+      "bytes": 17370,
+      "sha256": "b3a33ef292006ac6bf0caf514d543b30a0847577a5f561f1c590278761e8061a"
+    },
+    {
+      "path": "upstream/test/gaia/data/data.json",
+      "bytes": 294276,
+      "sha256": "fa714861d661c54c8999f3b9de0155c6da3d2d6496e4c95cd12f4dcf59210b76"
+    },
+    {
+      "path": "upstream/test/gaia/run.sh",
+      "bytes": 3662,
+      "sha256": "d0d4c59a3455585c18c21d04a7ba89ce649425ae3b1ca353dfee3ede731586fc"
+    },
+    {
+      "path": "upstream/test/gameof24/data/data.json",
+      "bytes": 126418,
+      "sha256": "ffb0c95018ba400931f2940a2dabae666f1ed6d0383beadd969f0447869a14ff"
+    },
+    {
+      "path": "upstream/test/gameof24/run.sh",
+      "bytes": 3665,
+      "sha256": "0c343ccaea2b8ef0127a9ea3a87442e9581cddf1496201b0f0604ed720b27560"
+    },
+    {
+      "path": "upstream/test/gpqa/data/data.json",
+      "bytes": 457318,
+      "sha256": "f95883e7748b65186f95edd256d5ada5707ed7f18907d28f22da24cf7d797e15"
+    },
+    {
+      "path": "upstream/test/gpqa/run.sh",
+      "bytes": 3661,
+      "sha256": "e442d2928132ba35b61ea4c39dcba5b2f32cb0dc11dd7b14df481261e11f57a0"
+    },
+    {
+      "path": "upstream/test/hotpotqa/data/data.json",
+      "bytes": 64983,
+      "sha256": "81f09495a18c6bc1cd1c48483babc6c59dfb9381e524850be53ffb62a9c28fd7"
+    },
+    {
+      "path": "upstream/test/hotpotqa/run.sh",
+      "bytes": 3665,
+      "sha256": "1e53b6983cf224ebfb43f454b56e67ea0364f57d4dbf45e754ae47cb8ee2bb85"
+    },
+    {
+      "path": "upstream/test/medqa/data/data.json",
+      "bytes": 687809,
+      "sha256": "d4f09708b623a7750013b22c607495eb8872bbef7a3f50990b7279c8fd87ec8d"
+    },
+    {
+      "path": "upstream/test/medqa/run.sh",
+      "bytes": 3662,
+      "sha256": "81e8d650fb34fe478c2f4dc9417bb3bc1f0c42f015bf954c192ff51bdb2ef09e"
+    },
+    {
+      "path": "upstream/test/musique/data/data.json",
+      "bytes": 42506,
+      "sha256": "195b9e75a45c58a5a0398c753a1d8fb7a8adf87b4bfde3f12d20ce22517e4759"
+    },
+    {
+      "path": "upstream/test/musique/run.sh",
+      "bytes": 3664,
+      "sha256": "04576ab120e6c41c233839971eed951bdd5631023260f0773e49826963670031"
+    },
+    {
+      "path": "upstream/test/solve.py",
+      "bytes": 19347,
+      "sha256": "93664ee226c30ddfdd56e309fe4ec86f2ed8ff697175e718cff9f315d27491a3"
+    },
+    {
+      "path": "upstream/test/utils.py",
+      "bytes": 2895,
+      "sha256": "20578af8616fd0082a7cf6d109fc0e6ade05f1660fa40b627b4c38a372ed6649"
+    },
+    {
+      "path": "upstream/train/config.yaml",
+      "bytes": 4605,
+      "sha256": "5093c217174a04f0b510096aa4f4634eeb4d202af9fd80c4ee601a64607b53e1"
+    },
+    {
+      "path": "upstream/train/rollout.py",
+      "bytes": 16282,
+      "sha256": "81c4da3052804ee448ea9a4d3f263b3a6c87e1a1825cbeb402f18873c59d8477"
+    },
+    {
+      "path": "upstream/train/rollout_dev.py",
+      "bytes": 2206,
+      "sha256": "dfbd0a4f3fd927901f2e0afe19c68b8eca643badeda3b32c82b107e771a47a1f"
+    },
+    {
+      "path": "upstream/train/serve_with_logs.sh",
+      "bytes": 2367,
+      "sha256": "4c0171c98557b4a5dab817980a5e8574c86826af28c33423be8a176429c3a707"
+    },
+    {
+      "path": "upstream/train/train_agent.py",
+      "bytes": 3147,
+      "sha256": "cefe449d970d65a3a098e4dde7292fb0a0667ac9f4eadab3f7dc80f941f96669"
+    },
+    {
+      "path": "upstream/train/train_with_logs.sh",
+      "bytes": 3004,
+      "sha256": "eef27ad6fc598150f415b17aecd6c09717ac4ca94aed0462ee7ef532f7304353"
+    },
+    {
+      "path": "upstream/train/utils.py",
+      "bytes": 5503,
+      "sha256": "4d492618badac7a93f9cf0be01d8b02a7042d33937687dfadd93354e7205bc5a"
+    },
+    {
+      "path": "upstream/util/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "upstream/util/get_pub_ip.py",
+      "bytes": 792,
+      "sha256": "c7501151bb5c610683552a209430ba550aeafcf17924488a9eaa9b65f08603c5"
+    },
+    {
+      "path": "upstream/util/model_merger.py",
+      "bytes": 6394,
+      "sha256": "774e1d75faaff25d5ff8b4ad9195e51f2223f3d9e955710489efe20c563781e1"
+    },
+    {
+      "path": "upstream/util/parse_config.py",
+      "bytes": 2888,
+      "sha256": "4457e2262d9f5bea507c152f552fcb0b80944ea3de9d17a1ccf60f2b3cebc28d"
+    },
+    {
+      "path": "upstream/util/port_cleanup.py",
+      "bytes": 2163,
+      "sha256": "77a90553b4c0a038ac854053b0e5b471a168e1b1cb68c041cef31afda136af0e"
+    },
+    {
+      "path": "upstream/util/upload_hf_model.py",
+      "bytes": 324,
+      "sha256": "c282b054b29c5228f0585bfb2ee20046c71d6390a4358079146d5af200de1494"
+    },
+    {
+      "path": "upstream/uv.lock",
+      "bytes": 1030318,
+      "sha256": "e4b582114e140dbc5229637a26121aa1cf641b4b7fb09082ce1ca0ab17cc70a6"
+    },
+    {
+      "path": "verification/environment_source.json",
+      "bytes": 784,
+      "sha256": "2a18c1dc41da12e30de021172e1ed85f8369a98b586e975a31597b76f7810bf3"
+    },
+    {
+      "path": "verification/native_cpu_grpo.json",
+      "bytes": 283,
+      "sha256": "95fea94199a3a2885bf696afd6ef89f23f9ff06eb5eb7494acfd74f6053fd1e3"
+    },
+    {
+      "path": "verification/preflight.json",
+      "bytes": 2315,
+      "sha256": "a8ee07281f058b0837680df9e970459e57235095f91c4f0bb0b25d422e3dce7d"
+    },
+    {
+      "path": "verification/publication_checks.json",
+      "bytes": 1895,
+      "sha256": "6bdd4d2bf285ffc78323131a436318e09eb6627ad1496c9f3e5e711cfb92b90d"
+    },
+    {
+      "path": "verification/unit_tests.txt",
+      "bytes": 17027,
+      "sha256": "9d77d9c5d82286498a810c2b5f1350a49a6f4d85e3555f73c102e4bb79c11ab3"
+    }
+  ]
+}

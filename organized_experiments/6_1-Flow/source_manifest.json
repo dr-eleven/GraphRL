@@ -1,0 +1,578 @@
+{
+  "source": "/opt/data/private/AgentFlow",
+  "commit": "b94006436b8712ab8682846fb0d886a5f174f2d4",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "58af41cfcaa32edbfe285b9cc0eb1e6e177c3ce14aaea0b8aed79f1f3d5e8c4f"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "7b3d5313d62030d656f5237984c011b40381292cbe8ea97d7998cd0a752826a0"
+    },
+    {
+      "path": "README.md",
+      "sha256": "2f9ef131b0d6cb6819ab7118a46bb5ee52d8345fe9514982b3885e6e877aed41"
+    },
+    {
+      "path": "agentflow/.env.template",
+      "sha256": "8034e6611ceaa015fa6a89bc4ec6bbe480cca7a9f7eb751d7ea655130a6a4893"
+    },
+    {
+      "path": "agentflow/.gitignore",
+      "sha256": "10fbc8fd8d15d1f048678882dd2b5511d9a767f3f9d94bac52fe1e1c492a718f"
+    },
+    {
+      "path": "agentflow/__init__.py",
+      "sha256": "2642a16a2b12438a51bcc2097e27b5fdeacec495f668c2be6ff10eff8bdb6750"
+    },
+    {
+      "path": "agentflow/agentflow/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agentflow/agentflow/engine/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agentflow/agentflow/engine/anthropic.py",
+      "sha256": "dac6f4cdc8a9e7cf3f35ff446730610c11b6ec3773b0a0ecf263498c0b78f8ab"
+    },
+    {
+      "path": "agentflow/agentflow/engine/azure.py",
+      "sha256": "055229f14d55665c9bbb4cc9e926ae096132802a9b2caf2d0a34e5abb78ca532"
+    },
+    {
+      "path": "agentflow/agentflow/engine/base.py",
+      "sha256": "2a6899a766dd0a4425f0664c4e443735dc5e72874fda4318577022d20e9ad936"
+    },
+    {
+      "path": "agentflow/agentflow/engine/dashscope.py",
+      "sha256": "f515b7b616aa39b7d460776af811b7405b00c06bc703fe6639394867f126b761"
+    },
+    {
+      "path": "agentflow/agentflow/engine/deepseek.py",
+      "sha256": "9d28850beb7f1e7081cf412eebdea57c27739c64ebdc39d7ea60ac71b0efaa28"
+    },
+    {
+      "path": "agentflow/agentflow/engine/engine_utils.py",
+      "sha256": "4650fe43280d5fad150e479636a50fccae378964c41ee3641a798e050c474c64"
+    },
+    {
+      "path": "agentflow/agentflow/engine/factory.py",
+      "sha256": "7b90b3bb4a5488d70d1f19c2d4e945c0ee3104d9a386ef7716f0bb2c4e3581f4"
+    },
+    {
+      "path": "agentflow/agentflow/engine/gemini.py",
+      "sha256": "7eecad01f72ef03fb81813b2b6f3bc4d4ddfd89acaf80ca05972c4b0eb878097"
+    },
+    {
+      "path": "agentflow/agentflow/engine/litellm.py",
+      "sha256": "b2b5f2bd3e90397ce1fe748d516572a8f44fc29bdad38a324aff2bd299ab68e7"
+    },
+    {
+      "path": "agentflow/agentflow/engine/ollama.py",
+      "sha256": "86b4457196d0b7a13f5a05b70facc308d27d9510b8e2b542f8b486f63abc1846"
+    },
+    {
+      "path": "agentflow/agentflow/engine/openai.py",
+      "sha256": "e6da07225f05678a171fc67204ee3cf87f16b6ec98b34cfab8af97eff028dd06"
+    },
+    {
+      "path": "agentflow/agentflow/engine/together.py",
+      "sha256": "0bf00e969b0b89c97a4dae32da0075cae8004878e3679f7055773bdf323fddda"
+    },
+    {
+      "path": "agentflow/agentflow/engine/vllm.py",
+      "sha256": "baeae1c91117630e1ca98f981cbc9e9013c6f383134e888f0f392b0cc18d3cda"
+    },
+    {
+      "path": "agentflow/agentflow/engine/xai.py",
+      "sha256": "26a448f8609247641affcd5bbb45ce4260cf2e72f4a46c50d44112d83421a96e"
+    },
+    {
+      "path": "agentflow/agentflow/models/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agentflow/agentflow/models/executor.py",
+      "sha256": "5605fe169463313eb6b193852fc12927e532e9a57f52ab63463c83ccb8e213f1"
+    },
+    {
+      "path": "agentflow/agentflow/models/formatters.py",
+      "sha256": "5c82cfcf4323a8fd5c52b998ade14eb7b646b142f81fd414c16d748623afbaab"
+    },
+    {
+      "path": "agentflow/agentflow/models/initializer.py",
+      "sha256": "db4bc9dc0ac0a4853cc9ca7eee0353937113ba6f03869bc0022fbee2704952f7"
+    },
+    {
+      "path": "agentflow/agentflow/models/memory.py",
+      "sha256": "9564198863ef8d1d0929d7e4f02dc1396a06ab17fa7e096d8953434ed34e2c2a"
+    },
+    {
+      "path": "agentflow/agentflow/models/planner.py",
+      "sha256": "aff8f0de55e1bad912e2d92773316ca905153919912132d4b0cb63f7f0f4ea69"
+    },
+    {
+      "path": "agentflow/agentflow/models/utils.py",
+      "sha256": "cbabe72b5340a16adab4cd594374fcd1a7f5c355c94da6d68175610d200f6e65"
+    },
+    {
+      "path": "agentflow/agentflow/models/verifier.py",
+      "sha256": "7e099fd7095a77da884b765ea03112dd7ef5bff81f2e13bbec4003fd2651dcae"
+    },
+    {
+      "path": "agentflow/agentflow/solver.py",
+      "sha256": "a38399ffc7225153479d499717560dcd310c7560e810daa18efbb953046c2593"
+    },
+    {
+      "path": "agentflow/agentflow/tools/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agentflow/agentflow/tools/base.py",
+      "sha256": "ca07eb2e1fe54b1dd4a1181b5183bed65a671b182dc1f9d06465ed89fa9dd9cd"
+    },
+    {
+      "path": "agentflow/agentflow/tools/base_generator/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agentflow/agentflow/tools/base_generator/examples/baseball.png",
+      "sha256": "6c6073ef8914f7d98c672401cabcc0a20fb71fce0ef4f487fc63d029a97e92f1"
+    },
+    {
+      "path": "agentflow/agentflow/tools/base_generator/tool.py",
+      "sha256": "fd52fdbb434360c258c81158f63c8ab526f2b9f72203e1c79284e9d695d50dd2"
+    },
+    {
+      "path": "agentflow/agentflow/tools/google_search/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agentflow/agentflow/tools/google_search/tool.py",
+      "sha256": "54897e2f3da45e40b2678928cdf96016a363f31149fb14b869eab132d591b64c"
+    },
+    {
+      "path": "agentflow/agentflow/tools/python_coder/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agentflow/agentflow/tools/python_coder/tool.py",
+      "sha256": "53c45ce1cb091079c4a2a5cbfc10b9e79de929cf03994e05245b2564d50811df"
+    },
+    {
+      "path": "agentflow/agentflow/tools/test_all_tools.sh",
+      "sha256": "71e905a20a0676765e3454a1ee551ad138295ff2869bc9af6f7869288f8004cc"
+    },
+    {
+      "path": "agentflow/agentflow/tools/web_search/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agentflow/agentflow/tools/web_search/tool.py",
+      "sha256": "321e9628c48c92b882a82fee80ad8347a10efc9922e5e655f82ab6f19139b8de"
+    },
+    {
+      "path": "agentflow/agentflow/tools/wikipedia_search/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "agentflow/agentflow/tools/wikipedia_search/tool.py",
+      "sha256": "0ef99a9577aed5da68e3bad333e04a36bd1f15ef8a142cf5a5465d559c68ae8d"
+    },
+    {
+      "path": "agentflow/agentflow/tools/wikipedia_search/web_rag.py",
+      "sha256": "86a0ac30ed1b72d8efdbcc3ac9cd4551f0c934202d85a5c1523c60f742bd1eb6"
+    },
+    {
+      "path": "agentflow/cli/agentops_server.py",
+      "sha256": "f84cf81a8e677062f9d0ff031a71660fb76e257dd2011d517de7c3a72ca8435b"
+    },
+    {
+      "path": "agentflow/cli/vllm.py",
+      "sha256": "4bd2888cae44ef4946b29c72750610c4c3260d1b41fdf446e78b671ef7c77d7f"
+    },
+    {
+      "path": "agentflow/client.py",
+      "sha256": "11219066625d11bb0f8fbe1692b5c09bc035f9c80b410f66ad5e1edc3591096c"
+    },
+    {
+      "path": "agentflow/config.py",
+      "sha256": "c2effbc7826f65c7e415e0f6f94f3b40e5f996ebe91e76b289a2afb13eab0bc2"
+    },
+    {
+      "path": "agentflow/instrumentation/__init__.py",
+      "sha256": "57140cde76a1f4b0d35dd82be9a2c5de4779a570b2b539f2871b169aeab15b91"
+    },
+    {
+      "path": "agentflow/instrumentation/agentops.py",
+      "sha256": "1fba11bd1c5826f903e750c84d23a1b89cabec871a967197b7e6e65b72850f6c"
+    },
+    {
+      "path": "agentflow/instrumentation/agentops_langchain.py",
+      "sha256": "ae9ed77421edb7e7448d4ac1f3625f2a4da52c30cb5e81dbedeb9efd9ea1be93"
+    },
+    {
+      "path": "agentflow/instrumentation/litellm.py",
+      "sha256": "f889319fc06fb9f22cc3ef26cb70122bdbff9a5c75637c8bd15ab9e821a790c1"
+    },
+    {
+      "path": "agentflow/instrumentation/verl_chat_scheduler.py",
+      "sha256": "37df8dcd41399768bae98950d707dee6582f59904d8720d502da35b1d4718dec"
+    },
+    {
+      "path": "agentflow/instrumentation/vllm.py",
+      "sha256": "04a04d40da570587badaf27011e6c0515773a4a39b6896ead87704dae9e7583c"
+    },
+    {
+      "path": "agentflow/litagent.py",
+      "sha256": "4760ae346113ce907e12dbaf2e37befb388aa020d17b325c7e517d976baf4fcf"
+    },
+    {
+      "path": "agentflow/logging.py",
+      "sha256": "4887259b70d3b159283fca32e5c773d54a6ebe89d479734b4a6095e26ff17f2e"
+    },
+    {
+      "path": "agentflow/pyproject.toml",
+      "sha256": "d6568f542ba93d48b38e6e8e6bc68cc2946f7b264cbea6dfc61636da64d09d76"
+    },
+    {
+      "path": "agentflow/requirements.txt",
+      "sha256": "31a6799e0f6d6cc0e075b182fd6411d3ddd8d02a883a7f81cf5b6cbdf339c6d9"
+    },
+    {
+      "path": "agentflow/reward.py",
+      "sha256": "24299912bc811b2929a67e6302286c0966d0d7105e9dc8e1b6997c932e83ad41"
+    },
+    {
+      "path": "agentflow/runner.py",
+      "sha256": "bc388982c3fef050f3be70bf16406e64740519bd8e5c3e7efbedb2470f8f9ce3"
+    },
+    {
+      "path": "agentflow/scripts/assets/chinook.db",
+      "sha256": "84f5d9143ac4deebdb81650ab650e226d909e660106846b119a5c47c33f94c13"
+    },
+    {
+      "path": "agentflow/scripts/assets/prompt_caches.jsonl",
+      "sha256": "8a70b13f03f47b3fd4711ffd7fbbe67bd142afbb4509cd36b36ab652f99889fc"
+    },
+    {
+      "path": "agentflow/scripts/test_llm_engine.py",
+      "sha256": "c7d8ff5acdee29656245a46797826e36d64016636cb7f40776509025d9a40cfc"
+    },
+    {
+      "path": "agentflow/scripts/test_vllm.py",
+      "sha256": "a12ef3207c2aa2fe520705a9c50c8c0e6388ad92ae632b5767c35c3caa1cf1b6"
+    },
+    {
+      "path": "agentflow/server.py",
+      "sha256": "dbab1b35982f03337a7950e56c1f12e4db863beeb905b4a38b3c32d54f34a136"
+    },
+    {
+      "path": "agentflow/tracer/__init__.py",
+      "sha256": "59c9f93e0c646f931e8650d5c38be6a5a5d94cd74143255d039b30af0672a7bd"
+    },
+    {
+      "path": "agentflow/tracer/agentops.py",
+      "sha256": "b48ac6d131087b65ebe9444ba99d104d5038a1f805ea46cefa3e2c4d68cf8663"
+    },
+    {
+      "path": "agentflow/tracer/base.py",
+      "sha256": "16cf015f3c29be197d7e3ee20ed69cb8b7da251bdd446c2d10da0da5150e1368"
+    },
+    {
+      "path": "agentflow/tracer/http.py",
+      "sha256": "34014687c9c5063db4d7d58689a5b6386f91e2dd2fbac3e498ee1c2e6bfd5dc1"
+    },
+    {
+      "path": "agentflow/tracer/triplet.py",
+      "sha256": "80db144311ad2d1e5a64b7e14249b9321d16393da52ecd3bef814728f4261ac5"
+    },
+    {
+      "path": "agentflow/trainer.py",
+      "sha256": "1ba18279294f1a7c302064ce79182ac4d97ca901d7a8616054fa8023a78866eb"
+    },
+    {
+      "path": "agentflow/types.py",
+      "sha256": "987f484dcbb43175c9280e37e1a30a979bad0efa2d8e99a54a9489d86567f5dd"
+    },
+    {
+      "path": "agentflow/verl/__init__.py",
+      "sha256": "12c79b7bee60160a9d9e05ae26e074b583f1c516cefc240767ec37d5100fb0ef"
+    },
+    {
+      "path": "agentflow/verl/__main__.py",
+      "sha256": "582ef24292fe3d36fc24b6df24aad5310f31f5899f5615ccece2808268bed0f9"
+    },
+    {
+      "path": "agentflow/verl/async_server.py",
+      "sha256": "f3ac16e9746ac6e3413e189417051c0b94e5ec7886b37b45f674bb4bb82c0025"
+    },
+    {
+      "path": "agentflow/verl/config.yaml",
+      "sha256": "44bd2d568cb754fd315ebdb14e3bfc0e9340d5934bd35d7d69b1aa4acca8343c"
+    },
+    {
+      "path": "agentflow/verl/daemon.py",
+      "sha256": "133a0ec2610e69070fdb01e78bb851da5e8987b2c699e417ec6c8d474b3b4b57"
+    },
+    {
+      "path": "agentflow/verl/dataset.py",
+      "sha256": "3a759aee089b28ea88b4232095633666b603b0e93436c96d2207ef556e2dfb81"
+    },
+    {
+      "path": "agentflow/verl/entrypoint.py",
+      "sha256": "609bad6cc9091e8f439c05902338cd78e42e98a711f739bad1c43ab5ccc91c75"
+    },
+    {
+      "path": "agentflow/verl/trainer.py",
+      "sha256": "08f554c17da63152106cc93c6bf4fa5768f6af4b3cbd9df87fdc74380fcbc366"
+    },
+    {
+      "path": "assets/doc/api_key.md",
+      "sha256": "304cdc5c2a0dce455109d709ffb8c739148feeb9c211b1b900c1518bc0158101"
+    },
+    {
+      "path": "assets/doc/benchmark.md",
+      "sha256": "326adf29baf3bcac974c706029bdeb27159dc4f9728b893de406552b58c1a37e"
+    },
+    {
+      "path": "assets/doc/llm_engine.md",
+      "sha256": "513843d77d5549c72dfcac12529004460f5711977519c90452a3591571ba23e0"
+    },
+    {
+      "path": "assets/doc/logs.md",
+      "sha256": "29ea45b464158085ae1cc09ec47c1f8066fbcf8e769dd5af0cb44270282320bc"
+    },
+    {
+      "path": "assets/doc/serve_vllm_local.md",
+      "sha256": "f336575d4d33c357311abe994acc241c0a17a318195a5979be15fb5e92546c18"
+    },
+    {
+      "path": "assets/doc/test_env.md",
+      "sha256": "18846c51516b993c377f6a5ad6e3838afe1613ed9db3eabedba4a6fa5d066740"
+    },
+    {
+      "path": "assets/img/devin.png",
+      "sha256": "e70fbb74f1a8348a3ccc7e3e6b6cd394a280988375108cbc63848d0a1ad9a665"
+    },
+    {
+      "path": "assets/img/flow_grpo.png",
+      "sha256": "b288fe2419b5ec33bf792fd6f1d90fa7e167cf892609d9d6449066d1bfcfe91f"
+    },
+    {
+      "path": "assets/img/framework.png",
+      "sha256": "c7033a52658f28485fe4297a98df5011f32052ceefda0ea0b723da1dd4aab256"
+    },
+    {
+      "path": "assets/img/logo.png",
+      "sha256": "daec8cb766258e7b17589d8b717470f110e668438073518a5b74986d9f72eb92"
+    },
+    {
+      "path": "assets/img/logo.svg",
+      "sha256": "12cf0d9e06b78b6242f03734b9ae03c3b2ce381c911c450e56c5dd34cf508ec2"
+    },
+    {
+      "path": "assets/img/main_table.png",
+      "sha256": "751d90f0b0a723713ec355b5791004f3b8ef3adc161c5f3a0859d63b86820b67"
+    },
+    {
+      "path": "assets/img/maintable1.png",
+      "sha256": "701c1c54a509282e434146845a670a0c52a7aa8fbbd521ab3316fcf6b713d628"
+    },
+    {
+      "path": "assets/img/maintable2.png",
+      "sha256": "d96cc0c57b6f4a87b8737b03fba1e5494ec36c2cddbd0b03c0e30e26c940d7aa"
+    },
+    {
+      "path": "assets/img/tool_call.png",
+      "sha256": "301ec6b72bdf41e94f526eb16a63d1200d84a3467e900317a1c219a6f9b265c2"
+    },
+    {
+      "path": "assets/img/wechat_group.jpg",
+      "sha256": "3a005849fd1527b91ee89d104ddcbc627b4603ed5d289ff0ae5d684b6e6c925d"
+    },
+    {
+      "path": "data/aime24_data.py",
+      "sha256": "08cbb6772266a99dfe284867b50c49fd00518bd17364df7bbe8752d5a5bbc000"
+    },
+    {
+      "path": "data/get_train_data.py",
+      "sha256": "136a7e75015237834bfbd6994a9948f5177eebb01d739e302c05a9d55497767e"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "490c5fd16194856e17def63e774ec18c135bc6ed21971728ab00e6230cb732dd"
+    },
+    {
+      "path": "quick_start.py",
+      "sha256": "c3eb078878945fc515dfa1e99beb94c2bf7cfe7d9620033b2f568883b7be88a5"
+    },
+    {
+      "path": "scripts/restart_ray.sh",
+      "sha256": "4a176b20f9fca007d68ac27216d2e3fe37be27e1611a25700bc76a180812d4fd"
+    },
+    {
+      "path": "scripts/serve_vllm.sh",
+      "sha256": "8881859229bf72152dc9fd41d7697c9e887b74031f1f2a8d958303cc379d0806"
+    },
+    {
+      "path": "scripts/setup_stable_gpu.sh",
+      "sha256": "1c7566dbc8d5305e2f97df4522dd4f6cfd93c9a4af10716eb84e16b449a7842b"
+    },
+    {
+      "path": "setup.sh",
+      "sha256": "88fc155e0cad5c8522a4ae2d0239a5bae31bf9b5883024a4987f20b8c90a3cbd"
+    },
+    {
+      "path": "test/2wiki/data/data.json",
+      "sha256": "eb4b045ebf8e3441bb14a7420e5d84bafcaea58c776cfec75c3bb98ee1653122"
+    },
+    {
+      "path": "test/2wiki/run.sh",
+      "sha256": "2d048676d3dc636337216cb203e3905b7eb6a4db1bb4c45f010fed73af68d867"
+    },
+    {
+      "path": "test/aime24/data/data.json",
+      "sha256": "9284356275e85963bc7508d41c42b73215faffc962abad02f248a650ca51feb2"
+    },
+    {
+      "path": "test/aime24/run.sh",
+      "sha256": "4e01663e70dc7c0d91e0bdc13f6418d757319cba94fecbf09a4a25031b62d28e"
+    },
+    {
+      "path": "test/amc23/data/data.json",
+      "sha256": "ad7c8d4930ac9399e01915632c92fa69f7988f6f097bd57ebc7067569aa63072"
+    },
+    {
+      "path": "test/amc23/run.sh",
+      "sha256": "2ba788ae3e7eb82d5fb819d34a281e07bd66cb0079bdd9e40eb10258ea518451"
+    },
+    {
+      "path": "test/bamboogle/data/data.json",
+      "sha256": "647c37dda2f27341e3f28e5b2a9625f6abcff44639f26a08dcbe1667d831d5e2"
+    },
+    {
+      "path": "test/bamboogle/run.sh",
+      "sha256": "760d9e895a8fd085d8741cb4fe32ec1692482d35724e03c9ce6189d97c0358ae"
+    },
+    {
+      "path": "test/calculate_score_unified.py",
+      "sha256": "b3a33ef292006ac6bf0caf514d543b30a0847577a5f561f1c590278761e8061a"
+    },
+    {
+      "path": "test/gaia/data/data.json",
+      "sha256": "fa714861d661c54c8999f3b9de0155c6da3d2d6496e4c95cd12f4dcf59210b76"
+    },
+    {
+      "path": "test/gaia/run.sh",
+      "sha256": "d0d4c59a3455585c18c21d04a7ba89ce649425ae3b1ca353dfee3ede731586fc"
+    },
+    {
+      "path": "test/gameof24/data/data.json",
+      "sha256": "ffb0c95018ba400931f2940a2dabae666f1ed6d0383beadd969f0447869a14ff"
+    },
+    {
+      "path": "test/gameof24/run.sh",
+      "sha256": "0c343ccaea2b8ef0127a9ea3a87442e9581cddf1496201b0f0604ed720b27560"
+    },
+    {
+      "path": "test/gpqa/data/data.json",
+      "sha256": "f95883e7748b65186f95edd256d5ada5707ed7f18907d28f22da24cf7d797e15"
+    },
+    {
+      "path": "test/gpqa/run.sh",
+      "sha256": "e442d2928132ba35b61ea4c39dcba5b2f32cb0dc11dd7b14df481261e11f57a0"
+    },
+    {
+      "path": "test/hotpotqa/data/data.json",
+      "sha256": "81f09495a18c6bc1cd1c48483babc6c59dfb9381e524850be53ffb62a9c28fd7"
+    },
+    {
+      "path": "test/hotpotqa/run.sh",
+      "sha256": "1e53b6983cf224ebfb43f454b56e67ea0364f57d4dbf45e754ae47cb8ee2bb85"
+    },
+    {
+      "path": "test/medqa/data/data.json",
+      "sha256": "d4f09708b623a7750013b22c607495eb8872bbef7a3f50990b7279c8fd87ec8d"
+    },
+    {
+      "path": "test/medqa/run.sh",
+      "sha256": "81e8d650fb34fe478c2f4dc9417bb3bc1f0c42f015bf954c192ff51bdb2ef09e"
+    },
+    {
+      "path": "test/musique/data/data.json",
+      "sha256": "195b9e75a45c58a5a0398c753a1d8fb7a8adf87b4bfde3f12d20ce22517e4759"
+    },
+    {
+      "path": "test/musique/run.sh",
+      "sha256": "04576ab120e6c41c233839971eed951bdd5631023260f0773e49826963670031"
+    },
+    {
+      "path": "test/solve.py",
+      "sha256": "93664ee226c30ddfdd56e309fe4ec86f2ed8ff697175e718cff9f315d27491a3"
+    },
+    {
+      "path": "test/utils.py",
+      "sha256": "20578af8616fd0082a7cf6d109fc0e6ade05f1660fa40b627b4c38a372ed6649"
+    },
+    {
+      "path": "train/config.yaml",
+      "sha256": "5093c217174a04f0b510096aa4f4634eeb4d202af9fd80c4ee601a64607b53e1"
+    },
+    {
+      "path": "train/rollout.py",
+      "sha256": "81c4da3052804ee448ea9a4d3f263b3a6c87e1a1825cbeb402f18873c59d8477"
+    },
+    {
+      "path": "train/rollout_dev.py",
+      "sha256": "dfbd0a4f3fd927901f2e0afe19c68b8eca643badeda3b32c82b107e771a47a1f"
+    },
+    {
+      "path": "train/serve_with_logs.sh",
+      "sha256": "4c0171c98557b4a5dab817980a5e8574c86826af28c33423be8a176429c3a707"
+    },
+    {
+      "path": "train/train_agent.py",
+      "sha256": "cefe449d970d65a3a098e4dde7292fb0a0667ac9f4eadab3f7dc80f941f96669"
+    },
+    {
+      "path": "train/train_with_logs.sh",
+      "sha256": "eef27ad6fc598150f415b17aecd6c09717ac4ca94aed0462ee7ef532f7304353"
+    },
+    {
+      "path": "train/utils.py",
+      "sha256": "4d492618badac7a93f9cf0be01d8b02a7042d33937687dfadd93354e7205bc5a"
+    },
+    {
+      "path": "util/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "util/get_pub_ip.py",
+      "sha256": "c7501151bb5c610683552a209430ba550aeafcf17924488a9eaa9b65f08603c5"
+    },
+    {
+      "path": "util/model_merger.py",
+      "sha256": "774e1d75faaff25d5ff8b4ad9195e51f2223f3d9e955710489efe20c563781e1"
+    },
+    {
+      "path": "util/parse_config.py",
+      "sha256": "4457e2262d9f5bea507c152f552fcb0b80944ea3de9d17a1ccf60f2b3cebc28d"
+    },
+    {
+      "path": "util/port_cleanup.py",
+      "sha256": "77a90553b4c0a038ac854053b0e5b471a168e1b1cb68c041cef31afda136af0e"
+    },
+    {
+      "path": "util/upload_hf_model.py",
+      "sha256": "c282b054b29c5228f0585bfb2ee20046c71d6390a4358079146d5af200de1494"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "e4b582114e140dbc5229637a26121aa1cf641b4b7fb09082ce1ca0ab17cc70a6"
+    }
+  ]
+}
